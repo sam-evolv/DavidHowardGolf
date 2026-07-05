@@ -23,7 +23,7 @@
 ]}
 </script>
 <meta name="theme-color" content="#0C0E0D">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230C0E0D'/%3E%3Cg fill='none' stroke='%23EDE8DC' stroke-width='8'%3E%3Cpath d='M28 24 V76'/%3E%3Cpath d='M28 24 C52 24 61 35 61 50 C61 65 52 76 28 76'/%3E%3Cpath d='M53 24 V76'/%3E%3Cpath d='M28 50 H82'/%3E%3C/g%3E%3Cpath d='M82 50 V29' stroke='%238C52D9' stroke-width='8' fill='none'/%3E%3Cpath d='M82 29 L95 34 L82 39 Z' fill='%238C52D9'/%3E%3C/svg%3E" type="image/svg+xml">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 
 <!-- Type system: Clash Display (kinetic headlines) + Satoshi (body) via Fontshare,
      Playfair italic (the quote, only) + IBM Plex Mono (scorecard voice) via Google -->
@@ -268,25 +268,15 @@ h1, h2, .hero-sub, blockquote{ text-wrap:balance; }
 }
 .loader.done{ transform:translateY(-101%); }
 .loader-mark{
-  width:76px; height:76px;
+  width:88px; height:88px;
   margin-bottom:0.75rem;
-  color:var(--bone);
+  clip-path:inset(100% 0 0 0);
+  opacity:0;
+  animation:markrise 900ms var(--ease) 150ms forwards;
 }
-.loader-mark .ink{
-  stroke-dasharray:100;
-  stroke-dashoffset:100;
-  animation:inkdraw 550ms var(--ease) forwards;
+@keyframes markrise{
+  to{ clip-path:inset(0 0 0 0); opacity:1; }
 }
-.loader-mark .ink:nth-of-type(2){ animation-delay:120ms; }
-.loader-mark .ink:nth-of-type(3){ animation-delay:240ms; }
-.loader-mark .ink:nth-of-type(4){ animation-delay:360ms; }
-.loader-mark .ink:nth-of-type(5){ animation-delay:500ms; }
-@keyframes inkdraw{ to{ stroke-dashoffset:0; } }
-.loader-mark .pn{
-  opacity:0; transform-origin:84px 33px; transform:scale(0.3);
-  animation:pnpop 320ms var(--ease-slam) 700ms forwards;
-}
-@keyframes pnpop{ to{ opacity:1; transform:scale(1); } }
 .loader-num{
   font-family:var(--font-display);
   font-weight:700;
@@ -332,10 +322,9 @@ h1, h2, .hero-sub, blockquote{ text-wrap:balance; }
   text-decoration:none;
   display:flex; align-items:center; gap:0.65rem;
 }
-.nav-mark svg{
-  width:34px; height:34px;
+.nav-mark img{
+  width:36px; height:36px;
   display:block;
-  color:var(--bone);
 }
 
 .nav-links{ display:flex; align-items:center; gap:clamp(1rem, 2.5vw, 2.25rem); list-style:none; }
@@ -1369,32 +1358,10 @@ footer{
 <body class="locked">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- DH mark · interlocked monogram, horizon crossbar, violet pin flag -->
-<svg style="display:none" aria-hidden="true">
-  <symbol id="dh-mark" viewBox="0 0 100 100">
-    <g fill="none" stroke="currentColor" stroke-width="7">
-      <path d="M26 22 V78"/>
-      <path d="M26 22 C52 22 62 34 62 50 C62 66 52 78 26 78"/>
-      <path d="M54 22 V78"/>
-      <path d="M26 50 H84"/>
-    </g>
-    <path d="M84 50 V28" fill="none" stroke="var(--violet)" stroke-width="7"/>
-    <path d="M84 28 L97 33 L84 38 Z" fill="var(--violet)"/>
-  </symbol>
-</svg>
 
 <!-- Preloader: counting to the 154th -->
 <div class="loader" id="loader" aria-hidden="true">
-  <svg class="loader-mark" aria-hidden="true" viewBox="0 0 100 100">
-    <g fill="none" stroke="currentColor" stroke-width="7">
-      <path class="ink" pathLength="100" d="M26 22 V78"/>
-      <path class="ink" pathLength="100" d="M26 22 C52 22 62 34 62 50 C62 66 52 78 26 78"/>
-      <path class="ink" pathLength="100" d="M54 22 V78"/>
-      <path class="ink" pathLength="100" d="M26 50 H84"/>
-    </g>
-    <path class="ink" pathLength="100" d="M84 50 V28" fill="none" stroke="var(--violet)" stroke-width="7"/>
-    <path class="pn" d="M84 28 L97 33 L84 38 Z" fill="var(--violet)"/>
-  </svg>
+  <img class="loader-mark" src="/assets/logo.svg" alt="" width="88" height="88">
   <div class="loader-num mono"><span id="loader-count">001</span><em>.</em></div>
   <p class="loader-cap">The 154th Open &middot; Dundonald to Birkdale</p>
 </div>
@@ -1404,7 +1371,7 @@ footer{
 <!-- ==================== NAV ==================== -->
 <nav class="nav" id="nav" aria-label="Primary">
   <div class="container nav-inner">
-    <a class="nav-mark" href="#top" aria-label="David Howard Golf, home"><svg aria-hidden="true"><use href="#dh-mark"/></svg>Howard</a>
+    <a class="nav-mark" href="#top" aria-label="David Howard Golf, home"><img src="/assets/logo.svg" alt="" width="36" height="36">Howard</a>
     <ul class="nav-links">
       <li class="nav-hide"><a href="#story">Story</a></li>
       <li class="nav-hide"><a href="#birkdale">Birkdale</a></li>
