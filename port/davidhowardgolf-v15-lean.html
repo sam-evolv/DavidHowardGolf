@@ -1,0 +1,2408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>David Howard Golf | The 154th Open, Royal Birkdale</title>
+<meta name="description" content="David Howard is a Cork amateur golfer and Cystic Fibrosis Ireland ambassador who qualified for the 154th Open Championship at Royal Birkdale.">
+<meta property="og:title" content="David Howard Golf">
+<meta property="og:description" content="Cork amateur. CF Ireland ambassador. Qualifier for the 154th Open at Royal Birkdale.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://davidhowardgolf.com/">
+<meta property="og:image" content="https://davidhowardgolf.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="David Howard Golf">
+<meta name="twitter:description" content="Cork amateur. CF Ireland ambassador. Qualifier for the 154th Open at Royal Birkdale.">
+<meta name="twitter:image" content="https://davidhowardgolf.com/og.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Person","@id":"https://davidhowardgolf.com/#david","name":"David Howard","description":"Irish amateur golfer and Cystic Fibrosis Ireland ambassador, qualifier for the 154th Open Championship at Royal Birkdale.","homeLocation":{"@type":"Place","name":"Currabinny, County Cork, Ireland"},"nationality":"Irish","sameAs":["https://www.instagram.com/davidhowardgolf"],"memberOf":{"@type":"SportsOrganization","name":"Fota Island Golf Club"}},
+{"@type":"SportsEvent","name":"The 154th Open Championship","startDate":"2026-07-16","endDate":"2026-07-19","location":{"@type":"Place","name":"Royal Birkdale Golf Club","address":"Southport, England"},"competitor":{"@id":"https://davidhowardgolf.com/#david"}}
+]}
+</script>
+<meta name="theme-color" content="#0C0E0D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230C0E0D'/%3E%3Cg fill='none' stroke='%23EDE8DC' stroke-width='8'%3E%3Cpath d='M28 24 V76'/%3E%3Cpath d='M28 24 C52 24 61 35 61 50 C61 65 52 76 28 76'/%3E%3Cpath d='M53 24 V76'/%3E%3Cpath d='M28 50 H82'/%3E%3C/g%3E%3Cpath d='M82 50 V29' stroke='%238C52D9' stroke-width='8' fill='none'/%3E%3Cpath d='M82 29 L95 34 L82 39 Z' fill='%238C52D9'/%3E%3C/svg%3E" type="image/svg+xml">
+
+<!-- Type system: Clash Display (kinetic headlines) + Satoshi (body) via Fontshare,
+     Playfair italic (the quote, only) + IBM Plex Mono (scorecard voice) via Google -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ================================================================
+   DAVID HOWARD GOLF · v2 · "WIND"
+   Two-colour commitment: INK and CF PURPLE. Bone is the neutral.
+   Purple is the cystic fibrosis colour: the identity carries the cause.
+   Motion language: coastal wind, the countdown, the scorecard.
+   ================================================================ */
+
+:root{
+  --ink:        #0C0E0D;
+  --ink-2:      #101312;
+  --ink-3:      #151918;
+  --bone:       #EDE8DC;
+  --bone-dim:   #ABA99D;
+  --bone-faint: #8B8A80;
+  --line:       rgba(237,232,220,0.14);
+  --line-soft:  rgba(237,232,220,0.07);
+
+  /* ONE ACCENT: black, white, purple. The purple is CF's colour,
+     so the identity itself carries the cause. Nothing else. */
+  --violet:     #8C52D9;                 /* strands, strokes, large display */
+  --violet-fill:#7E45CC;                 /* button fills, AA with bone text */
+  --violet-down:#6636A8;                 /* pressed / hover-darken */
+  --violet-deep:#2E1849;                 /* the CF colour-block */
+  --violet-hi:  #C9A8F2;                 /* small text on ink, AA-safe */
+  --violet-dim: rgba(140,82,217,0.16);
+
+  --font-display: 'Clash Display', 'Arial Narrow', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+
+  --text-mega:  clamp(3.4rem, min(13.5vw, 17svh), 12.5rem);
+  --text-h2:    clamp(2.4rem, 1.6rem + 4.5vw, 5.25rem);
+  --text-h3:    clamp(1.3rem, 1.1rem + 1vw, 1.9rem);
+  --text-lead:  clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+  --text-body:  clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --text-small: 0.875rem;
+  --text-micro: 0.6875rem;
+
+  --space-section: clamp(6rem, 5rem + 10vw, 13rem);
+  --container: 1280px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-slam: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur: 800ms;
+}
+
+*, *::before, *::after{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ scroll-behavior:smooth; color-scheme:dark; }
+
+body{
+  font-family:var(--font-body);
+  font-size:var(--text-body);
+  line-height:1.65;
+  color:var(--bone);
+  background:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+body.locked{ overflow:hidden; }
+
+/* Printed-programme grain */
+body::after{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none;
+  z-index:3;
+  opacity:0.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+img, svg, canvas{ max-width:100%; display:block; }
+
+::selection{ background:var(--violet-fill); color:var(--bone); }
+
+a{ color:inherit; }
+
+:focus-visible{ outline:2px solid var(--violet-hi); outline-offset:3px; }
+:focus:not(:focus-visible){ outline:none; }
+
+[id]{ scroll-margin-top:90px; }
+
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+@media (min-width:1560px){
+  :root{ --container:1340px; }
+}
+
+.skip-link{
+  position:absolute; left:-9999px; top:0;
+  background:var(--violet-fill); color:var(--bone);
+  padding:0.75rem 1.25rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-small);
+  z-index:200;
+}
+.skip-link:focus{ left:0; }
+
+/* ---------- Voices ---------- */
+
+.display{
+  font-family:var(--font-display);
+  font-weight:600;
+  line-height:0.98;
+  letter-spacing:-0.015em;
+  text-transform:uppercase;
+}
+
+.mono{ font-family:var(--font-mono); font-variant-numeric:tabular-nums; }
+
+.micro-label{
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.24em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+}
+
+h2.display{ font-size:var(--text-h2); max-width:14ch; }
+
+p{ max-width:62ch; text-wrap:pretty; }
+h1, h2, .hero-sub, blockquote{ text-wrap:balance; }
+.lead{ font-size:var(--text-lead); line-height:1.55; }
+.dim{ color:var(--bone-dim); }
+
+/* ---------- Buttons ---------- */
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.6rem;
+  min-height:52px;
+  padding:0.9rem 1.9rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-small);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--bone);
+  background:transparent;
+  cursor:pointer;
+  touch-action:manipulation;
+  position:relative;
+  overflow:hidden;
+  transition:border-color 250ms var(--ease), color 250ms var(--ease), transform 200ms var(--ease);
+  will-change:transform;
+}
+.btn > span{ position:relative; z-index:1; }
+.btn::before{
+  content:"";
+  position:absolute; inset:0;
+  background:var(--violet-fill);
+  transform:translateY(101%);
+  transition:transform 350ms var(--ease);
+}
+.btn:hover::before{ transform:translateY(0); }
+.btn:hover{ border-color:var(--violet-fill); }
+.btn:active{ transform:scale(0.97); }
+
+.btn-primary{ background:var(--violet-fill); border-color:var(--violet-fill); }
+.btn-primary::before{ background:var(--violet-down); }
+
+/* ---------- Reveal system ---------- */
+
+.reveal{
+  opacity:0;
+  transform:translateY(34px);
+  transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.reveal.visible{ opacity:1; transform:none; }
+.reveal-group > .reveal:nth-child(2){ transition-delay:90ms; }
+.reveal-group > .reveal:nth-child(3){ transition-delay:180ms; }
+.reveal-group > .reveal:nth-child(4){ transition-delay:270ms; }
+
+/* Per-letter hero rise */
+.kinetic .word{
+  display:inline-block;
+  overflow:hidden;
+  vertical-align:top;
+  padding-bottom:0.06em;
+  margin-bottom:-0.06em;
+}
+.kinetic .ch{
+  display:inline-block;
+  transform:translateY(110%) rotate(4deg);
+  transition:transform 900ms var(--ease);
+  will-change:transform;
+}
+.kinetic.on .ch{ transform:none; }
+
+/* ---------- Scroll progress ---------- */
+
+.progress{
+  position:fixed; top:0; left:0;
+  height:2px; width:100%;
+  background:transparent;
+  z-index:120;
+  pointer-events:none;
+}
+.progress i{
+  display:block; height:100%;
+  background:var(--violet);
+  transform-origin:0 50%;
+  transform:scaleX(0);
+}
+
+
+/* ================================================================
+   PRELOADER · counting to the 154th
+   ================================================================ */
+
+.loader{
+  position:fixed; inset:0;
+  z-index:180;
+  background:var(--ink);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1rem;
+  transition:transform 700ms var(--ease);
+}
+.loader.done{ transform:translateY(-101%); }
+.loader-mark{
+  width:76px; height:76px;
+  margin-bottom:0.75rem;
+  color:var(--bone);
+}
+.loader-mark .ink{
+  stroke-dasharray:100;
+  stroke-dashoffset:100;
+  animation:inkdraw 550ms var(--ease) forwards;
+}
+.loader-mark .ink:nth-of-type(2){ animation-delay:120ms; }
+.loader-mark .ink:nth-of-type(3){ animation-delay:240ms; }
+.loader-mark .ink:nth-of-type(4){ animation-delay:360ms; }
+.loader-mark .ink:nth-of-type(5){ animation-delay:500ms; }
+@keyframes inkdraw{ to{ stroke-dashoffset:0; } }
+.loader-mark .pn{
+  opacity:0; transform-origin:84px 33px; transform:scale(0.3);
+  animation:pnpop 320ms var(--ease-slam) 700ms forwards;
+}
+@keyframes pnpop{ to{ opacity:1; transform:scale(1); } }
+.loader-num{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(5rem, 20vw, 13rem);
+  line-height:1;
+  color:var(--bone);
+  font-variant-numeric:tabular-nums;
+}
+.loader-num em{ font-style:normal; color:var(--violet); }
+.loader-cap{
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+}
+
+/* ================================================================
+   NAV · hides on scroll down, returns on scroll up
+   ================================================================ */
+
+.nav{
+  position:fixed; top:0; left:0; right:0;
+  z-index:100;
+  height:72px;
+  display:flex; align-items:center;
+  background:rgba(12,14,13,0.78);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line-soft);
+  transition:transform 400ms var(--ease);
+}
+.nav.hidden{ transform:translateY(-100%); }
+
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+
+.nav-mark{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:1.15rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  text-decoration:none;
+  display:flex; align-items:center; gap:0.65rem;
+}
+.nav-mark svg{
+  width:34px; height:34px;
+  display:block;
+  color:var(--bone);
+}
+
+.nav-links{ display:flex; align-items:center; gap:clamp(1rem, 2.5vw, 2.25rem); list-style:none; }
+.nav-links a:not(.btn){
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--bone-dim);
+  padding:0.8rem 0.1rem;
+  transition:color 200ms var(--ease), letter-spacing 250ms var(--ease);
+}
+.nav-links a:not(.btn):hover{ color:var(--bone); letter-spacing:0.22em; }
+.nav .btn{ min-height:42px; padding:0.55rem 1.3rem; }
+
+@media (max-width:840px){ .nav-links li.nav-hide{ display:none; } }
+
+/* ================================================================
+   HERO · the wind field
+   ================================================================ */
+
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  padding-top:72px;
+}
+
+#wind{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+}
+
+.hero-veil{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(110% 60% at 80% 8%, rgba(140,82,217,0.15), transparent 55%),
+    linear-gradient(180deg, rgba(12,14,13,0.25) 0%, rgba(12,14,13,0) 40%, rgba(12,14,13,0.72) 88%);
+  pointer-events:none;
+}
+
+/*
+  PHOTO / FILM SLOT · when the shoot lands, place it behind the type:
+  <video class="hero-media" autoplay muted loop playsinline src="hero.mp4"></video>
+  or <img class="hero-media" src="hero.jpg" alt="">
+*/
+.hero-media{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:50% 20%;
+  filter:grayscale(1) contrast(1.08) brightness(0.5);
+  mix-blend-mode:luminosity;
+  opacity:0.9;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:100%;
+  padding-bottom:clamp(2.5rem, 6vh, 5rem);
+}
+
+.hero-eyebrow{
+  display:flex; align-items:center; gap:1rem;
+  flex-wrap:wrap; row-gap:0.45rem;
+  color:var(--violet-hi);
+  margin-bottom:clamp(1.25rem, 3vh, 2.25rem);
+}
+.hero-eyebrow::before{ content:""; width:2.6rem; height:1px; background:var(--violet); }
+
+.hero h1{
+  font-size:var(--text-mega);
+  line-height:0.92;
+  letter-spacing:-0.02em;
+  max-width:100%;
+}
+@media (max-width:720px){
+  .hero h1{ font-size:clamp(3.4rem, min(18.5vw, 14svh), 8rem); }
+}
+.hero h1 .row{ display:block; }
+.hero h1 .ghost{
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(237,232,220,0.34);
+}
+
+.hero-foot{
+  margin-top:clamp(1.5rem, 4vh, 2.75rem);
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:2rem;
+  flex-wrap:wrap;
+}
+.hero-sub{
+  font-size:var(--text-lead);
+  color:var(--bone-dim);
+  max-width:32ch;
+}
+.hero-sub strong{ color:var(--bone); font-weight:500; }
+.hero-ctas{ display:flex; gap:0.9rem; flex-wrap:wrap; }
+
+.scroll-cue{
+  position:absolute;
+  right:var(--gutter);
+  bottom:2rem;
+  z-index:2;
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+  writing-mode:vertical-rl;
+  display:flex; align-items:center; gap:0.8rem;
+}
+.scroll-cue::after{
+  content:"";
+  width:1px; height:3rem;
+  background:linear-gradient(var(--violet), transparent);
+  animation:drip 2s var(--ease) infinite;
+}
+@keyframes drip{
+  0%{ transform:scaleY(0); transform-origin:top; }
+  55%{ transform:scaleY(1); transform-origin:top; }
+  56%{ transform-origin:bottom; }
+  100%{ transform:scaleY(0); transform-origin:bottom; }
+}
+@media (max-width:720px){ .scroll-cue{ display:none; } }
+
+/* ================================================================
+   MARQUEE TICKERS
+   ================================================================ */
+
+.marquee{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:var(--ink);
+  overflow:hidden;
+  white-space:nowrap;
+  position:relative;
+  z-index:2;
+}
+.marquee-track{
+  display:inline-flex;
+  padding-block:1rem;
+  animation:scrollX 28s linear infinite;
+}
+.marquee.rev .marquee-track{ animation-direction:reverse; animation-duration:36s; }
+.marquee:hover .marquee-track{ animation-play-state:paused; }
+@keyframes scrollX{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+.marquee-seq{ display:inline-flex; align-items:center; }
+.marquee-item{
+  display:inline-flex; align-items:center; gap:1.4rem;
+  padding-inline:1.4rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-small);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+}
+.marquee-item b{ font-weight:500; color:var(--bone); }
+.marquee-item .sep{ color:var(--violet); font-size:0.8em; }
+.marquee-quote{ text-transform:none; letter-spacing:0.02em; font-family:var(--font-body); font-size:0.95rem; }
+.marquee-quote i{ font-style:normal; color:var(--bone); }
+.marquee-quote span{ color:var(--bone-faint); font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.18em; text-transform:uppercase; }
+
+/* ================================================================
+   COUNTDOWN · the big clock
+   ================================================================ */
+
+.clock{
+  padding-block:clamp(4rem, 4rem + 6vw, 8rem);
+  background:var(--ink-2);
+  border-bottom:1px solid var(--line-soft);
+}
+.clock-head{
+  display:flex; align-items:center; gap:0.9rem;
+  margin-bottom:clamp(1.75rem, 4vh, 3rem);
+  color:var(--bone-dim);
+}
+.clock-head .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--violet);
+  animation:pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+.clock-grid{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:clamp(0.5rem, 2vw, 2rem);
+}
+@media (max-width:560px){
+  .clock-grid{ grid-template-columns:1fr 1fr; gap:1.75rem 1rem; }
+  .clock-num{ font-size:clamp(3.2rem, 17vw, 5rem); }
+}
+.clock-cell{ border-left:1px solid var(--line); padding-left:clamp(0.75rem, 2vw, 1.5rem); }
+.clock-num{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  font-size:clamp(2.6rem, 1.5rem + 8vw, 8rem);
+  line-height:1;
+  color:var(--bone);
+}
+.clock-word{
+  margin-top:0.5rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+}
+.next-up{
+  margin-top:clamp(2.25rem, 4vh, 3.25rem);
+  display:flex; flex-wrap:wrap; align-items:center;
+  gap:0.6rem 1rem;
+  font-size:var(--text-micro);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+  max-width:none;
+}
+.next-up b{ color:var(--bone-dim); font-weight:500; }
+.next-up .sep{ color:var(--violet); font-size:0.7em; }
+
+/* ================================================================
+   QUALIFYING CARD · odometer numbers + stamp slam
+   ================================================================ */
+
+.qualifying{ padding-block:var(--space-section); position:relative; }
+
+.q-head{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:1rem; flex-wrap:wrap;
+  margin-bottom:clamp(2.5rem, 6vh, 4rem);
+}
+.q-head .mono{ color:var(--bone-faint); font-size:var(--text-small); }
+
+.scorecard{
+  border:1px solid var(--line);
+  background:var(--ink-2);
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.scorecard table{
+  width:100%;
+  min-width:620px;
+  border-collapse:collapse;
+  font-family:var(--font-mono);
+  font-variant-numeric:tabular-nums;
+}
+.scorecard th{
+  font-size:var(--text-micro);
+  font-weight:400;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+  text-align:left;
+  padding:1.2rem 1.5rem 1rem;
+  border-bottom:1px solid var(--line);
+}
+.scorecard td{
+  padding:1.6rem 1.5rem;
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:clamp(2rem, 1.4rem + 3vw, 4rem);
+  line-height:1;
+  color:var(--bone);
+  border-bottom:1px solid var(--line-soft);
+}
+.scorecard .under{ color:var(--violet-hi); }
+@media (max-width:560px){
+  .scorecard table{ min-width:500px; }
+  .scorecard th{ padding:1rem 1.1rem 0.8rem; }
+  .scorecard td{ padding:1.15rem 1.1rem; font-size:clamp(1.7rem, 9vw, 2.4rem); }
+}
+
+.q-verdict{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:1.25rem; flex-wrap:wrap;
+  padding:1.6rem 1.5rem;
+  border-top:1px solid var(--line);
+  background:var(--violet-dim);
+}
+.stamp{
+  font-family:var(--font-mono);
+  font-size:clamp(1rem, 0.9rem + 1.2vw, 1.5rem);
+  letter-spacing:0.34em;
+  text-transform:uppercase;
+  color:var(--violet-hi);
+  border:2px solid var(--violet);
+  padding:0.6rem 1.1rem 0.6rem 1.44rem;
+  transform:rotate(-2deg) scale(3);
+  opacity:0;
+  filter:blur(6px);
+}
+.stamp.slam{
+  animation:slam 500ms var(--ease-slam) forwards;
+}
+@keyframes slam{
+  to{ transform:rotate(-2deg) scale(1); opacity:1; filter:blur(0); }
+}
+.q-note{ font-size:var(--text-small); color:var(--bone-dim); max-width:44ch; }
+.q-context{
+  margin-top:1.5rem;
+  font-size:var(--text-small);
+  color:var(--bone-faint);
+  font-family:var(--font-mono);
+}
+
+/* ================================================================
+   STORY · sticky numerals, chapter scenes
+   ================================================================ */
+
+.story{ padding-block:var(--space-section); border-top:1px solid var(--line-soft); }
+
+.story-head{ margin-bottom:clamp(3.5rem, 8vh, 6rem); }
+.story-head .micro-label{ color:var(--violet-hi); margin-bottom:1.25rem; display:block; }
+
+.chapter{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:1.5rem;
+  padding-block:clamp(2.75rem, 6vh, 4.5rem);
+  border-top:1px solid var(--line-soft);
+}
+@media (min-width:900px){
+  .chapter{ grid-template-columns:260px minmax(0,1fr); gap:4rem; }
+  .chapter-rail{ position:sticky; top:120px; align-self:start; }
+}
+
+.chapter-num{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(4rem, 3rem + 6vw, 9rem);
+  line-height:0.9;
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(140,82,217,0.8);
+}
+.chapter-title{
+  font-family:var(--font-display);
+  font-weight:600;
+  text-transform:uppercase;
+  font-size:var(--text-h3);
+  letter-spacing:-0.01em;
+  margin-bottom:1.1rem;
+  max-width:22ch;
+}
+.chapter p{ color:var(--bone-dim); }
+.chapter p + p{ margin-top:1.1rem; }
+.chapter p strong{ color:var(--bone); font-weight:500; }
+
+/* Pull quote: the full-bleed moment */
+.pull{
+  min-height:72svh;
+  display:flex; align-items:center;
+}
+@media (max-width:720px){
+  .pull{ min-height:56svh; }
+}
+.pull{
+  border-top:1px solid var(--line-soft);
+  background:
+    radial-gradient(80% 100% at 50% 120%, rgba(140,82,217,0.14), transparent 60%),
+    var(--ink);
+}
+.pull blockquote{
+  font-family:var(--font-serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(1.9rem, 1.2rem + 4vw, 4.25rem);
+  line-height:1.22;
+  max-width:22ch;
+  padding-bottom:0.1em;
+}
+.pull blockquote span{ color:var(--violet-hi); }
+.pull figcaption{
+  margin-top:2rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-small);
+  color:var(--bone-faint);
+}
+
+/* ================================================================
+   STATS WALL · big counters
+   ================================================================ */
+
+.stats{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:var(--ink-2);
+}
+.stats-grid{
+  display:grid;
+  grid-template-columns:1fr;
+}
+@media (min-width:680px){ .stats-grid{ grid-template-columns:1fr 1fr; } }
+@media (min-width:1020px){ .stats-grid{ grid-template-columns:repeat(4, 1fr); } }
+
+.stat{
+  padding:clamp(2rem, 4vw, 3rem) var(--gutter);
+  border-bottom:1px solid var(--line-soft);
+}
+@media (min-width:1020px){
+  .stat{ border-bottom:none; border-right:1px solid var(--line-soft); }
+  .stat:last-child{ border-right:none; }
+}
+.stat-num{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  font-size:clamp(3rem, 2.2rem + 4vw, 5.5rem);
+  line-height:1;
+  color:var(--bone);
+}
+.stat-num em{ font-style:normal; color:var(--violet-hi); font-size:0.55em; vertical-align:0.35em; }
+.stat-what{
+  margin-top:0.7rem;
+  font-size:var(--text-small);
+  color:var(--bone-dim);
+  max-width:26ch;
+}
+@media (max-width:1019px){
+  .stats-grid .stat:last-child{ border-bottom:none; }
+}
+
+/* ================================================================
+   ROAD · self-drawing timeline
+   ================================================================ */
+
+.road{ padding-block:var(--space-section); }
+
+.road-grid{ display:grid; gap:3rem; }
+@media (min-width:940px){
+  .road-grid{ grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:5rem; align-items:start; }
+  .road-head{ position:sticky; top:120px; }
+}
+
+.timeline{
+  list-style:none;
+  position:relative;
+  padding-left:2rem;
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:3px; top:6px; bottom:6px;
+  width:1px;
+  background:var(--line-soft);
+}
+.timeline .wire{
+  position:absolute;
+  left:3px; top:6px; bottom:6px;
+  width:1px;
+  background:var(--violet);
+  transform-origin:top;
+  transform:scaleY(var(--draw, 0));
+}
+
+.milestone{ position:relative; padding-bottom:clamp(2rem, 4vh, 3rem); }
+.milestone:last-child{ padding-bottom:0; }
+.milestone::before{
+  content:"";
+  position:absolute;
+  left:-2rem;
+  top:7px;
+  width:7px; height:7px;
+  border-radius:50%;
+  background:var(--bone-faint);
+}
+.milestone.now::before{
+  background:var(--violet);
+  box-shadow:0 0 0 6px var(--violet-dim);
+  animation:pulse 2.4s ease-in-out infinite;
+}
+.milestone .when{ font-family:var(--font-mono); font-size:var(--text-small); color:var(--violet-hi); }
+.milestone h3{ font-weight:700; font-size:1.1rem; margin-top:0.4rem; }
+.milestone p{ margin-top:0.35rem; font-size:var(--text-small); color:var(--bone-dim); max-width:52ch; }
+
+/* Journey map · the Wanderly Wagon route, drawn by scroll */
+.journey{
+  margin-top:clamp(1.75rem, 4vh, 2.75rem);
+  width:100%;
+  max-width:420px;
+}
+.journey .land{
+  fill:rgba(237,232,220,0.02);
+  stroke:rgba(237,232,220,0.16);
+  stroke-width:1;
+}
+.journey .route{
+  fill:none;
+  stroke:var(--violet);
+  stroke-width:1.75;
+  stroke-linecap:round;
+}
+.journey .wp circle{
+  fill:var(--ink);
+  stroke:rgba(237,232,220,0.5);
+  stroke-width:1.25;
+  r:4.5;
+}
+.journey .wp text{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  fill:var(--bone-dim);
+}
+.journey .wp .leg{
+  font-size:9.5px;
+  fill:var(--bone-faint);
+  letter-spacing:0.1em;
+}
+@media (max-width:939px){
+  .journey{ max-width:min(100%, 350px); margin-top:1.5rem; }
+  .journey .route{ stroke-width:2; }
+}
+.journey .wp{
+  opacity:0;
+  transition:opacity 600ms var(--ease);
+}
+.journey .wp.lit{ opacity:1; }
+.journey .wp.lit circle{ fill:var(--violet); stroke:var(--violet); }
+.journey .wp-final.lit circle{ animation:pulse 2.4s ease-in-out infinite; }
+.journey-cap{
+  margin-top:0.9rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+}
+
+/* Sound of the links · opt-in generative wind */
+.sound-toggle{
+  position:absolute;
+  left:var(--gutter);
+  bottom:2rem;
+  z-index:3;
+  display:inline-flex;
+  align-items:center;
+  gap:0.7rem;
+  min-height:44px;
+  padding:0.55rem 1.1rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+  background:rgba(12,14,13,0.4);
+  border:1px solid var(--line);
+  border-radius:999px;
+  cursor:pointer;
+  touch-action:manipulation;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  transition:color 200ms var(--ease), border-color 200ms var(--ease);
+}
+.sound-toggle:hover{ color:var(--bone); border-color:var(--bone-dim); }
+@media (max-width:720px){
+  .sound-toggle{ left:auto; right:1.1rem; bottom:calc(1.1rem + env(safe-area-inset-bottom, 0px)); }
+  .hero-inner{ padding-bottom:clamp(4.5rem, 9vh, 6rem); }
+}
+.wind-chip{
+  position:absolute;
+  left:var(--gutter);
+  bottom:calc(2rem + 62px);
+  z-index:3;
+  display:inline-flex; align-items:center; gap:0.6rem;
+  padding:0.5rem 1rem;
+  font-size:var(--text-micro);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+  background:rgba(12,14,13,0.4);
+  border:1px solid var(--line);
+  border-radius:999px;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.wind-chip b{ color:var(--violet-hi); font-weight:500; }
+@media (max-width:720px){
+  .wind-chip{ bottom:calc(1.1rem + env(safe-area-inset-bottom, 0px)); left:1.1rem; }
+}
+.sound-toggle .bars{ display:inline-flex; align-items:flex-end; gap:2px; height:12px; }
+.sound-toggle .bars i{
+  width:2px; height:4px;
+  background:var(--bone-faint);
+  transition:background 200ms;
+}
+.sound-toggle.on{ color:var(--violet-hi); border-color:var(--violet); }
+.sound-toggle.on .bars i{ background:var(--violet); animation:eq 900ms ease-in-out infinite; }
+.sound-toggle.on .bars i:nth-child(2){ animation-delay:150ms; }
+.sound-toggle.on .bars i:nth-child(3){ animation-delay:300ms; }
+@keyframes eq{
+  0%,100%{ height:4px; }
+  50%{ height:12px; }
+}
+
+/* Photography · one treatment unifies every frame */
+.photo-frame{
+  border:1px solid var(--line);
+  background:var(--ink-2);
+  margin:0;
+}
+.photo-frame .ph{ overflow:hidden; }
+.photo-frame img{
+  width:100%; height:100%;
+  object-fit:cover;
+  filter:grayscale(1) contrast(1.05) brightness(0.92);
+  transform:scale(1.001);
+  transition:filter 700ms var(--ease), transform 1200ms var(--ease);
+}
+.photo-frame:hover img, .photo-frame.lit img{ filter:none; transform:scale(1.03); }
+.photo-cap{
+  padding:0.8rem 1rem;
+  border-top:1px solid var(--line-soft);
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+  display:flex; justify-content:space-between; gap:1rem;
+}
+.chapter-photo{ margin-top:1.75rem; max-width:560px; }
+.chapter-photo .ph{ aspect-ratio:1; }
+
+.q-grid{ display:grid; gap:1.5rem; }
+@media (min-width:940px){
+  .q-grid{ grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:stretch; }
+  .q-photo{ display:flex; flex-direction:column; }
+  .q-photo .ph{ flex:1; min-height:0; aspect-ratio:auto; }
+}
+.q-photo .ph{ aspect-ratio:4/3; }
+
+.photo-duo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.25rem;
+  margin-top:1.75rem;
+  max-width:760px;
+}
+@media (max-width:560px){ .photo-duo{ grid-template-columns:1fr; } }
+.photo-duo .ph{ aspect-ratio:1; }
+.chapter-photo.tall .ph{ aspect-ratio:4/5; }
+
+/* Then and now */
+.compare-wrap{ margin-top:1.75rem; max-width:600px; }
+.compare{
+  position:relative;
+  aspect-ratio:1;
+  overflow:hidden;
+  background:var(--ink-3);
+}
+.compare img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  filter:grayscale(1) contrast(1.05) brightness(0.92);
+  transition:filter 700ms var(--ease);
+}
+.compare .c-then img{ object-position:38% center; }
+.compare:hover img, .compare.lit img{ filter:none; }
+.c-then{
+  position:absolute; inset:0;
+  clip-path:inset(0 calc(100% - var(--x, 50%)) 0 0);
+}
+.c-line{
+  position:absolute; top:0; bottom:0;
+  left:var(--x, 50%);
+  width:2px;
+  margin-left:-1px;
+  background:var(--violet);
+  pointer-events:none;
+}
+.c-line::after{
+  content:"\2194";
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:38px; height:38px;
+  border-radius:50%;
+  border:2px solid var(--violet);
+  background:rgba(12,14,13,0.65);
+  color:var(--bone);
+  font-size:0.95rem;
+  display:flex; align-items:center; justify-content:center;
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+.c-tag{
+  position:absolute; top:0.8rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  padding:0.3rem 0.65rem;
+  background:rgba(12,14,13,0.6);
+  border:1px solid var(--line);
+  color:var(--bone-dim);
+  pointer-events:none;
+}
+.c-tag.then{ left:0.8rem; }
+.c-tag.now{ right:0.8rem; }
+.c-range{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  opacity:0;
+  cursor:ew-resize;
+  margin:0;
+  touch-action:none;
+}
+
+/* The home team */
+.family{
+  padding-block:var(--space-section);
+  background:var(--ink-2);
+  border-top:1px solid var(--line-soft);
+}
+.family-head{ margin-bottom:clamp(2rem, 5vh, 3.5rem); }
+.family-head p{
+  margin-top:1.5rem;
+  font-size:var(--text-lead);
+  color:var(--bone-dim);
+  max-width:44ch;
+}
+.family-head p strong{ color:var(--bone); font-weight:500; }
+.family-grid{ display:grid; gap:1.25rem; }
+@media (min-width:940px){
+  .family-grid{ grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:stretch; }
+  .family-grid .photo-frame{ display:flex; flex-direction:column; }
+  .family-grid .ph{ flex:1; min-height:0; aspect-ratio:auto; }
+}
+.family-grid .ph{ aspect-ratio:1; }
+.family-grid .fam-side .ph{ aspect-ratio:4/5; }
+
+/* From the road · film strip */
+.gallery{ padding-block:var(--space-section); border-top:1px solid var(--line-soft); }
+.gallery-head{ margin-bottom:clamp(2rem, 5vh, 3.5rem); display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+.gallery-head p{ color:var(--bone-dim); }
+.film{
+  display:flex;
+  gap:1.25rem;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:1rem;
+  scrollbar-width:thin;
+  -webkit-overflow-scrolling:touch;
+}
+.film .photo-frame{ flex:0 0 min(78vw, 440px); scroll-snap-align:start; }
+.film .ph{ aspect-ratio:4/5; }
+@media (min-width:1100px){
+  .film{ display:grid; grid-template-columns:repeat(4, 1fr); overflow:visible; padding-bottom:0; }
+  .film .photo-frame{ flex:none; }
+}
+
+/* The sky knows what time it is where you are */
+body[data-sky="night"] .hero-veil{
+  background:
+    radial-gradient(110% 60% at 80% 8%, rgba(140,82,217,0.22), transparent 55%),
+    linear-gradient(180deg, rgba(6,7,7,0.5) 0%, rgba(12,14,13,0.05) 40%, rgba(12,14,13,0.78) 88%);
+}
+body[data-sky="dawn"] .hero-veil,
+body[data-sky="dusk"] .hero-veil{
+  background:
+    radial-gradient(110% 60% at 80% 8%, rgba(140,82,217,0.2), transparent 58%),
+    linear-gradient(180deg, rgba(12,14,13,0.15) 0%, rgba(12,14,13,0) 40%, rgba(12,14,13,0.74) 88%);
+}
+
+/* ================================================================
+   CF · the purple block. One deliberate colour-block per page.
+   ================================================================ */
+
+.cf{
+  background:var(--violet-deep);
+  padding-block:var(--space-section);
+  position:relative;
+  overflow:hidden;
+}
+.cf::before{
+  content:"";
+  position:absolute; inset:0;
+  background:radial-gradient(90% 110% at 85% 0%, rgba(140,82,217,0.38), transparent 55%);
+  pointer-events:none;
+}
+.cf .container{ position:relative; }
+
+.cf-grid{ display:grid; gap:3rem; }
+@media (min-width:940px){
+  .cf-grid{ grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:5.5rem; align-items:start; }
+}
+
+.cf .micro-label{ color:var(--violet-hi); }
+.cf h2{ margin-top:1.25rem; }
+.cf .lead{ margin-top:1.75rem; color:var(--bone); }
+.cf p.body{ margin-top:1.1rem; color:rgba(237,232,220,0.75); }
+.cf .btn{ margin-top:2.25rem; border-color:rgba(237,232,220,0.35); }
+.cf .btn::before{ background:var(--bone); }
+.cf .btn:hover{ color:var(--violet-deep); border-color:var(--bone); }
+
+.cf-facts{ border:1px solid rgba(237,232,220,0.22); background:rgba(12,14,13,0.3); }
+.cf-fact{ padding:1.6rem 1.7rem; border-bottom:1px solid rgba(237,232,220,0.14); }
+.cf-fact:last-child{ border-bottom:none; }
+.cf-fact .num{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  font-size:clamp(2rem, 1.6rem + 2vw, 3.25rem);
+  line-height:1;
+  color:var(--bone);
+}
+.cf-fact .what{ margin-top:0.45rem; font-size:var(--text-small); color:rgba(237,232,220,0.72); max-width:38ch; }
+
+/* ================================================================
+   PARTNER
+   ================================================================ */
+
+.partner{ padding-block:var(--space-section); }
+
+.partner-grid{ display:grid; gap:3rem; }
+@media (min-width:940px){
+  .partner-grid{ grid-template-columns:minmax(0,6fr) minmax(0,6fr); gap:5.5rem; }
+}
+.partner .lead{ margin-top:1.75rem; color:var(--bone-dim); }
+.partner .lead strong{ color:var(--bone); font-weight:500; }
+.partner .btn{ margin-top:2.25rem; }
+
+.offer{ list-style:none; }
+.offer li{
+  padding:1.7rem 0;
+  border-top:1px solid var(--line-soft);
+  display:grid;
+  grid-template-columns:3rem minmax(0,1fr);
+  gap:1.1rem;
+}
+.offer li:last-child{ border-bottom:1px solid var(--line-soft); }
+.offer .o-num{ font-family:var(--font-mono); color:var(--violet-hi); font-size:var(--text-small); padding-top:0.25rem; }
+.offer h3{ font-weight:700; font-size:1.1rem; }
+.offer p{ margin-top:0.4rem; font-size:var(--text-small); color:var(--bone-dim); max-width:48ch; }
+
+/* ================================================================
+   PRESS KIT
+   ================================================================ */
+
+.press{
+  padding-block:var(--space-section);
+  background:var(--ink-2);
+  border-top:1px solid var(--line-soft);
+}
+.press-head{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:2rem; flex-wrap:wrap;
+  margin-bottom:clamp(2.5rem, 6vh, 4rem);
+}
+.press-head p{ color:var(--bone-dim); max-width:46ch; }
+
+.facts{ display:grid; grid-template-columns:1fr; border-top:1px solid var(--line); }
+@media (min-width:680px){ .facts{ grid-template-columns:1fr 1fr; } }
+@media (min-width:1020px){ .facts{ grid-template-columns:1fr 1fr 1fr; } }
+
+.fact{ padding:1.5rem 2rem 1.5rem 0; border-bottom:1px solid var(--line-soft); }
+.fact dt{
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+}
+.fact dd{ margin-top:0.5rem; font-size:1.0625rem; }
+
+.press-contact{ margin-top:clamp(2.5rem, 5vh, 3.5rem); display:flex; gap:0.9rem; flex-wrap:wrap; }
+
+/* Ready-to-lift bios */
+.bios{ margin-top:clamp(2.5rem, 5vh, 3.5rem); }
+.bios details{ border-top:1px solid var(--line-soft); }
+.bios details:last-child{ border-bottom:1px solid var(--line-soft); }
+.bios summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.2rem 0.1rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-small);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+  transition:color 200ms var(--ease);
+}
+.bios summary:hover{ color:var(--bone); }
+.bios summary::-webkit-details-marker{ display:none; }
+.bios summary::after{ content:"+"; color:var(--violet-hi); font-size:1.1rem; }
+.bios details[open] summary::after{ content:"\2212"; }
+.bio-body{ padding:0 0.1rem 1.6rem; color:var(--bone-dim); max-width:66ch; }
+.bio-body p + p{ margin-top:0.8rem; }
+.copy-bio{
+  margin-top:1rem;
+  display:inline-flex; align-items:center;
+  min-height:44px;
+  padding:0.4rem 1rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+  background:transparent;
+  border:1px solid var(--line);
+  border-radius:999px;
+  cursor:pointer;
+  touch-action:manipulation;
+  transition:color 200ms var(--ease), border-color 200ms var(--ease);
+}
+.copy-bio:hover{ color:var(--bone); border-color:var(--bone-dim); }
+
+/* ================================================================
+   FOOTER · oversized wordmark
+   ================================================================ */
+
+footer{
+  border-top:1px solid var(--line-soft);
+  overflow:hidden;
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+.foot-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:1.25rem; flex-wrap:wrap;
+  padding-block:2.5rem;
+}
+.foot-inner .mono{
+  font-size:var(--text-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+}
+.foot-links{ display:flex; gap:1.9rem; list-style:none; }
+.foot-links a{
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--bone-dim);
+  padding:0.6rem 0;
+  transition:color 200ms var(--ease);
+}
+.foot-links a:hover{ color:var(--bone); }
+
+.foot-mark{
+  font-family:var(--font-display);
+  font-weight:700;
+  text-transform:uppercase;
+  font-size:clamp(4rem, 17vw, 15rem);
+  line-height:0.82;
+  letter-spacing:-0.02em;
+  white-space:nowrap;
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(237,232,220,0.16);
+  transform:translateY(0.14em);
+  user-select:none;
+  pointer-events:none;
+}
+
+/* ================================================================
+   REDUCED MOTION · everything calms down
+   ================================================================ */
+
+/* Word-kinetic headline reveals */
+.wk .w{
+  display:inline-block;
+  overflow:hidden;
+  vertical-align:top;
+  padding-bottom:0.09em;
+  margin-bottom:-0.09em;
+}
+.wk .wi{
+  display:inline-block;
+  transform:translateY(108%);
+  transition:transform 850ms var(--ease);
+}
+.wk.on .wi{ transform:none; }
+.wk .w:nth-child(2) .wi{ transition-delay:70ms; }
+.wk .w:nth-child(3) .wi{ transition-delay:140ms; }
+.wk .w:nth-child(4) .wi{ transition-delay:210ms; }
+.wk .w:nth-child(5) .wi{ transition-delay:280ms; }
+.wk .w:nth-child(6) .wi{ transition-delay:350ms; }
+
+/* Countdown digit roll: the departures board */
+@keyframes roll{
+  0%{ transform:translateY(0.28em); opacity:0; filter:blur(2px); }
+  100%{ transform:none; opacity:1; filter:none; }
+}
+.clock-num.roll{ animation:roll 320ms var(--ease); }
+
+
+/* Footer wordmark drifts forever */
+@keyframes footdrift{
+  from{ transform:translate(0, 0.14em); }
+  to{ transform:translate(-50%, 0.14em); }
+}
+.foot-mark{ display:flex; width:max-content; animation:footdrift 40s linear infinite; }
+.foot-mark span{ padding-right:0.35em; }
+
+/* CF gets the purple hover in the nav: the only violet outside its block */
+.nav-links a[href="#cf"]:hover{ color:var(--violet-hi); }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *, *::before, *::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+  .reveal{ opacity:1; transform:none; }
+  .kinetic .ch{ transform:none; }
+  .wk .wi{ transform:none; }
+  .marquee-track{ animation:none; transform:none; }
+  .foot-mark{ animation:none; transform:translateY(0.14em); }
+  .stamp{ transform:rotate(-2deg) scale(1); opacity:1; filter:none; }
+  .loader{ display:none; }
+}
+</style>
+</head>
+
+<body class="locked">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- DH mark · interlocked monogram, horizon crossbar, violet pin flag -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="dh-mark" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="7">
+      <path d="M26 22 V78"/>
+      <path d="M26 22 C52 22 62 34 62 50 C62 66 52 78 26 78"/>
+      <path d="M54 22 V78"/>
+      <path d="M26 50 H84"/>
+    </g>
+    <path d="M84 50 V28" fill="none" stroke="var(--violet)" stroke-width="7"/>
+    <path d="M84 28 L97 33 L84 38 Z" fill="var(--violet)"/>
+  </symbol>
+</svg>
+
+<!-- Preloader: counting to the 154th -->
+<div class="loader" id="loader" aria-hidden="true">
+  <svg class="loader-mark" aria-hidden="true" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="7">
+      <path class="ink" pathLength="100" d="M26 22 V78"/>
+      <path class="ink" pathLength="100" d="M26 22 C52 22 62 34 62 50 C62 66 52 78 26 78"/>
+      <path class="ink" pathLength="100" d="M54 22 V78"/>
+      <path class="ink" pathLength="100" d="M26 50 H84"/>
+    </g>
+    <path class="ink" pathLength="100" d="M84 50 V28" fill="none" stroke="var(--violet)" stroke-width="7"/>
+    <path class="pn" d="M84 28 L97 33 L84 38 Z" fill="var(--violet)"/>
+  </svg>
+  <div class="loader-num mono"><span id="loader-count">001</span><em>.</em></div>
+  <p class="loader-cap">The 154th Open &middot; Dundonald to Birkdale</p>
+</div>
+
+<div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="container nav-inner">
+    <a class="nav-mark" href="#top" aria-label="David Howard Golf, home"><svg aria-hidden="true"><use href="#dh-mark"/></svg>Howard</a>
+    <ul class="nav-links">
+      <li class="nav-hide"><a href="#story">Story</a></li>
+      <li class="nav-hide"><a href="#birkdale">Birkdale</a></li>
+      <li class="nav-hide"><a href="#cf">CF Ireland</a></li>
+      <li class="nav-hide"><a href="#press">Press</a></li>
+      <li><a class="btn" href="mailto:partners@davidhowardgolf.com"><span>Partner enquiries</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<header class="hero" id="top">
+  <img class="hero-media" fetchpriority="high" decoding="async" src="/images/hero-swing.jpg" alt="">
+  <canvas id="wind" aria-hidden="true"></canvas>
+  <!--
+    PHOTO / FILM SLOT:
+    <video class="hero-media" autoplay muted loop playsinline src="hero.mp4"></video>
+  -->
+  <div class="hero-veil" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <p class="micro-label hero-eyebrow reveal hero-seq">The 154th Open &middot; Royal Birkdale &middot; 16 to 19 July 2026</p>
+    <h1 class="display kinetic" id="hero-title">
+      <span class="row" data-kinetic>David</span>
+      <span class="row" data-kinetic>Howard</span>
+      <span class="row ghost" data-kinetic>Golf</span>
+    </h1>
+    <div class="hero-foot">
+      <p class="hero-sub reveal hero-seq">Cork amateur. Cystic Fibrosis Ireland ambassador. <strong>Qualifier for the 154th Open Championship.</strong></p>
+      <div class="hero-ctas reveal hero-seq">
+        <a class="btn btn-primary magnetic" href="#story"><span>The story</span></a>
+        <a class="btn magnetic" href="mailto:partners@davidhowardgolf.com"><span>Partner enquiries</span></a>
+      </div>
+    </div>
+  </div>
+
+  <p class="wind-chip mono" id="wind-chip" hidden></p>
+  <button class="sound-toggle" id="sound-toggle" aria-pressed="false">
+    <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span id="sound-label">Sound of the links</span>
+  </button>
+
+  <p class="scroll-cue" aria-hidden="true">Into the wind</p>
+</header>
+
+<!-- ==================== TICKER ==================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-seq">
+      <span class="marquee-item"><b>The 154th Open</b><span class="sep">&#9679;</span>Royal Birkdale<span class="sep">&#9679;</span>16 to 19 July 2026<span class="sep">&#9679;</span><b>Qualified</b><span class="sep">&#9679;</span>Dundonald Links<span class="sep">&#9679;</span>&minus;4<span class="sep">&#9679;</span>T2<span class="sep">&#9679;</span></span>
+      <span class="marquee-item"><b>The 154th Open</b><span class="sep">&#9679;</span>Royal Birkdale<span class="sep">&#9679;</span>16 to 19 July 2026<span class="sep">&#9679;</span><b>Qualified</b><span class="sep">&#9679;</span>Dundonald Links<span class="sep">&#9679;</span>&minus;4<span class="sep">&#9679;</span>T2<span class="sep">&#9679;</span></span>
+    </div>
+    <div class="marquee-seq">
+      <span class="marquee-item"><b>The 154th Open</b><span class="sep">&#9679;</span>Royal Birkdale<span class="sep">&#9679;</span>16 to 19 July 2026<span class="sep">&#9679;</span><b>Qualified</b><span class="sep">&#9679;</span>Dundonald Links<span class="sep">&#9679;</span>&minus;4<span class="sep">&#9679;</span>T2<span class="sep">&#9679;</span></span>
+      <span class="marquee-item"><b>The 154th Open</b><span class="sep">&#9679;</span>Royal Birkdale<span class="sep">&#9679;</span>16 to 19 July 2026<span class="sep">&#9679;</span><b>Qualified</b><span class="sep">&#9679;</span>Dundonald Links<span class="sep">&#9679;</span>&minus;4<span class="sep">&#9679;</span>T2<span class="sep">&#9679;</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== COUNTDOWN ==================== -->
+<section class="clock" aria-label="Countdown to the first tee at Royal Birkdale">
+  <div class="container">
+    <p class="clock-head mono reveal"><span class="dot" aria-hidden="true"></span><span id="clock-label">First tee, Royal Birkdale</span></p>
+    <div class="clock-grid reveal" role="timer" aria-live="off">
+      <div class="clock-cell"><div class="clock-num" id="cd-d">--</div><div class="clock-word">Days</div></div>
+      <div class="clock-cell"><div class="clock-num" id="cd-h">--</div><div class="clock-word">Hours</div></div>
+      <div class="clock-cell"><div class="clock-num" id="cd-m">--</div><div class="clock-word">Minutes</div></div>
+      <div class="clock-cell"><div class="clock-num" id="cd-s">--</div><div class="clock-word">Seconds</div></div>
+    </div>
+    <p class="next-up mono reveal">The road there<span class="sep">&#9679;</span><b>Interprovincials</b> with Munster<span class="sep">&#9679;</span><b>Barton Shield</b> with Fota Island<span class="sep">&#9679;</span><b>The 154th Open</b> 16 to 19 July</p>
+  </div>
+</section>
+
+<!-- ==================== QUALIFYING CARD ==================== -->
+<section class="qualifying" id="birkdale" aria-labelledby="q-title">
+  <div class="container">
+    <div class="q-head reveal">
+      <h2 class="display" id="q-title">The card that did it</h2>
+      <p class="mono">Final Qualifying &middot; Dundonald Links &middot; 30.06.2026</p>
+    </div>
+
+    <div class="q-grid">
+    <div class="scorecard reveal" role="region" aria-label="David Howard qualifying scorecard">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Round 1</th>
+            <th scope="col">Round 2</th>
+            <th scope="col">Total</th>
+            <th scope="col">To par</th>
+            <th scope="col">Finish</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="count" data-count="69">0</span></td>
+            <td><span class="count" data-count="71">0</span></td>
+            <td><span class="count" data-count="140">0</span></td>
+            <td class="under"><span aria-hidden="true">&minus;</span><span class="count" data-count="4">0</span><span class="sr-only">4 under par</span></td>
+            <td>T2</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="q-verdict">
+        <span class="stamp" id="stamp">Qualified</span>
+        <p class="q-note">Through to Royal Birkdale with two shots to spare, his father John on the bag.</p>
+      </div>
+    </div>
+
+    <figure class="photo-frame q-photo reveal">
+      <div class="ph"><img src="/images/qualifying-board.jpg" alt="David and John Howard at the Dundonald Links scoreboard showing Howard at four under" loading="lazy" decoding="async"></div>
+      <figcaption class="photo-cap"><span>The board &middot; with John</span><span>Howard (A) &middot; &minus;4</span></figcaption>
+    </figure>
+    </div>
+
+    <p class="q-context reveal">36 holes &middot; five places &middot; 71 players &middot; first reserve on the start sheet</p>
+  </div>
+</section>
+
+<!-- ==================== PRESS QUOTES MARQUEE ==================== -->
+<div class="marquee rev" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-seq">
+      <span class="marquee-item marquee-quote"><i>&ldquo;Remarkable qualification&rdquo;</i>&nbsp;<span>RT&Eacute;</span></span>
+      <span class="marquee-item marquee-quote"><i>&ldquo;Against-the-odds&rdquo;</i>&nbsp;<span>Reuters</span></span>
+      <span class="marquee-item marquee-quote"><i>&ldquo;It can&rsquo;t get much better than this&rdquo;</i>&nbsp;<span>Irish Golfer</span></span>
+      <span class="marquee-item marquee-quote"><i>&ldquo;A fairytale ticket to the Open&rdquo;</i>&nbsp;<span>RT&Eacute;</span></span>
+      <span class="marquee-item marquee-quote"><i>&ldquo;Inspirational&rdquo;</i>&nbsp;<span>WLR</span></span>
+    </div>
+    <div class="marquee-seq">
+      <span class="marquee-item marquee-quote"><i>&ldquo;Remarkable qualification&rdquo;</i>&nbsp;<span>RT&Eacute;</span></span>
+      <span class="marquee-item marquee-quote"><i>&ldquo;Against-the-odds&rdquo;</i>&nbsp;<span>Reuters</span></span>
+      <span class="marquee-item marquee-quote"><i>&ldquo;It can&rsquo;t get much better than this&rdquo;</i>&nbsp;<span>Irish Golfer</span></span>
+      <span class="marquee-item marquee-quote"><i>&ldquo;A fairytale ticket to the Open&rdquo;</i>&nbsp;<span>RT&Eacute;</span></span>
+      <span class="marquee-item marquee-quote"><i>&ldquo;Inspirational&rdquo;</i>&nbsp;<span>WLR</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== STORY ==================== -->
+<section class="story" id="story" aria-labelledby="story-title">
+  <div class="container">
+    <div class="story-head reveal">
+      <span class="micro-label">The story</span>
+      <h2 class="display" id="story-title">Past his due date</h2>
+    </div>
+
+    <article class="chapter">
+      <div class="chapter-rail reveal"><div class="chapter-num" aria-hidden="true">01</div></div>
+      <div class="reveal">
+        <h3 class="chapter-title">The diagnosis</h3>
+        <p>David went undiagnosed for the first seven years of his life. His mother Eithna kept pushing, through specialists and second opinions, until the answer came back: <strong>cystic fibrosis</strong>. Childhood became hospital stays, missed school, and a routine of around thirty tablets a day.</p>
+        <p>At twelve he googled the condition and read a life expectancy of mid-twenties. He is twenty-seven now.</p>
+      </div>
+    </article>
+
+    <article class="chapter">
+      <div class="chapter-rail reveal"><div class="chapter-num" aria-hidden="true">02</div></div>
+      <div class="reveal">
+        <h3 class="chapter-title">The mechanic</h3>
+        <p>Golf started as pitch and putt with his father John and his brothers. In 2019 he beat his dad in the final of the Muskerry Junior Scratch Cup and sensed there might be more in it. For five years he worked as a mechanic at Audi Cork, then in 2023 he walked away to play full time.</p>
+        <p>Three years ago his handicap was not low enough for the Munster Strokeplay field. In 2025 he won the <strong>East of Ireland Championship</strong> at Baltray and earned his first Irish cap.</p>
+        <figure class="photo-frame compare-wrap reveal">
+          <div class="compare" id="compare" style="--x:50%">
+            <div class="c-now"><img src="/images/compare-now-dunes.jpg" alt="David Howard raising a trophy in the dune grass" loading="lazy" decoding="async"></div>
+            <div class="c-then"><img src="/images/compare-then-pitchandputt.jpg" alt="A young David Howard at a pitch and putt prizegiving" loading="lazy" decoding="async"></div>
+            <span class="c-line" aria-hidden="true"></span>
+            <span class="c-tag then" aria-hidden="true">Then</span>
+            <span class="c-tag now" aria-hidden="true">Now</span>
+            <input type="range" class="c-range" id="c-range" min="0" max="100" value="50" aria-label="Compare then and now photographs">
+          </div>
+          <figcaption class="photo-cap"><span>Pitch and putt to championship silver</span><span>Drag</span></figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="chapter">
+      <div class="chapter-rail reveal"><div class="chapter-num" aria-hidden="true">03</div></div>
+      <div class="reveal">
+        <h3 class="chapter-title">The Open</h3>
+        <p>He reached Final Qualifying as first reserve, travelling to Scotland by ferry with John in the camper van they call the <strong>Wanderly Wagon</strong>. Two rounds later he was holding an Open pin flag. At Royal Birkdale he joins Rory McIlroy, Shane Lowry and P&aacute;draig Harrington in the field at the oldest championship in golf.</p>
+        <figure class="photo-frame chapter-photo tall reveal">
+          <div class="ph"><img src="/images/ch3-first-tee.jpg" alt="David and John Howard at the first tee of Final Qualifying at Dundonald Links" loading="lazy" decoding="async"></div>
+          <figcaption class="photo-cap"><span>The 1st tee &middot; with John</span><span>Final Qualifying</span></figcaption>
+        </figure>
+      </div>
+    </article>
+  </div>
+
+  <figure class="pull">
+    <div class="container reveal">
+      <blockquote>&ldquo;My life expectancy was mid&#8209;20s, so I&rsquo;m <span>past my due date</span>.&rdquo;</blockquote>
+      <figcaption>David Howard &middot; Irish Examiner &middot; July 2026</figcaption>
+    </div>
+  </figure>
+</section>
+
+<!-- ==================== THE HOME TEAM ==================== -->
+<section class="family" aria-labelledby="family-title">
+  <div class="container">
+    <div class="family-head reveal">
+      <h2 class="display" id="family-title">The home team</h2>
+      <p><strong>John on the bag.</strong> Eithna, who fought seven years for the answer. Michael and Jack, a PGA professional, in the crowd behind. Golf in this house was never a solo game.</p>
+    </div>
+    <div class="family-grid">
+      <figure class="photo-frame reveal">
+        <div class="ph"><img src="/images/family-crew.jpg" alt="The Howard family and friends together with the trophy" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>Trophy day</span><span>The whole crew</span></figcaption>
+      </figure>
+      <figure class="photo-frame fam-side reveal">
+        <div class="ph"><img src="/images/family-home.jpg" alt="David sharing the trophy at home" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>Bringing it home</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FROM THE ROAD ==================== -->
+<section class="gallery" aria-labelledby="gallery-title">
+  <div class="container">
+    <div class="gallery-head reveal">
+      <h2 class="display" id="gallery-title">From the road</h2>
+      <p>Frames from the amateur circuit.</p>
+    </div>
+    <div class="film reveal">
+      <figure class="photo-frame">
+        <div class="ph"><img src="/images/gallery-range.jpg" alt="David Howard at the top of his backswing on the practice range" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>Range work</span></figcaption>
+      </figure>
+      <figure class="photo-frame">
+        <div class="ph"><img src="/images/gallery-medal.jpg" alt="David Howard receiving Golf Ireland honours" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>Golf Ireland honours</span></figcaption>
+      </figure>
+      <figure class="photo-frame">
+        <div class="ph"><img src="/images/gallery-reading.jpg" alt="David Howard crouched on the green reading a putt" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>Reading the line</span></figcaption>
+      </figure>
+      <figure class="photo-frame">
+        <div class="ph"><img src="/images/gallery-ropes.jpg" alt="Lining up a putt in tournament play with the gallery watching" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>Inside the ropes</span></figcaption>
+      </figure>
+      <figure class="photo-frame">
+        <div class="ph"><img src="/images/gallery-oldcourse.jpg" alt="Driving off the first tee of the Old Course at St Andrews" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>The Old Course</span><span>St Andrews</span></figcaption>
+      </figure>
+      <figure class="photo-frame">
+        <div class="ph"><img src="/images/gallery-swilcan.jpg" alt="David and John Howard on the Swilcan Bridge at St Andrews" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>The Swilcan Bridge</span><span>With John</span></figcaption>
+      </figure>
+      <figure class="photo-frame">
+        <div class="ph"><img src="/images/gallery-18th.jpg" alt="Walking onto the 18th green at St Andrews" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>The 18th</span><span>St Andrews</span></figcaption>
+      </figure>
+      <figure class="photo-frame">
+        <div class="ph"><img src="/images/gallery-pinflag.jpg" alt="David Howard holding the 154th Open pin flag at Dundonald Links" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>The pin flag</span><span>30.06.26</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STATS WALL ==================== -->
+<section class="stats" aria-label="David Howard in numbers">
+  <div class="stats-grid">
+    <div class="stat reveal">
+      <div class="stat-num"><span class="count" data-count="27">0</span></div>
+      <p class="stat-what">Years old, past the life expectancy he once read at twelve.</p>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num"><span class="count" data-count="30">0</span></div>
+      <p class="stat-what">Tablets a day, between enzymes, modulators and vitamins.</p>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num"><span class="count" data-count="65">0</span><em>km</em></div>
+      <p class="stat-what">Covered on the course for the 65 Roses challenge this spring.</p>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num"><em>&euro;</em><span class="count" data-count="3445">0</span></div>
+      <p class="stat-what">Raised for Cystic Fibrosis Ireland, two euro at a time per birdie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ROAD TO BIRKDALE ==================== -->
+<section class="road" aria-labelledby="road-title">
+  <div class="container road-grid">
+    <div class="road-head reveal">
+      <h2 class="display" id="road-title">The road to Birkdale</h2>
+
+      <svg class="journey" id="journey" viewBox="0 0 400 480" role="img"
+           aria-label="Route map: Currabinny to The Island, by ferry to Dundonald Links, then on to Royal Birkdale">
+        <path class="land" d="M143.1,251.3L147.8,256.2L146.3,257.6L140.4,255.5L139.8,260.5L140.6,262.3L143.8,263.1L144.2,273.8L148.8,279.0L147.1,283.7L145.3,283.7L149.2,288.5L147.1,287.3L144.6,289.5L148.2,292.7L148.0,295.5L150.2,301.6L149.5,306.8L151.3,309.4L147.2,316.6L144.7,324.2L144.9,330.4L140.5,337.3L140.2,340.6L136.3,339.6L138.9,343.4L140.0,341.7L139.5,343.1L141.6,345.9L140.1,349.0L139.2,348.7L139.7,347.4L133.8,349.1L127.1,347.3L128.4,344.9L126.3,345.9L126.7,348.7L123.4,351.8L124.2,349.4L121.4,343.4L122.7,349.0L120.8,351.1L118.2,351.5L119.2,349.7L118.2,349.4L115.8,351.4L103.5,353.0L102.7,355.0L105.2,355.4L103.8,358.6L100.3,359.5L99.9,361.0L96.1,359.2L95.5,361.8L94.0,362.7L94.9,364.2L91.4,365.5L91.0,367.1L84.3,368.2L86.4,365.4L85.6,365.1L86.1,363.6L78.9,364.1L81.9,365.2L81.3,366.8L82.8,366.8L82.8,370.1L78.7,373.8L77.3,372.7L77.3,374.6L77.0,373.5L76.4,373.1L75.0,373.1L76.9,373.8L75.8,378.0L74.6,376.3L69.1,376.3L71.1,377.0L71.0,379.7L66.3,378.8L63.9,381.8L58.3,380.4L58.5,381.7L55.3,384.3L53.8,383.2L51.5,385.0L50.6,385.0L51.6,383.6L50.7,383.9L52.2,381.5L50.0,383.6L50.0,381.3L48.8,380.6L43.8,384.0L42.4,382.6L41.0,385.0L37.6,386.4L37.1,384.3L45.7,378.0L36.7,381.1L48.3,374.3L48.8,372.4L45.3,370.3L45.7,372.4L43.3,374.2L27.4,379.0L30.4,377.0L29.6,374.9L33.5,373.1L32.3,372.7L32.8,371.8L38.6,370.0L37.8,369.0L40.0,366.5L44.7,364.4L28.2,371.4L25.5,369.3L26.7,368.9L26.4,366.4L25.2,365.8L22.1,369.0L22.1,366.1L20.7,366.0L20.5,364.1L24.7,362.8L23.1,360.5L24.3,358.8L31.2,356.1L33.1,353.6L34.4,355.0L34.9,351.5L39.0,351.8L38.4,351.1L39.4,350.4L33.5,350.8L33.6,352.6L32.3,351.1L26.7,352.6L23.9,351.2L23.1,351.8L24.1,352.5L19.2,353.2L18.0,350.4L18.8,348.5L20.9,349.4L21.3,346.5L27.1,343.6L27.3,346.2L29.2,345.9L30.9,344.4L30.4,342.4L31.8,342.6L31.9,345.3L33.8,346.1L40.0,345.5L36.1,344.3L35.7,343.1L37.4,342.4L37.1,339.1L33.7,337.2L41.0,333.5L43.1,334.0L41.6,333.0L42.7,329.1L53.8,328.8L69.3,323.9L63.1,322.8L63.6,318.7L61.2,320.1L57.6,326.4L53.4,328.1L52.0,327.7L53.6,325.6L49.0,327.0L44.7,324.2L45.5,325.6L40.9,328.6L34.1,329.8L43.3,321.1L47.1,319.8L47.3,317.3L51.4,310.6L47.7,310.3L53.8,299.8L59.8,301.2L58.1,299.1L61.8,299.8L60.6,298.4L62.3,298.2L63.8,299.8L63.2,298.1L65.1,296.0L60.6,296.0L63.6,293.9L61.3,293.2L46.7,295.6L45.1,293.9L45.4,292.4L43.7,295.2L43.6,290.8L45.3,289.8L44.1,288.6L45.5,287.6L43.5,287.9L43.9,289.4L43.1,290.4L42.5,287.2L38.0,291.9L35.1,290.7L35.6,288.9L38.6,287.2L37.6,286.9L38.2,285.9L36.4,287.1L35.7,286.5L36.7,285.1L34.8,285.5L33.4,287.9L27.0,286.2L30.6,284.1L29.6,282.7L31.6,283.3L31.9,282.7L29.0,282.0L27.7,279.5L26.2,279.5L26.9,278.9L32.1,279.5L33.1,278.5L30.8,276.7L36.1,275.8L37.5,276.3L41.2,276.7L34.9,274.3L34.9,268.4L45.1,266.7L43.5,265.6L45.3,263.1L44.5,262.8L45.1,261.4L39.4,261.4L34.9,263.5L33.9,262.4L34.7,258.6L38.5,260.6L38.6,259.0L35.2,255.0L37.1,250.6L33.1,252.3L32.5,250.9L34.9,250.2L32.9,247.1L34.1,246.7L31.9,245.2L31.0,247.8L29.6,248.2L30.2,251.4L28.7,251.4L30.4,245.0L28.8,244.3L30.4,242.3L32.3,240.8L35.5,242.6L32.7,244.9L34.9,245.9L36.8,242.2L39.2,243.3L38.2,241.8L39.4,241.8L36.8,239.5L52.4,240.1L55.5,241.8L55.7,245.2L57.7,248.9L57.9,245.7L60.4,241.5L71.5,242.5L74.6,246.1L76.4,245.7L73.2,243.3L74.0,241.8L77.7,242.2L74.6,240.3L76.2,239.6L71.9,238.0L77.6,234.4L77.8,232.1L78.5,233.5L85.4,230.7L83.6,229.6L88.1,223.3L83.0,225.4L82.7,223.7L78.1,227.5L80.1,224.7L71.7,224.7L68.1,222.7L68.0,220.7L72.7,217.1L78.1,217.7L75.9,216.1L79.5,217.4L75.0,214.6L77.1,212.9L82.0,213.9L80.3,212.7L82.4,211.5L81.6,210.2L79.5,211.1L78.2,209.3L78.3,208.1L80.7,208.0L78.1,205.2L81.3,202.1L82.1,203.6L82.1,200.0L83.4,197.2L87.4,197.2L87.0,199.0L92.3,194.0L93.1,194.6L91.5,196.5L94.4,195.7L94.6,197.4L95.8,196.8L94.8,198.2L95.9,198.3L96.6,196.9L95.6,194.4L97.6,192.3L97.1,195.4L100.0,196.8L100.5,200.3L101.5,197.8L100.4,194.2L100.3,196.5L97.8,194.8L98.7,192.3L101.7,191.2L105.7,199.4L102.3,202.7L104.7,203.1L101.1,207.7L107.4,203.1L107.6,198.0L105.0,194.4L105.8,190.5L111.0,189.3L111.8,191.0L113.7,190.9L109.9,185.6L123.2,193.2L116.2,198.0L113.7,202.7L119.8,202.8L122.5,195.4L128.7,196.3L136.9,192.7L148.1,194.5L150.0,196.8L149.2,201.6L152.0,203.1L151.5,206.3L154.5,208.3L157.0,214.5L159.5,216.3L157.1,213.3L158.5,212.6L160.3,215.9L159.1,219.2L154.3,222.0L153.2,224.0L153.8,225.4L158.6,221.6L164.8,222.8L168.0,231.6L166.7,238.0L165.5,239.1L163.7,235.8L164.6,233.0L163.7,229.3L159.9,226.8L159.5,228.9L162.2,230.0L160.9,230.5L162.2,233.8L159.7,238.4L163.6,236.7L164.4,237.7L164.4,241.1L161.3,244.6L155.2,244.5L154.2,250.9L149.9,254.4L143.1,251.3Z"/>
+        <path class="land" d="M258.5,369.7L244.4,381.3L241.0,380.4L235.1,386.0L234.7,388.9L224.2,388.8L218.3,384.1L215.2,377.4L211.2,377.9L210.5,379.0L211.3,380.4L209.7,380.9L201.9,380.8L201.9,377.7L207.8,376.5L208.4,374.7L201.1,374.6L199.2,372.1L201.3,371.7L199.7,371.3L199.7,368.9L197.3,369.7L197.8,371.0L196.8,371.6L191.3,371.8L189.3,376.0L184.8,376.3L182.5,378.7L177.2,374.6L185.4,372.7L184.4,370.3L186.0,368.6L182.8,369.6L183.7,370.3L183.4,372.5L176.4,372.5L175.4,374.0L173.4,371.7L177.5,369.5L177.0,365.5L171.5,365.1L171.9,362.7L177.2,360.3L178.7,356.8L185.5,357.4L185.6,355.7L189.1,352.4L195.6,351.1L201.1,347.1L207.2,339.6L208.8,331.2L212.1,330.2L208.9,330.5L206.8,327.4L208.8,322.5L210.9,320.8L209.1,321.4L206.1,316.8L207.0,315.8L206.6,312.9L208.2,311.0L198.4,312.7L195.2,317.9L192.8,316.6L187.8,317.9L192.8,310.9L199.9,305.8L200.4,301.5L205.2,296.1L215.5,292.5L214.1,290.0L222.3,292.5L230.4,289.3L237.6,295.3L237.7,293.2L234.7,287.2L238.5,285.1L243.7,292.5L246.9,291.9L249.1,289.3L246.2,290.9L242.5,289.4L237.2,278.8L243.2,269.8L238.8,268.0L238.5,261.1L244.4,257.9L245.3,255.5L243.3,256.2L242.7,254.5L246.3,249.9L244.6,246.4L245.9,245.5L246.3,243.6L242.0,248.4L240.3,248.1L238.8,245.0L235.9,253.0L233.1,250.6L234.1,242.9L233.3,246.0L231.1,246.5L228.1,242.1L227.9,238.8L221.4,230.1L225.1,219.5L227.2,217.5L228.7,211.3L232.7,210.4L230.8,209.4L232.0,208.2L236.6,208.8L239.6,206.6L223.3,205.6L222.9,211.3L216.1,212.7L215.9,211.1L214.7,213.3L215.7,214.3L210.2,217.1L208.8,216.4L208.6,213.9L208.0,216.7L206.9,216.9L204.3,214.2L204.5,212.1L202.5,213.5L198.5,210.1L198.1,213.2L200.3,215.8L200.2,220.5L199.1,221.6L195.7,220.6L192.8,216.8L185.0,212.1L182.1,215.3L185.0,224.0L182.2,222.7L182.1,219.2L176.1,211.5L175.7,204.9L177.4,203.7L179.0,208.8L180.9,209.4L179.3,204.0L180.6,198.1L184.7,194.0L185.8,188.5L192.1,180.1L190.1,177.6L190.7,176.7L189.9,174.5L186.2,172.9L183.2,169.2L184.9,166.8L184.2,158.5L186.8,156.5L196.2,158.0L190.5,156.3L187.2,153.5L186.0,150.4L185.6,151.8L187.4,154.8L185.2,155.0L184.8,151.0L188.1,143.9L185.2,148.6L183.2,145.8L184.0,154.9L182.1,154.6L183.4,156.3L181.3,161.0L179.5,160.3L177.1,153.9L178.2,159.4L175.7,157.7L175.4,155.9L173.6,159.8L174.8,163.0L172.0,161.9L170.7,159.3L170.7,154.6L174.7,148.3L183.2,140.2L178.9,142.7L169.8,153.9L167.6,153.0L167.3,156.6L171.3,165.4L167.9,168.6L166.2,172.5L167.3,175.2L165.6,180.7L163.4,183.6L165.2,187.1L162.5,189.7L157.5,189.4L157.3,185.0L159.5,182.5L159.3,176.6L160.6,171.0L167.3,162.2L163.0,166.4L161.2,164.7L160.8,162.2L163.8,157.7L160.8,160.1L160.1,158.7L163.8,152.5L159.8,157.3L163.6,149.4L165.0,150.0L164.2,147.7L165.6,144.8L162.8,147.3L164.2,142.7L166.1,141.1L163.2,141.7L163.8,137.7L167.5,136.1L164.8,136.1L167.2,131.9L174.6,131.6L177.3,128.5L178.9,125.6L174.8,130.8L169.6,131.0L168.6,128.7L166.9,130.1L168.1,127.0L170.2,127.9L173.6,125.6L168.5,126.6L171.9,121.5L171.3,120.7L180.9,117.9L173.7,117.9L177.2,112.7L160.8,129.1L157.9,127.0L158.5,125.2L155.4,126.3L150.8,121.7L155.9,122.5L155.1,120.7L158.2,118.7L161.6,119.7L164.6,119.0L158.5,118.0L154.1,120.0L146.3,119.8L144.1,117.3L152.1,114.4L155.5,116.3L154.5,114.4L158.3,114.4L155.5,112.2L159.0,111.3L161.2,109.9L158.7,110.9L157.5,110.6L158.9,108.8L153.4,108.8L155.5,108.5L154.6,107.4L156.1,103.6L158.3,102.1L161.2,104.5L163.8,104.3L165.2,103.2L162.1,103.9L159.9,101.2L157.6,100.8L157.7,99.6L161.6,96.8L164.2,98.3L168.9,98.0L164.7,98.0L160.6,95.4L162.2,92.4L161.6,91.6L163.6,89.8L168.7,91.7L165.9,89.3L167.7,87.2L163.6,89.3L159.1,88.2L161.3,85.4L162.6,86.0L165.9,84.5L167.5,82.0L164.0,84.9L161.8,84.4L162.7,83.6L162.4,82.2L159.8,85.1L156.8,85.4L156.7,80.9L155.3,80.4L154.9,78.3L155.9,73.9L161.8,77.4L161.4,76.4L165.6,75.9L161.2,75.7L156.8,70.7L157.3,68.0L160.8,67.3L156.9,65.5L156.7,61.0L157.7,59.2L160.0,59.2L161.2,63.1L162.8,64.2L162.2,63.1L163.4,63.5L163.4,61.1L161.4,57.9L162.6,56.1L166.3,59.8L168.5,57.2L174.2,60.3L169.1,56.7L169.9,55.4L178.7,61.0L174.2,56.5L174.7,54.5L168.1,50.9L167.5,48.2L171.9,48.9L172.6,48.1L172.0,45.6L173.6,45.0L170.9,43.2L169.1,39.2L172.1,40.2L176.9,38.7L182.8,41.1L181.3,39.7L183.0,39.0L179.3,39.3L175.6,34.5L176.5,31.4L180.3,32.7L177.9,31.4L179.3,29.4L180.9,30.3L177.7,26.7L180.0,24.8L181.1,20.5L185.7,21.7L186.2,25.8L187.4,21.6L190.9,24.2L187.9,29.7L192.3,25.8L193.1,23.2L197.8,24.7L195.8,29.6L200.3,25.0L203.5,25.8L209.6,22.2L213.6,23.7L222.5,20.5L229.4,21.9L229.8,20.9L228.0,19.1L229.1,18.0L230.1,19.5L239.7,19.9L236.4,26.4L238.6,28.8L236.4,33.7L210.4,55.8L208.0,54.3L210.9,57.2L210.2,59.2L201.6,59.5L198.8,57.2L201.4,60.1L209.3,61.8L211.0,60.5L213.0,62.3L217.1,59.8L210.9,68.0L209.2,65.9L201.7,68.8L197.8,74.0L204.5,69.1L207.6,69.9L210.2,68.4L207.4,73.9L202.7,75.3L204.3,76.0L203.1,78.1L209.5,75.1L208.0,73.6L215.3,73.2L221.6,69.7L221.0,70.8L222.7,70.8L222.0,69.4L224.3,69.7L225.6,67.1L228.1,66.6L239.2,69.4L242.7,67.6L257.1,69.4L270.0,67.6L275.0,72.2L277.1,79.3L270.5,87.2L267.9,94.5L268.5,97.4L264.4,104.2L264.4,107.8L257.3,116.1L254.6,124.3L248.3,130.5L238.4,131.4L233.1,135.7L230.6,135.7L233.4,136.2L243.6,131.1L246.1,132.6L245.0,135.7L246.1,136.8L252.8,140.2L246.7,144.6L241.3,143.9L236.4,148.1L235.4,151.1L230.0,153.0L220.3,151.8L215.3,149.0L220.7,153.9L237.9,157.1L242.0,155.9L245.5,151.3L251.1,151.4L253.0,153.1L252.6,154.2L265.8,158.7L275.4,173.1L280.9,175.5L284.3,197.3L288.9,207.1L291.5,218.1L294.5,220.6L294.8,223.0L293.6,224.4L295.1,225.0L295.6,223.3L312.6,232.0L318.4,243.7L321.1,245.2L322.4,248.1L327.1,250.6L324.5,252.0L322.8,255.1L324.9,261.4L333.3,274.5L333.8,276.2L333.3,278.0L332.6,278.5L332.9,275.7L330.4,274.3L326.6,275.1L321.6,269.8L313.2,271.1L310.4,269.9L307.8,271.5L311.0,271.0L313.6,272.7L321.1,271.2L323.8,275.6L335.9,285.9L339.5,295.7L340.0,299.8L339.2,302.8L334.1,306.8L329.7,313.0L332.5,312.9L336.7,317.6L339.0,317.3L340.8,319.0L343.8,310.6L346.3,308.8L359.5,309.3L358.1,308.5L367.2,310.8L378.2,318.6L381.3,326.3L382.0,333.4L377.8,344.4L376.4,354.0L373.1,355.3L369.0,361.2L366.9,358.5L363.8,356.7L367.2,360.2L361.1,360.5L367.5,360.9L365.0,364.4L367.6,364.2L367.3,366.1L361.0,369.6L358.5,366.1L355.3,371.0L350.1,372.4L352.0,373.8L357.0,371.2L357.7,374.6L356.5,377.3L357.7,377.7L356.8,379.1L352.3,382.2L342.9,383.4L340.8,386.0L345.3,384.1L350.0,384.8L350.9,386.4L345.8,388.1L350.6,389.5L351.0,387.8L352.1,390.5L358.4,391.3L372.4,389.6L371.7,392.2L370.3,392.5L371.4,397.8L370.5,401.4L361.1,405.8L358.1,410.0L358.5,413.3L352.0,412.6L347.9,416.3L340.2,418.3L337.4,422.0L321.4,417.7L306.8,420.5L305.9,422.9L302.5,420.7L303.7,418.9L301.5,417.1L299.0,417.1L297.2,420.3L296.6,419.5L297.6,417.1L294.8,417.1L296.0,418.3L295.2,420.3L285.8,413.3L290.2,419.3L284.1,421.3L283.0,423.4L279.1,422.4L271.7,424.9L268.8,422.4L267.5,424.5L268.9,423.7L271.3,425.6L271.9,427.2L271.0,429.4L258.1,427.2L256.3,429.2L257.2,431.7L256.5,433.2L255.6,430.0L249.3,424.8L244.2,422.7L232.5,425.7L229.3,428.6L226.4,425.5L227.3,429.0L225.2,433.5L225.7,436.7L223.7,438.0L225.7,439.4L224.6,442.2L221.4,444.1L220.6,448.8L216.8,449.2L211.7,443.6L208.9,444.8L207.3,442.9L207.4,441.2L205.4,440.6L204.8,438.8L205.8,436.7L204.5,436.7L203.5,437.7L203.7,439.8L201.9,439.8L204.7,440.9L203.7,441.2L205.2,441.9L204.7,443.6L200.5,441.2L195.8,443.3L190.5,444.0L189.9,442.6L187.8,443.7L186.7,448.4L182.4,449.9L180.7,452.7L179.2,450.1L179.5,452.7L177.0,455.2L179.1,457.0L175.1,462.1L171.7,456.0L166.7,453.4L164.7,454.3L164.0,457.0L159.8,457.4L160.4,451.8L165.6,448.9L167.8,450.2L171.4,447.1L176.3,442.2L176.2,439.7L179.3,438.2L180.3,432.6L182.4,431.4L182.8,433.6L185.4,433.9L183.1,431.8L183.2,430.0L187.0,429.7L188.2,425.9L193.4,420.6L194.9,408.4L200.5,409.3L204.3,405.2L202.9,401.4L204.1,401.4L203.7,399.3L217.4,396.5L228.8,399.6L239.4,397.9L239.6,399.3L240.2,397.2L239.6,392.7L240.5,392.7L241.0,389.5L249.2,383.0L253.4,375.5L258.5,369.7Z"/>
+        <path class="route" id="route" d="M82.8,367.9C95.5,337.1 121.4,302.8 147.6,282.1C172.1,254.9 190.0,212.4 192.3,175.9C192.4,212.3 211.3,252.0 239.6,275.0"/>
+        <g class="wp" id="wp-0">
+          <circle cx="82.8" cy="367.9"/>
+          <text text-anchor="end" x="73.8" y="371.9">Currabinny</text>
+        </g>
+        <g class="wp" id="wp-1">
+          <circle cx="147.6" cy="282.1"/>
+          <text text-anchor="end" x="138.6" y="280.1">The Island</text>
+          <text class="leg" text-anchor="end" x="138.6" y="292.1">Regional qualifying</text>
+        </g>
+        <g class="wp" id="wp-2">
+          <circle cx="192.3" cy="175.9"/>
+          <text x="201.3" y="173.9">Dundonald Links</text>
+          <text class="leg" x="201.3" y="185.9">Final qualifying &middot; by ferry</text>
+        </g>
+        <g class="wp wp-final" id="wp-3">
+          <circle cx="239.6" cy="275.0"/>
+          <text x="248.6" y="273.0">Royal Birkdale</text>
+          <text class="leg" x="248.6" y="285.0">The 154th Open</text>
+        </g>
+      </svg>
+      <p class="journey-cap">The Wanderly Wagon route &middot; Currabinny to Birkdale</p>
+    </div>
+
+    <ol class="timeline" id="timeline">
+      <span class="wire" aria-hidden="true"></span>
+      <li class="milestone reveal">
+        <p class="when mono">2019</p>
+        <h3>Muskerry Junior Scratch Cup</h3>
+        <p>Beats his father John in the final. The first sign this could go somewhere.</p>
+      </li>
+      <li class="milestone reveal">
+        <p class="when mono">2023</p>
+        <h3>Leaves Audi Cork</h3>
+        <p>Walks away from five years as a mechanic to play amateur golf full time.</p>
+      </li>
+      <li class="milestone reveal">
+        <p class="when mono">2024</p>
+        <h3>Cystic Fibrosis Ireland ambassador</h3>
+        <p>Begins representing the community he grew up part of.</p>
+      </li>
+      <li class="milestone reveal">
+        <p class="when mono">June 2025</p>
+        <h3>East of Ireland champion</h3>
+        <p>The breakthrough at Baltray, followed by a first Irish international cap.</p>
+      </li>
+      <li class="milestone reveal">
+        <p class="when mono">30 June 2026</p>
+        <h3>Final Qualifying, Dundonald Links</h3>
+        <p>In as first reserve. Rounds of 69 and 71 for four under, tied second, through with two to spare.</p>
+      </li>
+      <li class="milestone now reveal">
+        <p class="when mono">16 July 2026</p>
+        <h3>The 154th Open Championship</h3>
+        <p>Royal Birkdale, Southport. His major championship debut.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== CF · PURPLE BLOCK ==================== -->
+<section class="cf" id="cf" aria-labelledby="cf-title">
+  <div class="container cf-grid">
+    <div class="reveal">
+      <p class="micro-label">65 Roses</p>
+      <h2 class="display" id="cf-title">Playing for more than a scorecard</h2>
+      <p class="lead">David has been a Cystic Fibrosis Ireland ambassador since 2024. The mission is simple: show every child growing up with CF that anything is possible.</p>
+      <p class="body">This spring he took on the 65 Roses challenge his own way, covering 65 kilometres on the golf course and pledging money for every birdie along the road. During Open week, every eye on David is an eye on the CF community.</p>
+      <!-- Swap for David's live fundraiser URL when confirmed -->
+      <a class="btn magnetic" href="https://www.cfireland.ie/" target="_blank" rel="noopener"><span>Donate to CF Ireland</span></a>
+    </div>
+
+    <div class="cf-facts reveal">
+      <div class="cf-fact">
+        <div class="num">65km</div>
+        <p class="what">Covered on the golf course for the 65 Roses challenge, documented round by round.</p>
+      </div>
+      <div class="cf-fact">
+        <div class="num">&euro;3,445</div>
+        <p class="what">Raised for Cystic Fibrosis Ireland through the challenge this year.</p>
+      </div>
+      <div class="cf-fact">
+        <div class="num">Since &rsquo;24</div>
+        <p class="what">Representing CF Ireland as ambassador, on the record and on the course.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== PARTNER ==================== -->
+<section class="partner" aria-labelledby="partner-title">
+  <div class="container partner-grid">
+    <div class="reveal">
+      <h2 class="display" id="partner-title">Partner with David</h2>
+      <p class="lead">One of the sports stories of the summer, already carried by <strong>RT&Eacute;, the Irish Examiner and the Reuters wire worldwide</strong>. A partnership here backs the golf and the cause in the same breath.</p>
+      <a class="btn btn-primary magnetic" href="mailto:partners@davidhowardgolf.com"><span>Partner enquiries</span></a>
+    </div>
+
+    <ol class="offer reveal">
+      <li>
+        <span class="o-num" aria-hidden="true">01</span>
+        <div>
+          <h3>Championship week visibility</h3>
+          <p>Association with an Open Championship competitor during the biggest golf audience of the year.</p>
+        </div>
+      </li>
+      <li>
+        <span class="o-num" aria-hidden="true">02</span>
+        <div>
+          <h3>A story money cannot script</h3>
+          <p>The amateur who out-qualified professionals while living with cystic fibrosis. Earned, verified, and already global.</p>
+        </div>
+      </li>
+      <li>
+        <span class="o-num" aria-hidden="true">03</span>
+        <div>
+          <h3>Purpose built in</h3>
+          <p>Every partnership carries the Cystic Fibrosis Ireland mission with it, on the record and on the course.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== PRESS KIT ==================== -->
+<section class="press" id="press" aria-labelledby="press-title">
+  <div class="container">
+    <div class="press-head reveal">
+      <div>
+        <p class="micro-label">Press kit</p>
+        <h2 class="display" id="press-title" style="margin-top:1rem;">Writing about David?</h2>
+      </div>
+      <p>Verified facts below. Bios at 50, 100 and 300 words, approved photography and interview requests through the press contact.</p>
+    </div>
+
+    <dl class="facts reveal">
+      <div class="fact"><dt>Full name</dt><dd>David Howard</dd></div>
+      <div class="fact"><dt>Age</dt><dd>27</dd></div>
+      <div class="fact"><dt>From</dt><dd>Currabinny, Co. Cork, Ireland</dd></div>
+      <div class="fact"><dt>Club</dt><dd>Fota Island Golf Club</dd></div>
+      <div class="fact"><dt>Status</dt><dd>Amateur</dd></div>
+      <div class="fact"><dt>Caddie</dt><dd>John Howard, his father</dd></div>
+      <div class="fact"><dt>Diagnosis</dt><dd>Cystic fibrosis, age seven</dd></div>
+      <div class="fact"><dt>Ambassador</dt><dd>Cystic Fibrosis Ireland, since 2024</dd></div>
+      <div class="fact"><dt>2025</dt><dd>East of Ireland champion, Irish cap</dd></div>
+      <div class="fact"><dt>Qualified</dt><dd>Dundonald Links, 30 June 2026, T2 at &minus;4</dd></div>
+      <div class="fact"><dt>Next</dt><dd>The 154th Open, Royal Birkdale</dd></div>
+      <div class="fact"><dt>Instagram</dt><dd>@davidhowardgolf</dd></div>
+    </dl>
+
+    <div class="bios reveal">
+      <details>
+        <summary>Bio &middot; 50 words</summary>
+        <div class="bio-body">
+          <p id="bio-50">David Howard is a 27 year old amateur golfer from Currabinny, County Cork, and a Cystic Fibrosis Ireland ambassador. The 2025 East of Ireland champion qualified for the 154th Open Championship at Royal Birkdale, finishing tied second at Final Qualifying at Dundonald Links with his father John caddying.</p>
+          <button class="copy-bio" data-copy="bio-50">Copy</button>
+        </div>
+      </details>
+      <details>
+        <summary>Bio &middot; 100 words</summary>
+        <div class="bio-body">
+          <p id="bio-100">David Howard is a 27 year old amateur golfer from Currabinny, County Cork, playing out of Fota Island Golf Club. Diagnosed with cystic fibrosis at seven, he worked five years as a mechanic at Audi Cork before leaving in 2023 to play full time. He won the 2025 East of Ireland Championship at Baltray and earned his first Irish cap. In as first reserve at Final Qualifying, he shot 69 and 71 at Dundonald Links to finish tied second and reach the 154th Open at Royal Birkdale, travelling by ferry with his father John, who caddies, in a camper van they call the Wanderly Wagon. He has been a Cystic Fibrosis Ireland ambassador since 2024.</p>
+          <button class="copy-bio" data-copy="bio-100">Copy</button>
+        </div>
+      </details>
+      <details>
+        <summary>Bio &middot; 300 words</summary>
+        <div class="bio-body">
+          <p id="bio-300">David Howard went undiagnosed for the first seven years of his life, until his mother Eithna's persistence produced the answer: cystic fibrosis. Childhood in Currabinny, County Cork became hospital stays, missed school and a routine of around thirty tablets a day. At twelve he googled the condition and read a life expectancy of mid-twenties. He is twenty-seven now, and about to play in the oldest championship in golf.
+
+Golf began as pitch and putt with his father John and his brothers, including Jack, a PGA professional. In 2019 he beat his dad in the final of the Muskerry Junior Scratch Cup. For five years he worked as a mechanic at Audi Cork, then in 2023 walked away to play amateur golf full time. Three years ago his handicap was not low enough for the Munster Strokeplay field. In June 2025 he won the East of Ireland Championship at Baltray and earned his first Irish international cap, with a Walker Cup place at Lahinch now in his sights.
+
+He reached Final Qualifying for The Open as first reserve after a playoff at The Island, travelling to Scotland by ferry with John, who caddies for him, in the camper van they call the Wanderly Wagon. At Dundonald Links on 30 June 2026 he shot rounds of 69 and 71 to finish four under and tied second, qualifying for the 154th Open at Royal Birkdale with two shots to spare. He joins Rory McIlroy, Shane Lowry and Padraig Harrington in the field.
+
+An ambassador for Cystic Fibrosis Ireland since 2024, he covered 65 kilometres on the golf course this spring for the 65 Roses challenge, raising thousands for the cause. His mission is simple: to show every child growing up with CF that anything is possible.</p>
+          <button class="copy-bio" data-copy="bio-300">Copy</button>
+        </div>
+      </details>
+    </div>
+
+    <div class="press-contact reveal">
+      <a class="btn btn-primary magnetic" href="mailto:press@davidhowardgolf.com"><span>Press contact</span></a>
+      <button class="btn magnetic" id="copy-facts" type="button"><span>Copy fact sheet</span></button>
+      <a class="btn magnetic" href="https://www.instagram.com/davidhowardgolf" target="_blank" rel="noopener"><span>Instagram</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="container foot-inner">
+    <p class="mono">&copy; 2026 David Howard Golf</p>
+    <ul class="foot-links">
+      <li><a href="https://www.instagram.com/davidhowardgolf" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="#cf">CF Ireland</a></li>
+      <li><a href="mailto:press@davidhowardgolf.com">Press</a></li>
+    </ul>
+  </div>
+  <div class="foot-mark" aria-hidden="true"><span>Howard&nbsp;Golf&nbsp;</span><span>Howard&nbsp;Golf&nbsp;</span><span>Howard&nbsp;Golf&nbsp;</span><span>Howard&nbsp;Golf&nbsp;</span></div>
+</footer>
+
+<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}</style>
+
+<script>
+(function(){
+'use strict';
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------------- Preloader: 001 to 154 ---------------- */
+var loader = document.getElementById('loader');
+var seen = false;
+try{ seen = sessionStorage.getItem('dhg-loaded') === '1'; }catch(e){}
+function unlock(){
+  document.body.classList.remove('locked');
+  loader.classList.add('done');
+  setTimeout(function(){ loader.remove(); }, 800);
+  try{ sessionStorage.setItem('dhg-loaded','1'); }catch(e){}
+  startHero();
+}
+if(reduced || seen){
+  loader.remove();
+  document.body.classList.remove('locked');
+  startHero();
+}else{
+  var cEl = document.getElementById('loader-count');
+  var t0 = performance.now(), DUR = 1300;
+  (function step(now){
+    var p = Math.min((now - t0) / DUR, 1);
+    var eased = 1 - Math.pow(1 - p, 3);
+    var v = Math.round(1 + eased * 153);
+    cEl.textContent = ('00' + v).slice(-3);
+    if(p < 1){ requestAnimationFrame(step); }
+    else{ setTimeout(unlock, 220); }
+  })(t0);
+}
+
+/* ---------------- Hero kinetic type ---------------- */
+document.querySelectorAll('[data-kinetic]').forEach(function(row){
+  var text = row.textContent;
+  row.textContent = '';
+  var word = document.createElement('span');
+  word.className = 'word';
+  text.split('').forEach(function(chr, i){
+    var s = document.createElement('span');
+    s.className = 'ch';
+    s.textContent = chr;
+    s.style.transitionDelay = (i * 45) + 'ms';
+    word.appendChild(s);
+  });
+  row.appendChild(word);
+});
+function startHero(){
+  requestAnimationFrame(function(){
+    document.getElementById('hero-title').classList.add('on');
+  });
+  var seq = document.querySelectorAll('.hero-seq');
+  seq.forEach(function(el, i){
+    setTimeout(function(){ el.classList.add('visible'); }, 420 + i * 160);
+  });
+}
+
+/* ---------------- Word-kinetic section headlines ---------------- */
+document.querySelectorAll('h2.display').forEach(function(h){
+  var words = h.textContent.trim().split(/\s+/);
+  h.textContent = '';
+  h.classList.add('wk');
+  words.forEach(function(w, i){
+    var wrap = document.createElement('span');
+    wrap.className = 'w';
+    var inner = document.createElement('span');
+    inner.className = 'wi';
+    inner.textContent = w;
+    wrap.appendChild(inner);
+    h.appendChild(wrap);
+    if(i < words.length - 1) h.appendChild(document.createTextNode(' '));
+  });
+});
+if('IntersectionObserver' in window && !reduced){
+  var hio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('on'); hio.unobserve(e.target); }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('h2.wk').forEach(function(h){ hio.observe(h); });
+}else{
+  document.querySelectorAll('h2.wk').forEach(function(h){ h.classList.add('on'); });
+}
+
+/* ---------------- Wind field canvas ---------------- */
+var canvas = document.getElementById('wind');
+var ctx = canvas.getContext('2d');
+var blades = [], W = 0, H = 0, dpr = 1;
+var windAmp = 1, travelDir = 1;
+var pointer = { x: -9999, y: -9999 };
+var heroVisible = true, rafId = null;
+
+function buildField(){
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  W = canvas.clientWidth; H = canvas.clientHeight;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  blades = [];
+  var target = Math.min(Math.floor((W * H) / (W < 720 ? 5200 : 3200)), 950);
+  for(var i = 0; i < target; i++){
+    var tint = Math.random() < 0.085;
+    var near = Math.random() < 0.4;
+    blades.push({
+      x: Math.random() * W,
+      y: H * 0.42 + Math.random() * H * 0.62,
+      len: (near ? 34 : 20) + Math.random() * (near ? 48 : 30),
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.6 + Math.random() * 0.9,
+      sway: 0.35 + Math.random() * 0.5,
+      tint: tint,
+      alpha: tint ? (near ? 0.4 : 0.24) : (near ? 0.11 : 0.05) + Math.random() * 0.05
+    });
+  }
+}
+
+function drawField(t){
+  ctx.clearRect(0, 0, W, H);
+  var gust = Math.sin(t * 0.00035) * 0.5 + Math.sin(t * 0.00011) * 0.5;
+  for(var i = 0; i < blades.length; i++){
+    var b = blades[i];
+    /* base sway + slow ambient gust + a gust front travelling left to right */
+    var travel = Math.sin(t * 0.0006 - travelDir * b.x * 0.0045) * 0.85;
+    var wind = (Math.sin(t * 0.001 * b.speed + b.phase) * b.sway + gust * 0.6 + travel) * windAmp;
+    var dx = b.x - pointer.x, dy = b.y - pointer.y;
+    var dist2 = dx * dx + dy * dy;
+    if(dist2 < 32400){
+      var f = (1 - Math.sqrt(dist2) / 180);
+      wind += (dx > 0 ? 1 : -1) * f * 1.6;
+    }
+    var tipX = b.x + wind * b.len * 0.55;
+    var tipY = b.y - b.len;
+    var ctrlX = b.x + wind * b.len * 0.2;
+    var ctrlY = b.y - b.len * 0.55;
+    ctx.strokeStyle = b.tint
+      ? 'rgba(140,82,217,' + b.alpha + ')'
+      : 'rgba(237,232,220,' + b.alpha + ')';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(b.x, b.y);
+    ctx.quadraticCurveTo(ctrlX, ctrlY, tipX, tipY);
+    ctx.stroke();
+  }
+}
+
+function loop(t){
+  if(heroVisible){ drawField(t); }
+  rafId = requestAnimationFrame(loop);
+}
+
+if(!reduced){
+  buildField();
+  rafId = requestAnimationFrame(loop);
+  var rT;
+  window.addEventListener('resize', function(){
+    clearTimeout(rT); rT = setTimeout(buildField, 180);
+  });
+  var hero = document.querySelector('.hero');
+  new IntersectionObserver(function(en){
+    heroVisible = en[0].isIntersecting;
+  }, { threshold: 0.02 }).observe(hero);
+  hero.addEventListener('pointermove', function(e){
+    var r = canvas.getBoundingClientRect();
+    pointer.x = e.clientX - r.left;
+    pointer.y = e.clientY - r.top;
+  });
+  hero.addEventListener('pointerleave', function(){
+    pointer.x = -9999; pointer.y = -9999;
+  });
+}else{
+  buildField();
+  drawField(12000);
+}
+
+/* ---------------- Scroll reveals ---------------- */
+var reveals = document.querySelectorAll('.reveal:not(.visible)');
+if('IntersectionObserver' in window && !reduced){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(el){ io.observe(el); });
+}else{
+  reveals.forEach(function(el){ el.classList.add('visible'); });
+}
+
+/* ---------------- Count-up numbers ---------------- */
+function countUp(el){
+  var target = parseInt(el.getAttribute('data-count'), 10);
+  var t0 = performance.now(), DUR = 1400;
+  (function step(now){
+    var p = Math.min((now - t0) / DUR, 1);
+    var eased = 1 - Math.pow(1 - p, 4);
+    var v = Math.round(eased * target);
+    el.textContent = target >= 1000 ? v.toLocaleString('en-IE') : v;
+    if(p < 1) requestAnimationFrame(step);
+  })(t0);
+}
+var counts = document.querySelectorAll('.count');
+if('IntersectionObserver' in window && !reduced){
+  var cio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ countUp(e.target); cio.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  counts.forEach(function(el){ cio.observe(el); });
+}else{
+  counts.forEach(function(el){
+    var t = parseInt(el.getAttribute('data-count'), 10);
+    el.textContent = t >= 1000 ? t.toLocaleString('en-IE') : t;
+  });
+}
+
+/* ---------------- Stamp slam ---------------- */
+var stamp = document.getElementById('stamp');
+if('IntersectionObserver' in window && !reduced){
+  new IntersectionObserver(function(en, obs){
+    if(en[0].isIntersecting){
+      setTimeout(function(){ stamp.classList.add('slam'); }, 650);
+      obs.disconnect();
+    }
+  }, { threshold: 0.6 }).observe(stamp);
+}else{
+  stamp.classList.add('slam');
+}
+
+/* ---------------- Timeline wire + journey route draw ----------------
+   Phones: the route animates itself the moment the map is seen.
+   Desktop: scroll-scrubbed beside the sticky map, completing early. */
+var timeline = document.getElementById('timeline');
+var wire = timeline.querySelector('.wire');
+var journeySvg = document.getElementById('journey');
+var route = document.getElementById('route');
+var routeLen = route.getTotalLength();
+route.style.strokeDasharray = routeLen;
+route.style.strokeDashoffset = routeLen;
+var wps = [document.getElementById('wp-0'), document.getElementById('wp-1'),
+           document.getElementById('wp-2'), document.getElementById('wp-3')];
+var wpAt = [0.02, 0.3, 0.56, 0.85];
+var mobileRoad = window.matchMedia('(max-width: 939px)');
+var routeDone = false;
+
+function setRoute(k){
+  route.style.strokeDashoffset = routeLen * (1 - k);
+  for(var i = 0; i < 4; i++){
+    wps[i].classList.toggle('lit', k >= wpAt[i]);
+  }
+  if(k >= 1) routeDone = true;
+}
+
+function drawWire(){
+  var r = timeline.getBoundingClientRect();
+  var vh = window.innerHeight;
+  var p = Math.min(Math.max((vh * 0.8 - r.top) / r.height, 0), 1);
+  wire.style.setProperty('--draw', p);
+  if(!mobileRoad.matches && !routeDone){
+    setRoute(Math.min(p / 0.75, 1));
+  }
+}
+
+if(reduced){
+  setRoute(1);
+}else if('IntersectionObserver' in window){
+  /* Phone path: timed 1.6s draw as soon as the map is properly in view */
+  new IntersectionObserver(function(en, obs){
+    if(en[0].isIntersecting && mobileRoad.matches && !routeDone){
+      obs.disconnect();
+      var t0 = performance.now(), DUR = 1600;
+      (function step(now){
+        var k = Math.min((now - t0) / DUR, 1);
+        setRoute(1 - Math.pow(1 - k, 3));
+        if(k < 1) requestAnimationFrame(step);
+      })(t0);
+    }
+  }, { threshold: 0.45 }).observe(journeySvg);
+}
+
+/* ---------------- Nav hide, progress bar, hero parallax (one scroll listener) ---------------- */
+var nav = document.getElementById('nav');
+var bar = document.getElementById('progress-bar');
+var heroTitle = document.getElementById('hero-title');
+var heroH = window.innerHeight;
+window.addEventListener('resize', function(){ heroH = window.innerHeight; }, { passive:true });
+var lastY = 0, ticking = false;
+function onScroll(){
+  var y = window.scrollY;
+  if(y > 90 && y > lastY){ nav.classList.add('hidden'); }
+  else{ nav.classList.remove('hidden'); }
+  lastY = y;
+  var max = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+  if(!reduced && y < heroH){
+    var p = y / heroH;
+    canvas.style.transform = 'translateY(' + (y * 0.3) + 'px)';
+    heroTitle.style.transform = 'translateY(' + (y * 0.14) + 'px)';
+    heroTitle.style.opacity = 1 - p * 0.9;
+  }
+  drawWire();
+  ticking = false;
+}
+window.addEventListener('scroll', function(){
+  if(!ticking){ requestAnimationFrame(onScroll); ticking = true; }
+}, { passive:true });
+onScroll();
+
+/* ---------------- Sound of the links: generative wind, opt-in ---------------- */
+var soundBtn = document.getElementById('sound-toggle');
+var soundLabel = document.getElementById('sound-label');
+var audio = null;
+function buildWindAudio(){
+  var AC = window.AudioContext || window.webkitAudioContext;
+  var ctxA = new AC();
+  var len = ctxA.sampleRate * 2;
+  var buf = ctxA.createBuffer(1, len, ctxA.sampleRate);
+  var data = buf.getChannelData(0);
+  var last = 0;
+  for(var i = 0; i < len; i++){
+    var white = Math.random() * 2 - 1;
+    last = (last + 0.02 * white) / 1.02;      /* brown noise */
+    data[i] = last * 3.2;
+  }
+  var src = ctxA.createBufferSource();
+  src.buffer = buf; src.loop = true;
+  var filter = ctxA.createBiquadFilter();
+  filter.type = 'lowpass';
+  filter.frequency.value = 320;
+  filter.Q.value = 0.8;
+  var gain = ctxA.createGain();
+  gain.gain.value = 0;
+  src.connect(filter); filter.connect(gain); gain.connect(ctxA.destination);
+  src.start();
+  return { ctx: ctxA, filter: filter, gain: gain };
+}
+function windAudioLoop(){
+  if(!audio || audio.ctx.state !== 'running') return;
+  var t = performance.now();
+  var gust = Math.sin(t * 0.00035) * 0.5 + Math.sin(t * 0.00011) * 0.5;
+  var front = Math.sin(t * 0.0006) * 0.5 + 0.5;
+  audio.filter.frequency.value = 260 + gust * 140 + front * 120;
+  audio.gain.gain.value = Math.min((0.05 + (gust * 0.5 + 0.5) * 0.045 + front * 0.02) * windAmp, 0.16);
+  requestAnimationFrame(windAudioLoop);
+}
+soundBtn.addEventListener('click', function(){
+  if(!audio){
+    audio = buildWindAudio();
+    soundBtn.classList.add('on');
+    soundBtn.setAttribute('aria-pressed', 'true');
+    soundLabel.textContent = 'Wind on';
+    windAudioLoop();
+    return;
+  }
+  if(audio.ctx.state === 'running'){
+    audio.ctx.suspend();
+    soundBtn.classList.remove('on');
+    soundBtn.setAttribute('aria-pressed', 'false');
+    soundLabel.textContent = 'Sound of the links';
+  }else{
+    audio.ctx.resume().then(windAudioLoop);
+    soundBtn.classList.add('on');
+    soundBtn.setAttribute('aria-pressed', 'true');
+    soundLabel.textContent = 'Wind on';
+  }
+});
+document.addEventListener('visibilitychange', function(){
+  if(document.hidden && audio && audio.ctx.state === 'running'){
+    audio.ctx.suspend();
+    soundBtn.classList.remove('on');
+    soundBtn.setAttribute('aria-pressed', 'false');
+    soundLabel.textContent = 'Sound of the links';
+  }
+});
+
+/* ---------------- Live wind at Royal Birkdale ---------------- */
+(function(){
+  if(!window.fetch) return;
+  var ctrl = ('AbortController' in window) ? new AbortController() : null;
+  if(ctrl) setTimeout(function(){ ctrl.abort(); }, 4500);
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=53.617&longitude=-3.033&current=wind_speed_10m,wind_direction_10m&wind_speed_unit=kmh',
+        ctrl ? { signal: ctrl.signal } : {})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var c = d && d.current;
+      if(!c || typeof c.wind_speed_10m !== 'number') return;
+      var kmh = Math.round(c.wind_speed_10m);
+      var deg = c.wind_direction_10m || 0;
+      var pts = ['N','NE','E','SE','S','SW','W','NW'];
+      var dir = pts[Math.round(deg / 45) % 8];
+      windAmp = Math.min(Math.max(0.55 + kmh / 28, 0.55), 1.9);
+      if(deg > 30 && deg < 150) travelDir = -1;
+      var chip = document.getElementById('wind-chip');
+      chip.innerHTML = 'Wind at Birkdale <b>' + kmh + ' km/h ' + dir + '</b>';
+      chip.hidden = false;
+    })
+    .catch(function(){ /* simulated gusts carry on */ });
+})();
+
+/* ---------------- The sky knows the hour ---------------- */
+(function(){
+  var h = new Date().getHours();
+  var sky = (h >= 22 || h < 5) ? 'night' : (h < 8) ? 'dawn' : (h >= 19) ? 'dusk' : 'day';
+  document.body.setAttribute('data-sky', sky);
+})();
+
+/* ---------------- Countdown: first tee, 16 July 2026, 06:35 BST ---------------- */
+var target = new Date('2026-07-16T06:35:00+01:00').getTime();
+var dEl = document.getElementById('cd-d'), hEl = document.getElementById('cd-h'),
+    mEl = document.getElementById('cd-m'), sEl = document.getElementById('cd-s');
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+function setUnit(el, val){
+  if(el.textContent !== val){
+    el.textContent = val;
+    if(!reduced){
+      el.classList.remove('roll');
+      void el.offsetWidth;
+      el.classList.add('roll');
+    }
+  }
+}
+function tickClock(){
+  var diff = target - Date.now();
+  if(diff <= 0){
+    setUnit(dEl,'00'); setUnit(hEl,'00'); setUnit(mEl,'00'); setUnit(sEl,'00');
+    document.getElementById('clock-label').textContent = 'Championship week';
+    clearInterval(clockT);
+    return;
+  }
+  setUnit(dEl, pad(Math.floor(diff / 86400000)));
+  setUnit(hEl, pad(Math.floor(diff % 86400000 / 3600000)));
+  setUnit(mEl, pad(Math.floor(diff % 3600000 / 60000)));
+  setUnit(sEl, pad(Math.floor(diff % 60000 / 1000)));
+}
+tickClock();
+var clockT = setInterval(tickClock, 1000);
+
+/* ---------------- Press kit: one-tap copy ---------------- */
+function copyText(txt, el, label){
+  function done(ok){
+    var span = el.querySelector('span') || el;
+    var orig = label || span.textContent;
+    span.textContent = ok ? 'Copied' : 'Copy failed';
+    setTimeout(function(){ span.textContent = orig; }, 1600);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){ done(true); }, function(){ done(false); });
+  }else{ done(false); }
+}
+document.querySelectorAll('.copy-bio').forEach(function(b){
+  b.addEventListener('click', function(){
+    copyText(document.getElementById(b.getAttribute('data-copy')).textContent.trim(), b);
+  });
+});
+var cf_btn = document.getElementById('copy-facts');
+cf_btn.addEventListener('click', function(){
+  var lines = ['DAVID HOWARD GOLF | FACT SHEET', ''];
+  document.querySelectorAll('.facts .fact').forEach(function(f){
+    lines.push(f.querySelector('dt').textContent + ': ' + f.querySelector('dd').textContent);
+  });
+  lines.push('', 'Press: press@davidhowardgolf.com', 'davidhowardgolf.com');
+  copyText(lines.join('\n'), cf_btn);
+});
+
+/* ---------------- Photos gain colour on touch devices as they centre ---------------- */
+if(window.matchMedia('(hover: none)').matches && 'IntersectionObserver' in window){
+  var pio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      e.target.classList.toggle('lit', e.isIntersecting);
+    });
+  }, { threshold: 0.65 });
+  document.querySelectorAll('.photo-frame, .compare').forEach(function(f){ pio.observe(f); });
+}
+
+/* ---------------- Then and now slider ---------------- */
+var cRange = document.getElementById('c-range');
+var cBox = document.getElementById('compare');
+cRange.addEventListener('input', function(){
+  cBox.style.setProperty('--x', cRange.value + '%');
+});
+
+/* ---------------- Magnetic buttons + cursor (fine pointers) ---------------- */
+if(window.matchMedia('(pointer:fine)').matches && !reduced){
+  document.querySelectorAll('.magnetic').forEach(function(btn){
+    btn.addEventListener('pointermove', function(e){
+      var r = btn.getBoundingClientRect();
+      var mx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+      var my = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+      btn.style.transform = 'translate(' + (mx * 6) + 'px,' + (my * 5) + 'px)';
+    });
+    btn.addEventListener('pointerleave', function(){
+      btn.style.transform = '';
+    });
+  });
+}
+})();
+</script>
+</body>
+</html>
