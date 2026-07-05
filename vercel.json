@@ -1,4 +1,6 @@
 {
+  "buildCommand": "sh fetch-logo.sh",
+  "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false
 }
