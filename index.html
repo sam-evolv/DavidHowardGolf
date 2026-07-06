@@ -500,6 +500,92 @@ h1, h2, .hero-sub, blockquote{ text-wrap:balance; }
 .marquee-quote span{ color:var(--bone-faint); font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.18em; text-transform:uppercase; }
 
 /* ================================================================
+   IN THE MEDIA · carousel
+   ================================================================ */
+.media{ padding-block:var(--space-section); border-top:1px solid var(--line-soft); }
+.media-head{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:2rem;
+  margin-bottom:clamp(2rem, 5vh, 3.25rem);
+}
+.m-nav{ display:none; gap:0.6rem; }
+@media (pointer:fine) and (min-width:900px){ .m-nav{ display:flex; } }
+.m-btn{
+  width:48px; height:48px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--bone-dim);
+  font-size:1.5rem; line-height:1;
+  cursor:pointer;
+  touch-action:manipulation;
+  transition:color 200ms var(--ease), border-color 200ms var(--ease);
+}
+.m-btn:hover{ color:var(--violet-hi); border-color:var(--violet); }
+.media-rail{
+  display:flex;
+  gap:1.25rem;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:1rem;
+  scrollbar-width:thin;
+  -webkit-overflow-scrolling:touch;
+}
+.media-card{
+  flex:0 0 min(82vw, 400px);
+  scroll-snap-align:start;
+  display:flex; flex-direction:column;
+  gap:1.1rem;
+  padding:1.6rem;
+  min-height:232px;
+  background:var(--ink-2);
+  border:1px solid var(--line);
+  text-decoration:none;
+  transition:border-color 250ms var(--ease), transform 350ms var(--ease);
+}
+.media-card:hover{ border-color:var(--violet); transform:translateY(-4px); }
+.m-top{
+  display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+}
+.m-pub{
+  font-family:var(--font-mono);
+  font-size:var(--text-small);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--bone);
+}
+.m-type{
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--violet-hi);
+}
+.m-headline{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:clamp(1.2rem, 1.05rem + 0.8vw, 1.55rem);
+  line-height:1.22;
+  color:var(--bone);
+  max-width:none;
+  flex:1;
+}
+.m-foot{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+}
+.m-arrow{
+  font-size:1rem;
+  color:var(--violet-hi);
+  transition:transform 250ms var(--ease);
+}
+.media-card:hover .m-arrow{ transform:translate(3px, -3px); }
+
+/* ================================================================
    COUNTDOWN · the big clock
    ================================================================ */
 
@@ -1167,25 +1253,6 @@ body[data-sky="dusk"] .hero-veil{
 
 .press-contact{ margin-top:clamp(2.5rem, 5vh, 3.5rem); display:flex; gap:0.9rem; flex-wrap:wrap; }
 
-/* Coverage links */
-.press-links{
-  margin-top:clamp(2rem, 4vh, 3rem);
-  display:flex; flex-wrap:wrap; gap:0.75rem 2rem;
-  max-width:none;
-}
-.press-links a{
-  font-family:var(--font-mono);
-  font-size:var(--text-small);
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  color:var(--bone-dim);
-  text-decoration:none;
-  border-bottom:1px solid var(--line);
-  padding:0.4rem 0.1rem;
-  transition:color 200ms var(--ease), border-color 200ms var(--ease);
-}
-.press-links a:hover{ color:var(--violet-hi); border-color:var(--violet); }
-
 /* Club and cause */
 .allies{
   padding-block:clamp(3.5rem, 4rem + 3vw, 6rem);
@@ -1509,25 +1576,62 @@ footer{
   </div>
 </section>
 
-<!-- ==================== PRESS QUOTES MARQUEE ==================== -->
-<div class="marquee rev" aria-hidden="true">
-  <div class="marquee-track">
-    <div class="marquee-seq">
-      <span class="marquee-item marquee-quote"><i>&ldquo;Remarkable qualification&rdquo;</i>&nbsp;<span>RT&Eacute;</span></span>
-      <span class="marquee-item marquee-quote"><i>&ldquo;Against-the-odds&rdquo;</i>&nbsp;<span>Reuters</span></span>
-      <span class="marquee-item marquee-quote"><i>&ldquo;It can&rsquo;t get much better than this&rdquo;</i>&nbsp;<span>Irish Golfer</span></span>
-      <span class="marquee-item marquee-quote"><i>&ldquo;A fairytale ticket to the Open&rdquo;</i>&nbsp;<span>RT&Eacute;</span></span>
-      <span class="marquee-item marquee-quote"><i>&ldquo;Inspirational&rdquo;</i>&nbsp;<span>WLR</span></span>
-    </div>
-    <div class="marquee-seq">
-      <span class="marquee-item marquee-quote"><i>&ldquo;Remarkable qualification&rdquo;</i>&nbsp;<span>RT&Eacute;</span></span>
-      <span class="marquee-item marquee-quote"><i>&ldquo;Against-the-odds&rdquo;</i>&nbsp;<span>Reuters</span></span>
-      <span class="marquee-item marquee-quote"><i>&ldquo;It can&rsquo;t get much better than this&rdquo;</i>&nbsp;<span>Irish Golfer</span></span>
-      <span class="marquee-item marquee-quote"><i>&ldquo;A fairytale ticket to the Open&rdquo;</i>&nbsp;<span>RT&Eacute;</span></span>
-      <span class="marquee-item marquee-quote"><i>&ldquo;Inspirational&rdquo;</i>&nbsp;<span>WLR</span></span>
+<!-- ==================== IN THE MEDIA ==================== -->
+<section class="media" aria-labelledby="media-title">
+  <div class="container">
+    <div class="media-head reveal">
+      <h2 class="display" id="media-title">In the media</h2>
+      <div class="m-nav" aria-hidden="true">
+        <button class="m-btn" id="m-prev" type="button" aria-label="Previous">&lsaquo;</button>
+        <button class="m-btn" id="m-next" type="button" aria-label="Next">&rsaquo;</button>
+      </div>
     </div>
   </div>
-</div>
+  <div class="container">
+    <div class="media-rail reveal" id="media-rail">
+      <a class="media-card" href="https://www.nytimes.com/athletic/7418947/2026/07/04/the-open-david-howard-qualifier/?unlocked_article_code=1.vFA.vnjM.Of7tJld7l2Rx" target="_blank" rel="noopener">
+        <div class="m-top"><span class="m-pub">The New York Times</span><span class="m-type">Feature</span></div>
+        <p class="m-headline">David Howard: The Open qualifier</p>
+        <div class="m-foot"><span>The Athletic &middot; July 2026</span><span class="m-arrow">&#8599;</span></div>
+      </a>
+      <a class="media-card" href="https://www.echolive.ie/nationalnews/arid-41873073.html" target="_blank" rel="noopener">
+        <div class="m-top"><span class="m-pub">Reuters</span><span class="m-type">Wire</span></div>
+        <p class="m-headline">Irish amateur Howard caps remarkable journey to reach Open Championship</p>
+        <div class="m-foot"><span>Worldwide &middot; July 2026</span><span class="m-arrow">&#8599;</span></div>
+      </a>
+      <a class="media-card" href="https://www.rte.ie/sport/golf/2026/0630/1581150-howard-pulls-off-remarkable-qualification-for-the-open/" target="_blank" rel="noopener">
+        <div class="m-top"><span class="m-pub">RT&Eacute;</span><span class="m-type">News</span></div>
+        <p class="m-headline">David Howard pulls off remarkable qualification for the Open</p>
+        <div class="m-foot"><span>June 2026</span><span class="m-arrow">&#8599;</span></div>
+      </a>
+      <a class="media-card" href="https://www.irishexaminer.com/sport/golf/arid-41872410.html" target="_blank" rel="noopener">
+        <div class="m-top"><span class="m-pub">Irish Examiner</span><span class="m-type">Interview</span></div>
+        <p class="m-headline">&ldquo;My life expectancy was mid&#8209;20s so I&rsquo;m past my due date&rdquo;</p>
+        <div class="m-foot"><span>July 2026</span><span class="m-arrow">&#8599;</span></div>
+      </a>
+      <a class="media-card" href="https://open.spotify.com/episode/3eIdGHdMJnVGm1Sosqz67J" target="_blank" rel="noopener">
+        <div class="m-top"><span class="m-pub">The Big Red Bench</span><span class="m-type">Podcast</span></div>
+        <p class="m-headline">&ldquo;Qualifying for the Open is a dream come true&rdquo;</p>
+        <div class="m-foot"><span>Cork&rsquo;s RedFM &middot; 17 min</span><span class="m-arrow">&#9654;</span></div>
+      </a>
+      <a class="media-card" href="https://open.spotify.com/episode/75NZevJBT1T5yuSTQOMNYC" target="_blank" rel="noopener">
+        <div class="m-top"><span class="m-pub">The Irish Am Podcast</span><span class="m-type">Podcast</span></div>
+        <p class="m-headline">David Howard, East of Ireland champion</p>
+        <div class="m-foot"><span>38 min</span><span class="m-arrow">&#9654;</span></div>
+      </a>
+      <a class="media-card" href="https://irishgolfer.ie/latest-golf-news/2026/07/01/howards-inspirational-cf-story-set-for-global-platform/" target="_blank" rel="noopener">
+        <div class="m-top"><span class="m-pub">Irish Golfer</span><span class="m-type">Feature</span></div>
+        <p class="m-headline">Howard&rsquo;s inspirational CF story set for global platform</p>
+        <div class="m-foot"><span>July 2026</span><span class="m-arrow">&#8599;</span></div>
+      </a>
+      <a class="media-card" href="https://www.irishgolfdesk.com/news-files/2026/6/30/david-howard-qualifies-for-the-open-it-hasnt-sunk-in-yet" target="_blank" rel="noopener">
+        <div class="m-top"><span class="m-pub">Irish Golf Desk</span><span class="m-type">News</span></div>
+        <p class="m-headline">David Howard qualifies for The Open: &ldquo;It hasn&rsquo;t sunk in yet&rdquo;</p>
+        <div class="m-foot"><span>June 2026</span><span class="m-arrow">&#8599;</span></div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- ==================== STORY ==================== -->
 <section class="story" id="story" aria-labelledby="story-title">
@@ -1864,14 +1968,6 @@ footer{
       <div class="fact"><dt>Next</dt><dd>The 154th Open, Royal Birkdale</dd></div>
       <div class="fact"><dt>Instagram</dt><dd>@davidhowardgolf</dd></div>
     </dl>
-
-    <p class="press-links reveal">
-      <a href="https://www.nytimes.com/athletic/7418947/2026/07/04/the-open-david-howard-qualifier/?unlocked_article_code=1.vFA.vnjM.Of7tJld7l2Rx" target="_blank" rel="noopener">The New York Times</a>
-      <a href="https://www.rte.ie/sport/golf/2026/0630/1581150-howard-pulls-off-remarkable-qualification-for-the-open/" target="_blank" rel="noopener">RT&Eacute;</a>
-      <a href="https://www.echolive.ie/nationalnews/arid-41873073.html" target="_blank" rel="noopener">Reuters wire</a>
-      <a href="https://irishgolfer.ie/latest-golf-news/2026/07/01/howards-inspirational-cf-story-set-for-global-platform/" target="_blank" rel="noopener">Irish Golfer</a>
-      <a href="https://www.irishgolfdesk.com/news-files/2026/6/30/david-howard-qualifies-for-the-open-it-hasnt-sunk-in-yet" target="_blank" rel="noopener">Irish Golf Desk</a>
-    </p>
 
     <div class="bios reveal">
       <details>
@@ -2299,6 +2395,15 @@ cf_btn.addEventListener('click', function(){
   });
   lines.push('', 'Press: press@davidhowardgolf.ie', 'davidhowardgolf.ie');
   copyText(lines.join('\n'), cf_btn);
+});
+
+/* ---------------- Media carousel buttons ---------------- */
+var mRail = document.getElementById('media-rail');
+document.getElementById('m-prev').addEventListener('click', function(){
+  mRail.scrollBy({ left: -mRail.clientWidth * 0.85, behavior: 'smooth' });
+});
+document.getElementById('m-next').addEventListener('click', function(){
+  mRail.scrollBy({ left: mRail.clientWidth * 0.85, behavior: 'smooth' });
 });
 
 /* ---------------- Photos gain colour on touch devices as they centre ---------------- */
