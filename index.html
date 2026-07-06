@@ -866,40 +866,13 @@ h1, h2, .hero-sub, blockquote{ text-wrap:balance; }
   color:var(--bone-faint);
 }
 
-/* Sound of the links · opt-in generative wind */
-.sound-toggle{
-  position:absolute;
-  left:var(--gutter);
-  bottom:2rem;
-  z-index:3;
-  display:inline-flex;
-  align-items:center;
-  gap:0.7rem;
-  min-height:44px;
-  padding:0.55rem 1.1rem;
-  font-family:var(--font-mono);
-  font-size:var(--text-micro);
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--bone-dim);
-  background:rgba(12,14,13,0.4);
-  border:1px solid var(--line);
-  border-radius:999px;
-  cursor:pointer;
-  touch-action:manipulation;
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  transition:color 200ms var(--ease), border-color 200ms var(--ease);
-}
-.sound-toggle:hover{ color:var(--bone); border-color:var(--bone-dim); }
 @media (max-width:720px){
-  .sound-toggle{ left:auto; right:1.1rem; bottom:calc(1.1rem + env(safe-area-inset-bottom, 0px)); }
   .hero-inner{ padding-bottom:clamp(4.5rem, 9vh, 6rem); }
 }
 .wind-chip{
   position:absolute;
   left:var(--gutter);
-  bottom:calc(2rem + 62px);
+  bottom:2rem;
   z-index:3;
   display:inline-flex; align-items:center; gap:0.6rem;
   padding:0.5rem 1rem;
@@ -916,20 +889,6 @@ h1, h2, .hero-sub, blockquote{ text-wrap:balance; }
 .wind-chip b{ color:var(--violet-hi); font-weight:500; }
 @media (max-width:720px){
   .wind-chip{ bottom:calc(1.1rem + env(safe-area-inset-bottom, 0px)); left:1.1rem; }
-}
-.sound-toggle .bars{ display:inline-flex; align-items:flex-end; gap:2px; height:12px; }
-.sound-toggle .bars i{
-  width:2px; height:4px;
-  background:var(--bone-faint);
-  transition:background 200ms;
-}
-.sound-toggle.on{ color:var(--violet-hi); border-color:var(--violet); }
-.sound-toggle.on .bars i{ background:var(--violet); animation:eq 900ms ease-in-out infinite; }
-.sound-toggle.on .bars i:nth-child(2){ animation-delay:150ms; }
-.sound-toggle.on .bars i:nth-child(3){ animation-delay:300ms; }
-@keyframes eq{
-  0%,100%{ height:4px; }
-  50%{ height:12px; }
 }
 
 /* Photography · one treatment unifies every frame */
@@ -1411,10 +1370,6 @@ footer{
   </div>
 
   <p class="wind-chip mono" id="wind-chip" hidden></p>
-  <button class="sound-toggle" id="sound-toggle" aria-pressed="false">
-    <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
-    <span id="sound-label">Sound of the links</span>
-  </button>
 
   <p class="scroll-cue" aria-hidden="true">Into the wind</p>
 </header>
@@ -2180,97 +2135,6 @@ window.addEventListener('scroll', function(){
   if(!ticking){ requestAnimationFrame(onScroll); ticking = true; }
 }, { passive:true });
 onScroll();
-
-/* ---------------- Sound of the links: generative wind, opt-in ---------------- */
-var soundBtn = document.getElementById('sound-toggle');
-var soundLabel = document.getElementById('sound-label');
-var audio = null;
-function buildWindAudio(){
-  var AC = window.AudioContext || window.webkitAudioContext;
-  var ctxA = new AC();
-  var len = ctxA.sampleRate * 2;
-  var buf = ctxA.createBuffer(1, len, ctxA.sampleRate);
-  var data = buf.getChannelData(0);
-  var last = 0;
-  for(var i = 0; i < len; i++){
-    var white = Math.random() * 2 - 1;
-    last = (last + 0.02 * white) / 1.02;      /* brown noise */
-    data[i] = last * 3.2;
-  }
-  var src = ctxA.createBufferSource();
-  src.buffer = buf; src.loop = true;
-  var filter = ctxA.createBiquadFilter();
-  filter.type = 'lowpass';
-  filter.frequency.value = 320;
-  filter.Q.value = 0.8;
-  var gain = ctxA.createGain();
-  gain.gain.value = 0;
-  src.connect(filter); filter.connect(gain); gain.connect(ctxA.destination);
-  src.start();
-  return { ctx: ctxA, filter: filter, gain: gain };
-}
-function windAudioLoop(){
-  if(!audio || audio.ctx.state !== 'running') return;
-  var t = performance.now();
-  var gust = Math.sin(t * 0.00035) * 0.5 + Math.sin(t * 0.00011) * 0.5;
-  var front = Math.sin(t * 0.0006) * 0.5 + 0.5;
-  audio.filter.frequency.value = 260 + gust * 140 + front * 120;
-  audio.gain.gain.value = Math.min((0.05 + (gust * 0.5 + 0.5) * 0.045 + front * 0.02) * windAmp, 0.16);
-  requestAnimationFrame(windAudioLoop);
-}
-soundBtn.addEventListener('click', function(){
-  if(!audio){
-    audio = buildWindAudio();
-    soundBtn.classList.add('on');
-    soundBtn.setAttribute('aria-pressed', 'true');
-    soundLabel.textContent = 'Wind on';
-    windAudioLoop();
-    return;
-  }
-  if(audio.ctx.state === 'running'){
-    audio.ctx.suspend();
-    soundBtn.classList.remove('on');
-    soundBtn.setAttribute('aria-pressed', 'false');
-    soundLabel.textContent = 'Sound of the links';
-  }else{
-    audio.ctx.resume().then(windAudioLoop);
-    soundBtn.classList.add('on');
-    soundBtn.setAttribute('aria-pressed', 'true');
-    soundLabel.textContent = 'Wind on';
-  }
-});
-document.addEventListener('visibilitychange', function(){
-  if(document.hidden && audio && audio.ctx.state === 'running'){
-    audio.ctx.suspend();
-    soundBtn.classList.remove('on');
-    soundBtn.setAttribute('aria-pressed', 'false');
-    soundLabel.textContent = 'Sound of the links';
-  }
-});
-
-/* ---------------- Live wind at Royal Birkdale ---------------- */
-(function(){
-  if(!window.fetch) return;
-  var ctrl = ('AbortController' in window) ? new AbortController() : null;
-  if(ctrl) setTimeout(function(){ ctrl.abort(); }, 4500);
-  fetch('https://api.open-meteo.com/v1/forecast?latitude=53.617&longitude=-3.033&current=wind_speed_10m,wind_direction_10m&wind_speed_unit=kmh',
-        ctrl ? { signal: ctrl.signal } : {})
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      var c = d && d.current;
-      if(!c || typeof c.wind_speed_10m !== 'number') return;
-      var kmh = Math.round(c.wind_speed_10m);
-      var deg = c.wind_direction_10m || 0;
-      var pts = ['N','NE','E','SE','S','SW','W','NW'];
-      var dir = pts[Math.round(deg / 45) % 8];
-      windAmp = Math.min(Math.max(0.55 + kmh / 28, 0.55), 1.9);
-      if(deg > 30 && deg < 150) travelDir = -1;
-      var chip = document.getElementById('wind-chip');
-      chip.innerHTML = 'Wind at Birkdale <b>' + kmh + ' km/h ' + dir + '</b>';
-      chip.hidden = false;
-    })
-    .catch(function(){ /* simulated gusts carry on */ });
-})();
 
 /* ---------------- The sky knows the hour ---------------- */
 (function(){
