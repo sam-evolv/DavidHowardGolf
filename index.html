@@ -1167,6 +1167,63 @@ body[data-sky="dusk"] .hero-veil{
 
 .press-contact{ margin-top:clamp(2.5rem, 5vh, 3.5rem); display:flex; gap:0.9rem; flex-wrap:wrap; }
 
+/* Coverage links */
+.press-links{
+  margin-top:clamp(2rem, 4vh, 3rem);
+  display:flex; flex-wrap:wrap; gap:0.75rem 2rem;
+  max-width:none;
+}
+.press-links a{
+  font-family:var(--font-mono);
+  font-size:var(--text-small);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  padding:0.4rem 0.1rem;
+  transition:color 200ms var(--ease), border-color 200ms var(--ease);
+}
+.press-links a:hover{ color:var(--violet-hi); border-color:var(--violet); }
+
+/* Club and cause */
+.allies{
+  padding-block:clamp(3.5rem, 4rem + 3vw, 6rem);
+  border-top:1px solid var(--line-soft);
+}
+.allies-row{
+  display:flex; justify-content:center; align-items:flex-start;
+  gap:clamp(3.5rem, 12vw, 9rem);
+  flex-wrap:wrap;
+}
+.ally{
+  display:flex; flex-direction:column; align-items:center;
+  gap:0.4rem;
+  text-decoration:none;
+  text-align:center;
+}
+.ally img{
+  height:76px; width:auto;
+  margin-bottom:0.8rem;
+  opacity:0.9;
+  transition:opacity 250ms var(--ease), transform 400ms var(--ease);
+}
+.ally:hover img{ opacity:1; transform:translateY(-3px); }
+.a-name{
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+}
+.a-role{
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+}
+
 /* Ready-to-lift bios */
 .bios{ margin-top:clamp(2.5rem, 5vh, 3.5rem); }
 .bios details{ border-top:1px solid var(--line-soft); }
@@ -1663,8 +1720,8 @@ footer{
       </li>
       <li class="milestone reveal">
         <p class="when mono">2024</p>
-        <h3>East Cork Small Scratch Cup</h3>
-        <p>Three consecutive titles in the event on the way up.</p>
+        <h3>Scratch Cup and East Cork champion</h3>
+        <p>Two titles in the same season on the climb.</p>
       </li>
       <li class="milestone reveal">
         <p class="when mono">2024</p>
@@ -1674,7 +1731,12 @@ footer{
       <li class="milestone reveal">
         <p class="when mono">June 2025</p>
         <h3>East of Ireland champion</h3>
-        <p>The breakthrough at Baltray, followed by a first Irish call up.</p>
+        <p>The breakthrough, at Baltray.</p>
+      </li>
+      <li class="milestone reveal">
+        <p class="when mono">2025</p>
+        <h3>Irish team call up</h3>
+        <p>First selection for Ireland.</p>
       </li>
       <li class="milestone reveal">
         <p class="when mono">2026</p>
@@ -1760,6 +1822,22 @@ footer{
   </div>
 </section>
 
+<!-- ==================== CLUB AND CAUSE ==================== -->
+<section class="allies" aria-label="Club and cause">
+  <div class="container allies-row reveal">
+    <a class="ally" href="https://fotaisland.ie" target="_blank" rel="noopener">
+      <img src="/assets/fota.png" alt="Fota Island Golf Club" loading="lazy" decoding="async">
+      <span class="a-name">Fota Island Golf Club</span>
+      <span class="a-role">Home club</span>
+    </a>
+    <a class="ally" href="https://www.cfireland.ie" target="_blank" rel="noopener">
+      <img src="/assets/cfi.png" alt="Cystic Fibrosis Ireland" loading="lazy" decoding="async">
+      <span class="a-name">Cystic Fibrosis Ireland</span>
+      <span class="a-role">Ambassador</span>
+    </a>
+  </div>
+</section>
+
 <!-- ==================== PRESS KIT ==================== -->
 <section class="press" id="press" aria-labelledby="press-title">
   <div class="container">
@@ -1785,6 +1863,13 @@ footer{
       <div class="fact"><dt>Next</dt><dd>The 154th Open, Royal Birkdale</dd></div>
       <div class="fact"><dt>Instagram</dt><dd>@davidhowardgolf</dd></div>
     </dl>
+
+    <p class="press-links reveal">
+      <a href="https://www.rte.ie/sport/golf/2026/0630/1581150-howard-pulls-off-remarkable-qualification-for-the-open/" target="_blank" rel="noopener">RT&Eacute;</a>
+      <a href="https://www.echolive.ie/nationalnews/arid-41873073.html" target="_blank" rel="noopener">Reuters wire</a>
+      <a href="https://irishgolfer.ie/latest-golf-news/2026/07/01/howards-inspirational-cf-story-set-for-global-platform/" target="_blank" rel="noopener">Irish Golfer</a>
+      <a href="https://www.irishgolfdesk.com/news-files/2026/6/30/david-howard-qualifies-for-the-open-it-hasnt-sunk-in-yet" target="_blank" rel="noopener">Irish Golf Desk</a>
+    </p>
 
     <div class="bios reveal">
       <details>
