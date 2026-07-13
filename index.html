@@ -2571,6 +2571,14 @@ cf_btn.addEventListener('click', function(){
 
 /* ---------------- Media carousel buttons ---------------- */
 var mRail = document.getElementById('media-rail');
+/* Rotate the deck each visit: same curation, different card leads */
+(function(){
+  var cards = Array.prototype.slice.call(mRail.children);
+  var off = Math.floor(Math.random() * cards.length);
+  for(var i = 0; i < cards.length; i++){
+    mRail.appendChild(cards[(off + i) % cards.length]);
+  }
+})();
 document.getElementById('m-prev').addEventListener('click', function(){
   mRail.scrollBy({ left: -mRail.clientWidth * 0.85, behavior: 'smooth' });
 });
