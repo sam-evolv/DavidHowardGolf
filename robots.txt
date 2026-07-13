@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.davidhowardgolf.ie/sitemap.xml
+Sitemap: https://davidhowardgolf.ie/sitemap.xml
