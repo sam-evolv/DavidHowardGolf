@@ -670,6 +670,59 @@ h1, h2, .hero-sub, blockquote{ text-wrap:balance; }
   text-transform:uppercase;
   color:var(--bone-faint);
 }
+#live-strip{ display:flex; flex-direction:column; gap:1.4rem; }
+.live-tag{
+  display:flex; align-items:center; gap:0.7rem;
+  font-size:var(--text-micro);
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+}
+.live-dot{
+  width:10px; height:10px; border-radius:50%;
+  background:var(--violet);
+  animation:livepulse 1.6s ease-in-out infinite;
+}
+@keyframes livepulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+.live-main{
+  display:flex; align-items:flex-end; gap:clamp(1.5rem, 5vw, 4rem);
+  flex-wrap:wrap;
+}
+.live-score{
+  font-size:clamp(4.5rem, 3rem + 12vw, 11rem);
+  line-height:0.9;
+  font-weight:500;
+  color:var(--bone);
+  font-variant-numeric:tabular-nums;
+}
+.live-meta{ display:flex; gap:clamp(1.25rem, 4vw, 2.5rem); padding-bottom:0.6rem; }
+.lv-cell{
+  display:flex; flex-direction:column; gap:0.4rem;
+  border-left:1px solid var(--line);
+  padding-left:clamp(0.9rem, 2vw, 1.4rem);
+}
+.lv-k{
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--bone-faint);
+}
+.lv-v{
+  font-family:var(--font-mono);
+  font-size:clamp(1.4rem, 1rem + 2vw, 2.2rem);
+  color:var(--bone);
+  font-variant-numeric:tabular-nums;
+}
+.live-rounds{
+  font-size:var(--text-small);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+}
+.live-rounds b{ color:var(--violet-hi); font-weight:500; }
+.live-note{ color:var(--bone-dim); max-width:52ch; }
+
 .next-up{
   margin-top:clamp(2.25rem, 4vh, 3.25rem);
   display:flex; flex-wrap:wrap; align-items:center;
@@ -1631,6 +1684,19 @@ footer{
 <section class="clock" aria-label="Countdown to the first tee at Royal Birkdale">
   <div class="container">
     <p class="clock-head mono reveal"><span class="dot" aria-hidden="true"></span><span id="clock-label">First tee, Royal Birkdale</span></p>
+    <div id="live-strip" hidden>
+      <p class="live-tag mono"><span class="live-dot" aria-hidden="true"></span>Live &middot; The 154th Open &middot; Royal Birkdale</p>
+      <div class="live-main">
+        <div class="live-score mono" id="lv-score">E</div>
+        <div class="live-meta">
+          <div class="lv-cell"><span class="lv-k">Pos</span><span class="lv-v" id="lv-pos">--</span></div>
+          <div class="lv-cell"><span class="lv-k">Thru</span><span class="lv-v" id="lv-thru">--</span></div>
+          <div class="lv-cell"><span class="lv-k">Today</span><span class="lv-v" id="lv-today">--</span></div>
+        </div>
+      </div>
+      <p class="live-rounds mono" id="lv-rounds"></p>
+      <p class="live-note" id="lv-note"></p>
+    </div>
     <div class="clock-grid reveal" role="timer" aria-live="off">
       <div class="clock-cell"><div class="clock-num" id="cd-d">--</div><div class="clock-word">Days</div></div>
       <div class="clock-cell"><div class="clock-num" id="cd-h">--</div><div class="clock-word">Hours</div></div>
@@ -2503,6 +2569,80 @@ window.addEventListener('scroll', function(){
   if(!ticking){ requestAnimationFrame(onScroll); ticking = true; }
 }, { passive:true });
 onScroll();
+
+/* ---------------- Live at The Open ---------------- */
+(function(){
+  if(!window.fetch) return;
+  var strip = document.getElementById('live-strip');
+  var T0 = new Date('2026-07-16T05:30:00+01:00').getTime();
+  var T1 = new Date('2026-07-19T23:59:00+01:00').getTime();
+  function inWindow(){ var n = Date.now(); return n >= T0 && n <= T1; }
+
+  function show(d){
+    document.getElementById('lv-score').textContent = d.score || 'E';
+    document.getElementById('lv-pos').textContent = d.pos || '--';
+    document.getElementById('lv-thru').textContent = d.thru || '--';
+    document.getElementById('lv-today').textContent = d.today || '--';
+    var r = document.getElementById('lv-rounds');
+    if(d.rounds && d.rounds.length){
+      var parts = [];
+      for(var i = 0; i < d.rounds.length; i++){ parts.push('R' + (i+1) + ' <b>' + d.rounds[i] + '</b>'); }
+      r.innerHTML = parts.join(' &middot; ');
+    } else { r.innerHTML = ''; }
+    document.getElementById('lv-note').textContent = d.note || '';
+    strip.hidden = false;
+    var g = document.querySelector('.clock-grid'); if(g) g.style.display = 'none';
+    var nu = document.querySelector('.next-up'); if(nu) nu.style.display = 'none';
+    var h = document.querySelector('.clock-head'); if(h) h.style.display = 'none';
+  }
+
+  function fromESPN(d){
+    try{
+      var comps = d.events[0].competitions[0].competitors;
+      for(var i = 0; i < comps.length; i++){
+        var c = comps[i];
+        var name = (c.athlete && (c.athlete.displayName || c.athlete.fullName)) || '';
+        if(/howard/i.test(name) && /david/i.test(name)){
+          var st = c.status || {};
+          var pos = (st.position && (st.position.displayName || st.position.id)) || '';
+          var rounds = [];
+          if(c.linescores){
+            for(var j = 0; j < c.linescores.length; j++){
+              var l = c.linescores[j];
+              rounds.push(l.displayValue || l.value || '');
+            }
+          }
+          show({
+            score: (c.score && c.score.displayValue) || c.score || 'E',
+            pos: pos, thru: st.thru || '', today: st.displayValue || '',
+            rounds: rounds, note: ''
+          });
+          return true;
+        }
+      }
+    }catch(e){}
+    return false;
+  }
+
+  function tick(){
+    fetch('/live.json?t=' + Date.now())
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if(j && j.active){ show(j); return true; }
+        if(!inWindow()) return false;
+        return fetch('https://site.api.espn.com/apis/site/v2/sports/golf/pga/leaderboard')
+          .then(function(r){ return r.json(); })
+          .then(fromESPN)
+          .catch(function(){ return false; });
+      })
+      .catch(function(){})
+      .then(function(){
+        if(inWindow() && !document.hidden){ setTimeout(tick, 90000); }
+        else if(inWindow()){ setTimeout(tick, 180000); }
+      });
+  }
+  tick();
+})();
 
 /* ---------------- The sky knows the hour ---------------- */
 (function(){
