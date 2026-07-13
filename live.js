@@ -37,8 +37,25 @@
       '<div class="container"><div class="week-head">' +
       '<h2 class="display" id="week-title">The week at Birkdale</h2>' +
       '<p>Tee times, pairings and the road diary, updated through the Championship.</p>' +
-      '</div><div id="week-list" class="week-list"></div></div>';
+      '</div><div class="follow" id="follow"></div>' +
+      '<div id="week-list" class="week-list"></div></div>';
     media.parentNode.insertBefore(week, media);
+    var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//davidhowardgolf//EN\r\nBEGIN:VEVENT\r\n'
+            + 'UID:dhg-r1@davidhowardgolf.ie\r\nDTSTAMP:20260713T200000Z\r\n'
+            + 'DTSTART:20260716T094200Z\r\nDTEND:20260716T150000Z\r\n'
+            + 'SUMMARY:David Howard tees off - The 154th Open\r\n'
+            + 'LOCATION:Royal Birkdale\\, Southport\r\n'
+            + 'DESCRIPTION:Round 1 with Kazuma Kobori and Tom Sloman. Follow live at davidhowardgolf.ie\r\n'
+            + 'URL:https://www.davidhowardgolf.ie\r\nEND:VEVENT\r\nEND:VCALENDAR';
+    document.getElementById('follow').innerHTML =
+      '<p class="fw-title">How to follow</p>' +
+      '<div class="fw-grid">' +
+      '<span class="fw-item"><b>His group</b>10:42 Irish and UK time &middot; 5:42am US Eastern</span>' +
+      '<span class="fw-item"><b>TV &middot; Ireland and UK</b>Sky Sports Golf from 6:30am</span>' +
+      '<span class="fw-item"><b>TV &middot; US</b>Peacock from 1:30am ET, then USA Network</span>' +
+      '<span class="fw-item"><b>Every shot</b><a href="https://www.theopen.com" target="_blank" rel="noopener">TheOpen.com live scoring</a></span>' +
+      '</div>' +
+      '<a class="fw-cal" download="david-howard-open.ics" href="data:text/calendar;charset=utf-8,' + encodeURIComponent(ics) + '">Add his tee time to your calendar</a>';
   }
 
   /* ---- week renderer ---- */
@@ -103,6 +120,9 @@
       for(var i = 0; i < d.rounds.length; i++){ parts.push('R' + (i+1) + ' <b>' + esc(d.rounds[i]) + '</b>'); }
       r.innerHTML = parts.join(' &middot; ');
     } else { r.innerHTML = ''; }
+    if(d.leader){
+      r.innerHTML += (r.innerHTML ? ' &middot; ' : '') + 'Leader <b>' + esc(d.leader) + '</b>';
+    }
     document.getElementById('lv-note').textContent = d.note || '';
     strip.hidden = false;
     grid.style.display = 'none';
@@ -126,10 +146,15 @@
               rounds.push(l.displayValue || l.value || '');
             }
           }
+          var lead = '';
+          try{
+            var c0 = comps[0];
+            lead = (c0.score && c0.score.displayValue) || c0.score || '';
+          }catch(e2){}
           show({
             score: (c.score && c.score.displayValue) || c.score || 'E',
             pos: pos, thru: st.thru || '', today: st.displayValue || '',
-            rounds: rounds, note: ''
+            rounds: rounds, note: '', leader: lead
           });
           return true;
         }
