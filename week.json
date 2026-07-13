@@ -1,0 +1,14 @@
+{
+  "days": [
+    { "id": "wed", "label": "Wednesday 15 July", "title": "Practice day", "status": "upcoming",
+      "tee": "", "partners": [], "score": "", "note": "", "photos": [], "videos": [] },
+    { "id": "r1", "label": "Thursday 16 July", "title": "Round 1", "status": "upcoming",
+      "tee": "", "partners": [], "score": "", "note": "", "photos": [], "videos": [] },
+    { "id": "r2", "label": "Friday 17 July", "title": "Round 2", "status": "upcoming",
+      "tee": "", "partners": [], "score": "", "note": "", "photos": [], "videos": [] },
+    { "id": "r3", "label": "Saturday 18 July", "title": "Round 3", "status": "upcoming",
+      "tee": "", "partners": [], "score": "", "note": "", "photos": [], "videos": [] },
+    { "id": "r4", "label": "Sunday 19 July", "title": "Round 4", "status": "upcoming",
+      "tee": "", "partners": [], "score": "", "note": "", "photos": [], "videos": [] }
+  ]
+}
