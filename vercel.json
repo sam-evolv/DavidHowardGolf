@@ -1,14 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.davidhowardgolf.ie" }],
-      "destination": "https://davidhowardgolf.ie/:path*",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/",
