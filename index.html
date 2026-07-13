@@ -31,10 +31,34 @@
      Playfair italic (the quote, only) + IBM Plex Mono (scorecard voice) via Google -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+/* Self-hosted brand fonts: no CDN, no DNS blockers, no fallback chaos */
+@font-face{
+  font-family:'Clash Display';
+  src:url('/assets/fonts/ClashDisplay-Variable.woff2') format('woff2');
+  font-weight:200 700;
+  font-display:swap;
+}
+@font-face{
+  font-family:'Satoshi';
+  src:url('/assets/fonts/Satoshi-Regular.woff2') format('woff2');
+  font-weight:400;
+  font-display:swap;
+}
+@font-face{
+  font-family:'Satoshi';
+  src:url('/assets/fonts/Satoshi-Medium.woff2') format('woff2');
+  font-weight:500;
+  font-display:swap;
+}
+@font-face{
+  font-family:'Satoshi';
+  src:url('/assets/fonts/Satoshi-Bold.woff2') format('woff2');
+  font-weight:700;
+  font-display:swap;
+}
 /* Shield display type from extension-injected multicolumn styles */
 html body h1, html body h2, html body h3, html body .display{
   column-count: 1 !important;
