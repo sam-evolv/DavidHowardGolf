@@ -602,6 +602,26 @@ h1, h2, .hero-sub, blockquote{ text-wrap:balance; }
   transition:transform 250ms var(--ease);
 }
 .media-card:hover .m-arrow{ transform:translate(3px, -3px); }
+.m-ph{ position:relative; }
+.media-card.pod{
+  background:var(--violet-deep);
+  border-color:rgba(140,82,217,0.45);
+}
+.media-card.pod:hover{ border-color:var(--violet-hi); }
+.m-play{
+  position:absolute;
+  left:14px; bottom:14px;
+  width:46px; height:46px;
+  border-radius:50%;
+  background:var(--violet);
+  color:var(--bone);
+  font-size:0.9rem;
+  display:flex; align-items:center; justify-content:center;
+  padding-left:3px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.35);
+  transition:transform 250ms var(--ease);
+}
+.media-card.pod:hover .m-play{ transform:scale(1.1); }
 
 /* ================================================================
    COUNTDOWN · the big clock
@@ -1712,16 +1732,32 @@ footer{
           <span class="m-foot"><span>July 2026</span><span class="m-arrow">&#8599;</span></span>
         </span>
       </a>
-      <a class="media-card" href="https://open.spotify.com/episode/3eIdGHdMJnVGm1Sosqz67J" target="_blank" rel="noopener">
-        <span class="m-ph"><img src="/assets/press/redbench.jpg" alt="" loading="lazy" decoding="async"></span>
+      <a class="media-card pod" href="https://open.spotify.com/episode/1hF60YEe4FNxmaIhih7YJC" target="_blank" rel="noopener">
+        <span class="m-ph"><img src="/assets/press/twofm.jpg" alt="" loading="lazy" decoding="async"><span class="m-play" aria-hidden="true">&#9654;</span></span>
+        <span class="m-body">
+          <span class="m-top"><span class="m-pub">2FM Mornings</span><span class="m-type">Podcast</span></span>
+          <span class="m-headline">David Howard, The Open Championship</span>
+          <span class="m-foot"><span>With Doireann Garrihy &middot; 9 min</span><span class="m-arrow">&#8599;</span></span>
+        </span>
+      </a>
+      <a class="media-card pod" href="https://open.spotify.com/episode/3eIdGHdMJnVGm1Sosqz67J" target="_blank" rel="noopener">
+        <span class="m-ph"><img src="/assets/press/redbench.jpg" alt="" loading="lazy" decoding="async"><span class="m-play" aria-hidden="true">&#9654;</span></span>
         <span class="m-body">
           <span class="m-top"><span class="m-pub">The Big Red Bench</span><span class="m-type">Podcast</span></span>
           <span class="m-headline">&ldquo;Qualifying for the Open is a dream come true&rdquo;</span>
           <span class="m-foot"><span>Cork&rsquo;s RedFM &middot; 17 min</span><span class="m-arrow">&#9654;</span></span>
         </span>
       </a>
-      <a class="media-card" href="https://open.spotify.com/episode/75NZevJBT1T5yuSTQOMNYC" target="_blank" rel="noopener">
-        <span class="m-ph"><img src="/assets/press/irisham.jpg" alt="" loading="lazy" decoding="async"></span>
+      <a class="media-card pod" href="https://open.spotify.com/episode/5rJBzuuv4VmW6xakHUbm5m" target="_blank" rel="noopener">
+        <span class="m-ph"><img src="/assets/press/danongolf.jpg" alt="" loading="lazy" decoding="async"><span class="m-play" aria-hidden="true">&#9654;</span></span>
+        <span class="m-body">
+          <span class="m-top"><span class="m-pub">Dan on Golf</span><span class="m-type">Podcast</span></span>
+          <span class="m-headline">David Howard on cystic fibrosis and qualifying for The Open</span>
+          <span class="m-foot"><span>Live at the Scottish Open &middot; 1 hr 10 min</span><span class="m-arrow">&#8599;</span></span>
+        </span>
+      </a>
+      <a class="media-card pod" href="https://open.spotify.com/episode/75NZevJBT1T5yuSTQOMNYC" target="_blank" rel="noopener">
+        <span class="m-ph"><img src="/assets/press/irisham.jpg" alt="" loading="lazy" decoding="async"><span class="m-play" aria-hidden="true">&#9654;</span></span>
         <span class="m-body">
           <span class="m-top"><span class="m-pub">The Irish Am Podcast</span><span class="m-type">Podcast</span></span>
           <span class="m-headline">David Howard, East of Ireland champion</span>
