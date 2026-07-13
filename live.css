@@ -1,0 +1,42 @@
+/* LIVE MODULE · davidhowardgolf.ie · Championship week only · delete after The Open */
+#live-strip{ display:flex; flex-direction:column; gap:1.4rem; margin-bottom:clamp(2rem,4vh,3rem); }
+#live-strip[hidden]{ display:none !important; }
+.live-tag{ display:flex; align-items:center; gap:0.7rem; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.2em; text-transform:uppercase; color:var(--bone-dim); }
+.live-dot{ width:10px; height:10px; border-radius:50%; background:var(--violet); animation:livepulse 1.6s ease-in-out infinite; }
+@keyframes livepulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+.live-main{ display:flex; align-items:flex-end; gap:clamp(1.5rem,5vw,4rem); flex-wrap:wrap; }
+.live-score{ font-family:var(--font-mono); font-size:clamp(4.5rem, 3rem + 12vw, 11rem); line-height:0.9; font-weight:500; color:var(--bone); font-variant-numeric:tabular-nums; }
+.live-meta{ display:flex; gap:clamp(1.25rem,4vw,2.5rem); padding-bottom:0.6rem; }
+.lv-cell{ display:flex; flex-direction:column; gap:0.4rem; border-left:1px solid var(--line); padding-left:clamp(0.9rem,2vw,1.4rem); }
+.lv-k{ font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.2em; text-transform:uppercase; color:var(--bone-faint); }
+.lv-v{ font-family:var(--font-mono); font-size:clamp(1.4rem, 1rem + 2vw, 2.2rem); color:var(--bone); font-variant-numeric:tabular-nums; }
+.live-rounds{ font-family:var(--font-mono); font-size:var(--text-small); letter-spacing:0.14em; text-transform:uppercase; color:var(--bone-dim); }
+.live-rounds b{ color:var(--violet-hi); font-weight:500; }
+.live-note{ color:var(--bone-dim); max-width:52ch; }
+
+.week{ padding-block:var(--space-section); border-top:1px solid var(--line-soft); background:var(--ink-2); }
+.week-head{ margin-bottom:clamp(2rem,5vh,3.25rem); }
+.week-head p{ margin-top:1rem; color:var(--bone-dim); }
+.week-list{ display:flex; flex-direction:column; }
+.wk{ display:grid; gap:1rem 2.5rem; padding:clamp(1.4rem,3vh,2rem) 0; border-top:1px solid var(--line-soft); }
+.wk:last-child{ border-bottom:1px solid var(--line-soft); }
+@media (min-width:900px){ .wk{ grid-template-columns:230px 1fr; } }
+.wk-when{ display:flex; flex-direction:column; gap:0.35rem; }
+.wk-date{ font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.18em; text-transform:uppercase; color:var(--bone-faint); }
+.wk-title{ font-family:var(--font-display); font-weight:600; font-size:1.25rem; color:var(--bone); }
+.wk-status{ display:inline-flex; align-items:center; gap:0.5rem; margin-top:0.3rem; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.18em; text-transform:uppercase; color:var(--bone-faint); }
+.wk-status.live{ color:var(--violet-hi); }
+.wk-status.live::before{ content:""; width:8px; height:8px; border-radius:50%; background:var(--violet); animation:livepulse 1.6s ease-in-out infinite; }
+.wk-body{ display:flex; flex-direction:column; gap:0.9rem; min-width:0; }
+.wk-facts{ display:flex; flex-wrap:wrap; gap:0.5rem 2rem; font-family:var(--font-mono); font-size:var(--text-small); letter-spacing:0.08em; text-transform:uppercase; color:var(--bone-dim); }
+.wk-facts b{ color:var(--bone); font-weight:500; }
+.wk-facts .tba{ color:var(--bone-faint); }
+.wk-score{ color:var(--violet-hi); }
+.wk-note{ color:var(--bone-dim); max-width:62ch; }
+.wk-media{ display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center; }
+.wk-ph{ width:104px; height:78px; overflow:hidden; border:1px solid var(--line); border-radius:10px; flex:0 0 auto; }
+.wk-ph img{ width:100%; height:100%; object-fit:cover; filter:grayscale(1) brightness(0.9); transition:filter 500ms var(--ease); }
+.wk-ph:hover img{ filter:none; }
+.wk-vid{ display:inline-flex; align-items:center; gap:0.55rem; padding:0.55rem 1rem; border:1px solid var(--line); border-radius:999px; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.14em; text-transform:uppercase; color:var(--bone-dim); text-decoration:none; transition:color 200ms var(--ease), border-color 200ms var(--ease); }
+.wk-vid::before{ content:"\25B6"; font-size:0.65rem; color:var(--violet-hi); }
+.wk-vid:hover{ color:var(--bone); border-color:var(--violet); }
