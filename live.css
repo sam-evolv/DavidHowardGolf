@@ -51,3 +51,10 @@
 .fw-item a:hover{ color:var(--violet-hi); }
 .fw-cal{ display:inline-flex; align-items:center; margin-top:1.25rem; min-height:44px; padding:0.55rem 1.3rem; border:1px solid var(--line); border-radius:999px; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.14em; text-transform:uppercase; color:var(--bone-dim); text-decoration:none; transition:color 200ms var(--ease), border-color 200ms var(--ease); }
 .fw-cal:hover{ color:var(--bone); border-color:var(--violet); }
+.fw-grid{ grid-template-columns:1fr; }
+@media (min-width:700px){ .fw-grid{ grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); } }
+.cnums{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem 2rem; margin-bottom:clamp(2.5rem,5vh,3.5rem); }
+@media (min-width:1000px){ .cnums{ grid-template-columns:repeat(4, 1fr); } }
+.cn{ display:flex; flex-direction:column; gap:0.5rem; border-left:1px solid var(--line); padding-left:1.2rem; }
+.cn-n{ font-family:var(--font-display); font-weight:600; font-size:clamp(2.1rem, 1.4rem + 2.5vw, 3.2rem); line-height:1; color:var(--bone); }
+.cn-l{ font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.12em; text-transform:uppercase; color:var(--bone-faint); max-width:24ch; }

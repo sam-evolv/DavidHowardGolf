@@ -38,6 +38,12 @@
       '<h2 class="display" id="week-title">The week at Birkdale</h2>' +
       '<p>Tee times, pairings and the road diary, updated through the Championship.</p>' +
       '</div><div class="follow" id="follow"></div>' +
+      '<div class="cnums">' +
+      '<div class="cn"><span class="cn-n">1,456</span><span class="cn-l">World amateur ranking when he entered qualifying</span></div>' +
+      '<div class="cn"><span class="cn-n">288 &#8594; 20</span><span class="cn-l">The Final Qualifying funnel he came through</span></div>' +
+      '<div class="cn"><span class="cn-n">7</span><span class="cn-l">Irish players in the field at Birkdale</span></div>' +
+      '<div class="cn"><span class="cn-n">156</span><span class="cn-l">Players in the 154th Open</span></div>' +
+      '</div>' +
       '<div id="week-list" class="week-list"></div></div>';
     media.parentNode.insertBefore(week, media);
     var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//davidhowardgolf//EN\r\nBEGIN:VEVENT\r\n'
@@ -54,6 +60,7 @@
       '<span class="fw-item"><b>TV &middot; Ireland and UK</b>Sky Sports Golf from 6:30am</span>' +
       '<span class="fw-item"><b>TV &middot; US</b>Peacock from 1:30am ET, then USA Network</span>' +
       '<span class="fw-item"><b>Every shot</b><a href="https://www.theopen.com" target="_blank" rel="noopener">TheOpen.com live scoring</a></span>' +
+      '<span class="fw-item"><b>His profile</b><a href="https://www.theopen.com/players/david-howard" target="_blank" rel="noopener">Official Open player page</a></span>' +
       '</div>' +
       '<a class="fw-cal" download="david-howard-open.ics" href="data:text/calendar;charset=utf-8,' + encodeURIComponent(ics) + '">Add his tee time to your calendar</a>';
   }
