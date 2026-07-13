@@ -1271,6 +1271,78 @@ body[data-sky="dusk"] .hero-veil{
 
 .press-contact{ margin-top:clamp(2.5rem, 5vh, 3.5rem); display:flex; gap:0.9rem; flex-wrap:wrap; }
 
+/* On the bag · sponsor tags */
+.bag{ padding-block:var(--space-section); border-top:1px solid var(--line-soft); background:var(--ink-2); }
+.bag-head{ margin-bottom:clamp(2rem, 5vh, 3.25rem); }
+.bag-head p{ margin-top:1rem; color:var(--bone-dim); }
+.bag-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+}
+@media (min-width:940px){ .bag-grid{ grid-template-columns:repeat(4, 1fr); gap:1.25rem; } }
+.tag{
+  margin:0;
+  position:relative;
+  display:flex; flex-direction:column;
+}
+.tag img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:16px;
+  border:1px solid rgba(237,232,220,0.14);
+  transition:transform 350ms var(--ease);
+}
+.tag:hover img{ transform:translateY(-4px); }
+.grommet{
+  position:absolute;
+  top:10px; left:50%;
+  transform:translateX(-50%);
+  width:15px; height:15px;
+  border-radius:50%;
+  background:var(--ink);
+  border:2.5px solid rgba(237,232,220,0.55);
+  z-index:2;
+}
+.tag-week img{
+  box-shadow:0 0 0 2px var(--violet);
+  border-color:transparent;
+}
+.tag-cap{
+  margin-top:0.8rem;
+  display:flex; flex-direction:column; gap:0.15rem;
+  text-align:center;
+}
+.t-name{
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+}
+.t-week{
+  font-family:var(--font-mono);
+  font-size:var(--text-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--violet-hi);
+}
+.bag-more{
+  display:inline-block;
+  margin-top:clamp(2rem, 4vh, 3rem);
+  font-family:var(--font-mono);
+  font-size:var(--text-small);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  padding-bottom:0.35rem;
+  transition:color 200ms var(--ease), border-color 200ms var(--ease);
+}
+.bag-more:hover{ color:var(--violet-hi); border-color:var(--violet); }
+
 /* Club and cause */
 .allies{
   padding-block:clamp(3.5rem, 4rem + 3vw, 6rem);
@@ -1934,12 +2006,45 @@ footer{
 
 </section>
 
+<!-- ==================== ON THE BAG ==================== -->
+<section class="bag" aria-labelledby="bag-title">
+  <div class="container">
+    <div class="bag-head reveal">
+      <h2 class="display" id="bag-title">On the bag</h2>
+      <p>The partners carrying him to Birkdale.</p>
+    </div>
+    <div class="bag-grid">
+      <figure class="tag tag-week reveal">
+        <span class="grommet" aria-hidden="true"></span>
+        <img src="/assets/sponsors/calderwood.jpg" alt="Calderwood logo" loading="lazy" decoding="async">
+        <figcaption class="tag-cap"><span class="t-name">Calderwood</span><span class="t-week">Championship week</span></figcaption>
+      </figure>
+      <figure class="tag reveal">
+        <span class="grommet" aria-hidden="true"></span>
+        <img src="/assets/sponsors/masterlink.jpg" alt="Masterlink Logistics logo" loading="lazy" decoding="async">
+        <figcaption class="tag-cap"><span class="t-name">Masterlink</span></figcaption>
+      </figure>
+      <figure class="tag reveal">
+        <span class="grommet" aria-hidden="true"></span>
+        <img src="/assets/sponsors/twomore.jpg" alt="Two More Power Balls logo" loading="lazy" decoding="async">
+        <figcaption class="tag-cap"><span class="t-name">Two More</span></figcaption>
+      </figure>
+      <figure class="tag reveal">
+        <span class="grommet" aria-hidden="true"></span>
+        <img src="/assets/sponsors/luxuryexchange.jpg" alt="Luxury Exchange logo" loading="lazy" decoding="async">
+        <figcaption class="tag-cap"><span class="t-name">Luxury Exchange</span></figcaption>
+      </figure>
+    </div>
+    <a class="bag-more reveal" href="mailto:partners@davidhowardgolf.ie">Room on the bag for one more</a>
+  </div>
+</section>
+
 <!-- ==================== PARTNER ==================== -->
 <section class="partner" aria-labelledby="partner-title">
   <div class="container partner-grid">
     <div class="reveal">
       <h2 class="display" id="partner-title">Partner with David</h2>
-      <p class="lead">One of the sports stories of the summer, already carried by <strong>RT&Eacute;, the Irish Examiner, the New York Times and the Reuters wire worldwide</strong>. A partnership here backs the golf and the cause in the same breath.</p>
+      <p class="lead">One of the sports stories of the summer, already carried by <strong>RT&Eacute;, the Irish Examiner, the New York Times and the Reuters wire worldwide</strong>. A partnership here backs the golf and the cause in the same breath. There is room on the bag.</p>
       <a class="btn btn-primary magnetic" href="mailto:partners@davidhowardgolf.ie"><span>Partner enquiries</span></a>
     </div>
 
