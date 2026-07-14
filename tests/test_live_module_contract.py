@@ -26,6 +26,13 @@ class LiveModuleContractTests(unittest.TestCase):
         self.assertIn("Sky Sports Golf", self.source)
         self.assertIn("Add his tee time to your calendar", self.source)
 
+    def test_is_a_reversible_event_scoped_bolt_on(self):
+        self.assertIn("open-week-live-desk", self.source)
+        self.assertIn("teardownEventExperience", self.source)
+        self.assertIn("data.enabled", self.source)
+        self.assertIn("whatItMeans", self.source)
+        self.assertIn("scorecard", self.source)
+
     def test_renders_an_update_timeline_from_verified_events(self):
         self.assertIn("lv-timeline", self.source)
         self.assertIn("updates", self.source)

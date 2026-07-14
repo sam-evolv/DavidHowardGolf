@@ -1,5 +1,14 @@
 {
-  "updatedAt": "2026-07-14T09:00:00Z",
+  "enabled": true,
+  "lifecycle": "pre_event",
+  "updatedAt": "2026-07-14T11:20:00Z",
+  "intro": "The score, the story and what comes next — in one place.",
+  "context": "A first Open Championship",
+  "next": {
+    "label": "Round 1 · Thursday 16 July, 10:42",
+    "detail": "David begins from the 1st tee with Kazuma Kobori and Tom Sloman. Times shown in Irish and UK time."
+  },
+  "updates": [],
   "days": [
     {
       "id": "wed",

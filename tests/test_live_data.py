@@ -54,11 +54,15 @@ class LiveDataValidationTests(unittest.TestCase):
 
     def test_week_requires_update_timestamp_and_known_statuses(self):
         week = {
+            "enabled": True,
+            "lifecycle": "pre_event",
             "updatedAt": "2026-07-16T12:22:18Z",
             "days": [{"id": "r1", "status": "live"}],
         }
         self.assertEqual(validate_week_state(week), [])
         errors = validate_week_state({"days": [{"id": "r1", "status": "maybe"}]})
+        self.assertIn("enabled must be a boolean", errors)
+        self.assertIn("lifecycle must be one of: pre_event, live, complete", errors)
         self.assertIn("updatedAt must be an ISO-8601 timestamp", errors)
         self.assertIn("days[0].status must be one of: upcoming, live, done", errors)
 

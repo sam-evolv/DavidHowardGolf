@@ -44,6 +44,10 @@ def validate_live_state(state: Dict[str, Any]) -> List[str]:
 
 def validate_week_state(week: Dict[str, Any]) -> List[str]:
     errors: List[str] = []
+    if not isinstance(week.get("enabled"), bool):
+        errors.append("enabled must be a boolean")
+    if week.get("lifecycle") not in {"pre_event", "live", "complete"}:
+        errors.append("lifecycle must be one of: pre_event, live, complete")
     if not _is_iso_timestamp(week.get("updatedAt")):
         errors.append("updatedAt must be an ISO-8601 timestamp")
     days = week.get("days")

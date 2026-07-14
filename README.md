@@ -27,6 +27,16 @@ output directory `./`.
 
 The public card shows the source verification time and switches to a transparent "Latest verified score" state after two minutes without a fresh source update. It should never claim a score is live if its source is stale.
 
+### The reversible Open Week Live Desk
+
+The Championship experience is a data-controlled bolt-on: `live.js` injects it at runtime and `index.html` remains the evergreen David Howard Golf site.
+
+- Set `week.json.enabled` to `true` during Open week and choose `lifecycle` as `pre_event`, `live`, or `complete`.
+- Use `next`, `context`, `updates` and `days` in `week.json` for schedule, team diary and context. Team diary entries are distinct from official scoring.
+- Set `week.json.enabled` to `false` after the Open. The script removes the Live Desk, score strip and polling, then restores the original evergreen countdown area. No site redesign or code removal is needed.
+
+The live score may also include `whatItMeans` and a verified `scorecard` for fuller round coverage. Never populate either from unverified commentary.
+
 ### Recommended automation
 
 Use an approved Open data source in a server-side worker running every minute. The worker should validate David’s identity, write only on state change, preserve an append-only update history, and alert a private operator if the source fails or becomes stale. Do not scrape or use an undocumented endpoint in production without permission from the provider.
