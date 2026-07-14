@@ -106,8 +106,15 @@
     box.innerHTML = '<p class="scorecard-title">Hole-by-hole</p><ol>' + cells + '</ol>';
   }
 
+  function deactivateLiveStrip(){
+    if(strip) strip.hidden = true;
+    if(grid) grid.style.display = '';
+    var nextUp = document.querySelector('.next-up'); if(nextUp) nextUp.style.display = '';
+    var clockHead = document.querySelector('.clock-head'); if(clockHead) clockHead.style.display = '';
+  }
+
   function renderLive(data){
-    if(!data || !data.active) return;
+    if(!data || !data.active){ deactivateLiveStrip(); return; }
     createLiveStrip();
     if(!strip) return;
     var stale = isStale(data);
@@ -148,11 +155,34 @@
     var clockHead = document.querySelector('.clock-head'); if(clockHead) clockHead.style.display = 'none';
   }
 
+  function updateOfficialFeedStatus(data, isFallback){
+    var status = document.getElementById('official-feed-status');
+    if(!status) return;
+    if(isFallback){
+      status.innerHTML = 'Official scoring connection temporarily unavailable · <a href="https://www.theopen.com/leaderboard" target="_blank" rel="noopener">Open leaderboard ↗</a>';
+      status.className = 'official-feed-status is-unavailable';
+      return;
+    }
+    var verifiedAt = data && (data.sourceUpdatedAt || data.checkedAt);
+    status.textContent = 'Official scoring connected' + (verifiedAt ? ' · Feed verified ' + formatTime(verifiedAt) : '');
+    status.className = 'official-feed-status is-connected';
+  }
+
+  function refreshOfficialScoring(){
+    return fetchJson('/api/open-scoring').then(function(data){
+      updateOfficialFeedStatus(data, false);
+      renderLive(data);
+      return data;
+    });
+  }
+
   function refreshLive(){
     if(!eventEnabled) return Promise.resolve();
-    return fetchJson('/live.json').then(renderLive).catch(function(){
-      var status = document.getElementById('lv-status');
-      if(status) status.textContent = 'Latest verified score unavailable — see official leaderboard';
+    return refreshOfficialScoring().catch(function(){
+      updateOfficialFeedStatus(null, true);
+      return fetchJson('/live.json').then(renderLive).catch(function(){
+        deactivateLiveStrip();
+      });
     });
   }
 
@@ -193,7 +223,8 @@
       '<span class="fw-item"><b>TV · US</b>Peacock from 1:30am ET, then USA Network</span>' +
       '<span class="fw-item"><b>Every shot</b><a href="https://www.theopen.com/leaderboard" target="_blank" rel="noopener">Official Open leaderboard</a></span>' +
       '<span class="fw-item"><b>His profile</b><a href="https://www.theopen.com/players/david-howard" target="_blank" rel="noopener">Official Open player page</a></span>' +
-      '</div><a class="fw-cal" download="david-howard-open.ics" href="data:text/calendar;charset=utf-8,' + encodeURIComponent(ics) + '">Add his tee time to your calendar</a>';
+      '</div><p class="official-feed-status" id="official-feed-status" aria-live="polite">Checking the official scoring connection…</p>' +
+      '<a class="fw-cal" download="david-howard-open.ics" href="data:text/calendar;charset=utf-8,' + encodeURIComponent(ics) + '">Add his tee time to your calendar</a>';
   }
 
   function renderDiary(updates){

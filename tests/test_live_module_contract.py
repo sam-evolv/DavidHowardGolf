@@ -31,6 +31,13 @@ class LiveModuleContractTests(unittest.TestCase):
         self.assertIn("live-insights", self.source)
         self.assertIn("data.insights", self.source)
 
+    def test_uses_official_open_scoring_with_a_fact_safe_fallback(self):
+        self.assertIn("/api/open-scoring", self.source)
+        self.assertIn("refreshOfficialScoring", self.source)
+        self.assertIn("/live.json", self.source)
+        self.assertIn("official-feed-status", self.source)
+        self.assertIn("Official scoring connected", self.source)
+
     def test_is_a_reversible_event_scoped_bolt_on(self):
         self.assertIn("open-week-live-desk", self.source)
         self.assertIn("teardownEventExperience", self.source)
