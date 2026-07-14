@@ -1,16 +1,65 @@
 {
+  "updatedAt": "2026-07-14T09:00:00Z",
   "days": [
-    { "id": "wed", "label": "Wednesday 15 July", "title": "Practice day", "status": "upcoming",
-      "tee": "", "partners": [], "score": "", "note": "", "photos": [], "videos": [] },
-    { "id": "r1", "label": "Thursday 16 July", "title": "Round 1", "status": "upcoming",
-      "tee": "10:42 \u00b7 1st tee", "partners": ["Kazuma Kobori", "Tom Sloman"],
-      "score": "", "note": "Three groups behind Spieth, Fleetwood and Rahm.", "photos": [], "videos": [] },
-    { "id": "r2", "label": "Friday 17 July", "title": "Round 2", "status": "upcoming",
-      "tee": "15:48 \u00b7 1st tee", "partners": ["Kazuma Kobori", "Tom Sloman"],
-      "score": "", "note": "", "photos": [], "videos": [] },
-    { "id": "r3", "label": "Saturday 18 July", "title": "Round 3", "status": "upcoming",
-      "tee": "", "partners": [], "score": "", "note": "", "photos": [], "videos": [] },
-    { "id": "r4", "label": "Sunday 19 July", "title": "Round 4", "status": "upcoming",
-      "tee": "", "partners": [], "score": "", "note": "", "photos": [], "videos": [] }
+    {
+      "id": "wed",
+      "label": "Wednesday 15 July",
+      "title": "Practice day",
+      "status": "upcoming",
+      "tee": "",
+      "partners": [],
+      "score": "",
+      "note": "",
+      "photos": [],
+      "videos": []
+    },
+    {
+      "id": "r1",
+      "label": "Thursday 16 July",
+      "title": "Round 1",
+      "status": "upcoming",
+      "tee": "10:42 · 1st tee",
+      "partners": ["Kazuma Kobori", "Tom Sloman"],
+      "score": "",
+      "note": "Three groups behind Spieth, Fleetwood and Rahm.",
+      "photos": [],
+      "videos": []
+    },
+    {
+      "id": "r2",
+      "label": "Friday 17 July",
+      "title": "Round 2",
+      "status": "upcoming",
+      "tee": "15:48 · 1st tee",
+      "partners": ["Kazuma Kobori", "Tom Sloman"],
+      "score": "",
+      "note": "",
+      "photos": [],
+      "videos": []
+    },
+    {
+      "id": "r3",
+      "label": "Saturday 18 July",
+      "title": "Round 3",
+      "status": "upcoming",
+      "tee": "",
+      "partners": [],
+      "score": "",
+      "note": "",
+      "photos": [],
+      "videos": []
+    },
+    {
+      "id": "r4",
+      "label": "Sunday 19 July",
+      "title": "Round 4",
+      "status": "upcoming",
+      "tee": "",
+      "partners": [],
+      "score": "",
+      "note": "",
+      "photos": [],
+      "videos": []
+    }
   ]
 }

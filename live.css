@@ -13,6 +13,14 @@
 .live-rounds{ font-family:var(--font-mono); font-size:var(--text-small); letter-spacing:0.14em; text-transform:uppercase; color:var(--bone-dim); }
 .live-rounds b{ color:var(--violet-hi); font-weight:500; }
 .live-note{ color:var(--bone-dim); max-width:52ch; }
+.live-verified,.week-updated{ font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.12em; text-transform:uppercase; color:var(--bone-faint); }
+.live-verified a{ color:var(--bone-dim); text-decoration:underline; text-underline-offset:3px; }
+.live-tag.is-stale{ color:var(--bone-dim); }
+.live-tag.is-stale .live-dot{ background:#b3834d; animation:none; }
+.live-timeline{ display:grid; gap:0.45rem; max-width:62ch; margin:0; padding:0; list-style:none; }
+.live-timeline:empty{ display:none; }
+.live-timeline li{ display:grid; grid-template-columns:4.4rem 1fr; gap:0.8rem; font-family:var(--font-mono); font-size:var(--text-small); color:var(--bone-dim); }
+.live-timeline time{ color:var(--violet-hi); font-variant-numeric:tabular-nums; }
 
 .week{ padding-block:var(--space-section); border-top:1px solid var(--line-soft); background:var(--ink-2); }
 .week-head{ margin-bottom:clamp(2rem,5vh,3.25rem); }
