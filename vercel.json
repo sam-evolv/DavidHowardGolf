@@ -5,8 +5,16 @@
     {
       "source": "/",
       "headers": [
-        { "key": "Link", "value": "<https://www.davidhowardgolf.ie/>; rel=\"canonical\"" }
+        {
+          "key": "Link",
+          "value": "<https://www.davidhowardgolf.ie/>; rel=\"canonical\""
+        }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 10
+    }
+  }
 }
