@@ -5,7 +5,7 @@
   "intro": "The score, the story and what comes next — in one place.",
   "context": "A first Open Championship",
   "next": {
-    "label": "Round 1 · Thursday 16 July, 10:53",
+    "label": "Round 1 · Thursday 16 July, 10:42",
     "detail": "David begins from the 1st tee with Kazuma Kobori and Tom Sloman. Times shown in Irish and UK time."
   },
   "updates": [],
@@ -27,7 +27,7 @@
       "label": "Thursday 16 July",
       "title": "Round 1",
       "status": "upcoming",
-      "tee": "10:53 · 1st tee",
+      "tee": "10:42 · 1st tee",
       "partners": ["Kazuma Kobori", "Tom Sloman"],
       "score": "",
       "note": "Three groups behind Spieth, Fleetwood and Rahm.",
@@ -39,7 +39,7 @@
       "label": "Friday 17 July",
       "title": "Round 2",
       "status": "upcoming",
-      "tee": "15:59 · 1st tee",
+      "tee": "15:48 · 1st tee",
       "partners": ["Kazuma Kobori", "Tom Sloman"],
       "score": "",
       "note": "",
