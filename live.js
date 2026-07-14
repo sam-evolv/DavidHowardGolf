@@ -1,190 +1,303 @@
-/* LIVE MODULE · davidhowardgolf.ie · Championship week only · delete after The Open */
+/* OPEN WEEK LIVE DESK · event-scoped bolt-on for davidhowardgolf.ie */
 (function(){
   if(!window.fetch) return;
-  function esc(t){
-    return String(t == null ? '' : t)
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
 
-  /* ---- inject the live strip into the countdown section ---- */
+  var LIVE_VISIBLE_POLL_MS = 15000;
+  var LIVE_BACKGROUND_POLL_MS = 60000;
+  var WEEK_POLL_MS = 60000;
+  var STALE_AFTER_MS = 120000;
   var grid = document.querySelector('.clock-grid');
   var strip = null;
-  if(grid){
-    strip = document.createElement('div');
+  var desk = null;
+  var weekList = null;
+  var diaryList = null;
+  var eventEnabled = false;
+  var liveTimer = null;
+
+  function esc(value){
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function formatTime(value){
+    if(!value) return 'Time unavailable';
+    var date = new Date(value);
+    if(isNaN(date.getTime())) return 'Time unavailable';
+    return date.toLocaleTimeString('en-IE', {
+      hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Dublin'
+    }) + ' Irish time';
+  }
+
+  function formatDateTime(value){
+    if(!value) return '';
+    var date = new Date(value);
+    if(isNaN(date.getTime())) return '';
+    return date.toLocaleString('en-IE', {
+      weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Dublin'
+    }) + ' Irish time';
+  }
+
+  function isStale(data){
+    if(data.state !== 'on_course' || !data.sourceUpdatedAt) return false;
+    var sourceTime = new Date(data.sourceUpdatedAt).getTime();
+    return isNaN(sourceTime) || Date.now() - sourceTime > STALE_AFTER_MS;
+  }
+
+  function fetchJson(path){
+    return fetch(path + '?t=' + Date.now(), { cache: 'no-store' })
+      .then(function(response){
+        if(!response.ok) throw new Error('Unable to load ' + path);
+        return response.json();
+      });
+  }
+
+  function createLiveStrip(){
+    if(!grid || strip) return;
+    strip = document.createElement('section');
     strip.id = 'live-strip';
     strip.hidden = true;
+    strip.setAttribute('aria-live', 'polite');
     strip.innerHTML =
-      '<p class="live-tag"><span class="live-dot" aria-hidden="true"></span>Live &middot; The 154th Open &middot; Royal Birkdale</p>' +
+      '<p class="live-tag" id="lv-status"><span class="live-dot" aria-hidden="true"></span>Live · The 154th Open · Royal Birkdale</p>' +
       '<div class="live-main"><div class="live-score" id="lv-score">E</div>' +
       '<div class="live-meta">' +
       '<div class="lv-cell"><span class="lv-k">Pos</span><span class="lv-v" id="lv-pos">--</span></div>' +
       '<div class="lv-cell"><span class="lv-k">Thru</span><span class="lv-v" id="lv-thru">--</span></div>' +
       '<div class="lv-cell"><span class="lv-k">Today</span><span class="lv-v" id="lv-today">--</span></div>' +
-      '</div></div>' +
-      '<p class="live-rounds" id="lv-rounds"></p>' +
-      '<p class="live-note" id="lv-note"></p>';
+      '</div></div><p class="live-rounds" id="lv-rounds"></p><p class="live-note" id="lv-note"></p>' +
+      '<p class="live-meaning" id="lv-meaning"></p><p class="live-verified" id="lv-verified"></p>' +
+      '<ol class="live-timeline" id="lv-timeline"></ol><div class="live-insights" id="live-insights"></div><div class="live-scorecard" id="lv-scorecard"></div>';
     grid.parentNode.insertBefore(strip, grid);
   }
 
-  /* ---- inject The Week at Birkdale before the media section ---- */
-  var media = document.querySelector('.media');
-  if(media){
-    var week = document.createElement('section');
-    week.className = 'week';
-    week.setAttribute('aria-labelledby', 'week-title');
-    week.innerHTML =
-      '<div class="container"><div class="week-head">' +
-      '<h2 class="display" id="week-title">The week at Birkdale</h2>' +
-      '<p>Tee times, pairings and the road diary, updated through the Championship.</p>' +
-      '</div><div class="follow" id="follow"></div>' +
-      '<div class="cnums">' +
-      '<div class="cn"><span class="cn-n">1,456</span><span class="cn-l">World amateur ranking when he entered qualifying</span></div>' +
-      '<div class="cn"><span class="cn-n">288 &#8594; 20</span><span class="cn-l">The Final Qualifying funnel he came through</span></div>' +
-      '<div class="cn"><span class="cn-n">7</span><span class="cn-l">Irish players in the field at Birkdale</span></div>' +
-      '<div class="cn"><span class="cn-n">156</span><span class="cn-l">Players in the 154th Open</span></div>' +
-      '</div>' +
-      '<div id="week-list" class="week-list"></div></div>';
-    media.parentNode.insertBefore(week, media);
+  function renderTimeline(updates){
+    var timeline = document.getElementById('lv-timeline');
+    if(!timeline) return;
+    var safeUpdates = Array.isArray(updates) ? updates.slice(0, 5) : [];
+    timeline.innerHTML = safeUpdates.map(function(update){
+      var label = update && update.label ? update.label : '';
+      var at = update && update.at ? formatTime(update.at).replace(' Irish time', '') : '';
+      return '<li><time>' + esc(at) + '</time><span>' + esc(label) + '</span></li>';
+    }).join('');
+  }
+
+  function renderInsights(insights){
+    var panel = document.getElementById('live-insights');
+    if(!panel) return;
+    var items = Array.isArray(insights) ? insights.filter(function(item){
+      return item && item.label && item.value;
+    }).slice(0, 3) : [];
+    if(!items.length){ panel.innerHTML = ''; return; }
+    panel.innerHTML = '<p class="insights-title">Round at a glance</p>' + items.map(function(item){
+      return '<article><span>' + esc(item.label) + '</span><strong>' + esc(item.value) + '</strong>' +
+        (item.detail ? '<p>' + esc(item.detail) + '</p>' : '') + '</article>';
+    }).join('');
+  }
+
+  function renderScorecard(scorecard){
+    var box = document.getElementById('lv-scorecard');
+    if(!box) return;
+    var holes = Array.isArray(scorecard) ? scorecard.filter(function(hole){ return hole && hole.number; }) : [];
+    if(!holes.length){ box.innerHTML = ''; return; }
+    var cells = holes.map(function(hole){
+      return '<li><span>Hole ' + esc(hole.number) + '</span><b>' + esc(hole.score || '—') + '</b><small>Par ' + esc(hole.par || '—') + '</small></li>';
+    }).join('');
+    box.innerHTML = '<p class="scorecard-title">Hole-by-hole</p><ol>' + cells + '</ol>';
+  }
+
+  function deactivateLiveStrip(){
+    if(strip) strip.hidden = true;
+    if(grid) grid.style.display = '';
+    var nextUp = document.querySelector('.next-up'); if(nextUp) nextUp.style.display = '';
+    var clockHead = document.querySelector('.clock-head'); if(clockHead) clockHead.style.display = '';
+  }
+
+  function renderLive(data){
+    if(!data || !data.active){ deactivateLiveStrip(); return; }
+    createLiveStrip();
+    if(!strip) return;
+    var stale = isStale(data);
+    var complete = data.state === 'round_complete';
+    document.getElementById('lv-score').textContent = data.score || 'E';
+    document.getElementById('lv-pos').textContent = data.position || data.pos || '--';
+    document.getElementById('lv-thru').textContent = complete ? 'Final' : (data.thru || '--');
+    document.getElementById('lv-today').textContent = data.today || '--';
+
+    var status = document.getElementById('lv-status');
+    status.className = 'live-tag' + (stale ? ' is-stale' : '');
+    status.innerHTML = '<span class="live-dot" aria-hidden="true"></span>' +
+      (complete ? 'Round ' + esc(data.round || '') + ' complete' : (stale ? 'Latest verified score' : 'Live')) +
+      ' · The 154th Open · Royal Birkdale';
+
+    var rounds = document.getElementById('lv-rounds');
+    var parts = [];
+    if(Array.isArray(data.rounds)) {
+      for(var i = 0; i < data.rounds.length; i++) parts.push('R' + (i + 1) + ' <b>' + esc(data.rounds[i]) + '</b>');
+    }
+    if(data.leader) parts.push('Leader <b>' + esc(data.leader) + '</b>');
+    rounds.innerHTML = parts.join(' · ');
+    document.getElementById('lv-note').textContent = data.note || '';
+    document.getElementById('lv-meaning').textContent = data.whatItMeans || '';
+
+    var verified = document.getElementById('lv-verified');
+    var sourceLink = data.sourceUrl && /^https:\/\//.test(data.sourceUrl)
+      ? '<a href="' + esc(data.sourceUrl) + '" target="_blank" rel="noopener">Official leaderboard ↗</a>' : '';
+    verified.innerHTML = (stale ? 'Last verified ' : 'Verified ') + esc(formatTime(data.sourceUpdatedAt || data.checkedAt)) +
+      (sourceLink ? ' · ' + sourceLink : '');
+    renderTimeline(data.updates);
+    renderInsights(data.insights);
+    renderScorecard(data.scorecard);
+
+    strip.hidden = false;
+    grid.style.display = 'none';
+    var nextUp = document.querySelector('.next-up'); if(nextUp) nextUp.style.display = 'none';
+    var clockHead = document.querySelector('.clock-head'); if(clockHead) clockHead.style.display = 'none';
+  }
+
+  function updateOfficialFeedStatus(data, isFallback){
+    var status = document.getElementById('official-feed-status');
+    if(!status) return;
+    if(isFallback){
+      status.innerHTML = 'Official scoring connection temporarily unavailable · <a href="https://www.theopen.com/leaderboard" target="_blank" rel="noopener">Open leaderboard ↗</a>';
+      status.className = 'official-feed-status is-unavailable';
+      return;
+    }
+    var verifiedAt = data && (data.sourceUpdatedAt || data.checkedAt);
+    status.textContent = 'Official scoring connected' + (verifiedAt ? ' · Feed verified ' + formatTime(verifiedAt) : '');
+    status.className = 'official-feed-status is-connected';
+  }
+
+  function refreshOfficialScoring(){
+    return fetchJson('/api/open-scoring').then(function(data){
+      updateOfficialFeedStatus(data, false);
+      renderLive(data);
+      return data;
+    });
+  }
+
+  function refreshLive(){
+    if(!eventEnabled) return Promise.resolve();
+    return refreshOfficialScoring().catch(function(){
+      updateOfficialFeedStatus(null, true);
+      return fetchJson('/live.json').then(renderLive).catch(function(){
+        deactivateLiveStrip();
+      });
+    });
+  }
+
+  function buildLiveDesk(data){
+    if(desk) return;
+    var media = document.querySelector('.media');
+    if(!media) return;
+    desk = document.createElement('section');
+    desk.id = 'open-week-live-desk';
+    desk.className = 'week live-desk';
+    desk.setAttribute('aria-labelledby', 'live-desk-title');
+    desk.innerHTML =
+      '<div class="container"><div class="week-head live-desk-head">' +
+      '<p class="eyebrow">David Howard · Championship week</p>' +
+      '<h2 class="display" id="live-desk-title">Open Week Live Desk</h2>' +
+      '<p id="live-desk-intro">The score, the story and what comes next — in one place.</p>' +
+      '<p class="week-updated" id="week-updated" aria-live="polite"></p></div>' +
+      '<div class="live-brief"><article><span class="brief-k">Next up</span><strong id="desk-next">Schedule to follow</strong><p id="desk-next-detail"></p></article>' +
+      '<article><span class="brief-k">Why it matters</span><strong id="desk-context">Follow every round</strong><p>Verified official scoring, alongside updates from David’s team at Birkdale.</p></article></div>' +
+      '<div class="follow" id="follow"></div><div class="live-desk-grid">' +
+      '<div><p class="fw-title">The Championship</p><div id="week-list" class="week-list"></div></div>' +
+      '<aside class="road-diary"><p class="fw-title">From Birkdale</p><ol id="road-diary" class="road-diary-list"></ol></aside>' +
+      '</div></div>';
+    media.parentNode.insertBefore(desk, media);
+    weekList = document.getElementById('week-list');
+    diaryList = document.getElementById('road-diary');
     var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//davidhowardgolf//EN\r\nBEGIN:VEVENT\r\n'
-            + 'UID:dhg-r1@davidhowardgolf.ie\r\nDTSTAMP:20260713T200000Z\r\n'
-            + 'DTSTART:20260716T094200Z\r\nDTEND:20260716T150000Z\r\n'
-            + 'SUMMARY:David Howard tees off - The 154th Open\r\n'
-            + 'LOCATION:Royal Birkdale\\, Southport\r\n'
-            + 'DESCRIPTION:Round 1 with Kazuma Kobori and Tom Sloman. Follow live at davidhowardgolf.ie\r\n'
-            + 'URL:https://www.davidhowardgolf.ie\r\nEND:VEVENT\r\nEND:VCALENDAR';
+      + 'UID:dhg-r1@davidhowardgolf.ie\r\nDTSTAMP:20260713T200000Z\r\n'
+      + 'DTSTART:20260716T094200Z\r\nDTEND:20260716T150000Z\r\n'
+      + 'SUMMARY:David Howard tees off - The 154th Open\r\n'
+      + 'LOCATION:Royal Birkdale\\, Southport\r\n'
+      + 'DESCRIPTION:Round 1 with Kazuma Kobori and Tom Sloman. Follow live at davidhowardgolf.ie\r\n'
+      + 'URL:https://www.davidhowardgolf.ie\r\nEND:VEVENT\r\nEND:VCALENDAR';
     document.getElementById('follow').innerHTML =
-      '<p class="fw-title">How to follow</p>' +
-      '<div class="fw-grid">' +
-      '<span class="fw-item"><b>His group</b>10:42 Irish and UK time &middot; 5:42am US Eastern</span>' +
-      '<span class="fw-item"><b>TV &middot; Ireland and UK</b>Sky Sports Golf from 6:30am</span>' +
-      '<span class="fw-item"><b>TV &middot; US</b>Peacock from 1:30am ET, then USA Network</span>' +
-      '<span class="fw-item"><b>Every shot</b><a href="https://www.theopen.com" target="_blank" rel="noopener">TheOpen.com live scoring</a></span>' +
+      '<p class="fw-title">How to follow</p><div class="fw-grid">' +
+      '<span class="fw-item"><b>His group</b>10:42 Irish and UK time · 5:42am US Eastern</span>' +
+      '<span class="fw-item"><b>TV · Ireland and UK</b>Sky Sports Golf from 6:30am</span>' +
+      '<span class="fw-item"><b>TV · US</b>Peacock from 1:30am ET, then USA Network</span>' +
+      '<span class="fw-item"><b>Every shot</b><a href="https://www.theopen.com/leaderboard" target="_blank" rel="noopener">Official Open leaderboard</a></span>' +
       '<span class="fw-item"><b>His profile</b><a href="https://www.theopen.com/players/david-howard" target="_blank" rel="noopener">Official Open player page</a></span>' +
-      '</div>' +
+      '</div><p class="official-feed-status" id="official-feed-status" aria-live="polite">Checking the official scoring connection…</p>' +
       '<a class="fw-cal" download="david-howard-open.ics" href="data:text/calendar;charset=utf-8,' + encodeURIComponent(ics) + '">Add his tee time to your calendar</a>';
   }
 
-  /* ---- week renderer ---- */
-  fetch('/week.json?t=' + Date.now())
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      var box = document.getElementById('week-list');
-      if(!box || !data || !data.days) return;
-      var html = '';
-      for(var i = 0; i < data.days.length; i++){
-        var d = data.days[i];
-        var stCls = d.status === 'live' ? ' live' : '';
-        var stTxt = d.status === 'live' ? 'Live now' : d.status === 'done' ? 'Complete' : 'Ahead';
-        html += '<article class="wk"><div class="wk-when">'
-              + '<span class="wk-date">' + esc(d.label) + '</span>'
-              + '<span class="wk-title">' + esc(d.title) + '</span>'
-              + '<span class="wk-status' + stCls + '">' + stTxt + '</span>'
-              + '</div><div class="wk-body">';
-        html += '<div class="wk-facts">';
-        html += '<span>Tee ' + (d.tee ? '<b>' + esc(d.tee) + '</b>' : '<span class="tba">TBA</span>') + '</span>';
-        html += '<span>Playing with ' + (d.partners && d.partners.length
-              ? '<b>' + esc(d.partners.join(' and ')) + '</b>'
-              : '<span class="tba">draw to come</span>') + '</span>';
-        if(d.score){ html += '<span class="wk-score"><b>' + esc(d.score) + '</b></span>'; }
-        html += '</div>';
-        if(d.note){ html += '<p class="wk-note">' + esc(d.note) + '</p>'; }
-        var media = '';
-        if(d.photos){
-          for(var p = 0; p < d.photos.length; p++){
-            media += '<span class="wk-ph"><img src="' + esc(d.photos[p]) + '" alt="" loading="lazy" decoding="async"></span>';
-          }
-        }
-        if(d.videos){
-          for(var v = 0; v < d.videos.length; v++){
-            var vid = d.videos[v];
-            if(vid && vid.url){
-              media += '<a class="wk-vid" href="' + esc(vid.url) + '" target="_blank" rel="noopener">' + esc(vid.title || 'Watch') + '</a>';
-            }
-          }
-        }
-        if(media){ html += '<div class="wk-media">' + media + '</div>'; }
-        html += '</div></article>';
-      }
-      box.innerHTML = html;
-    })
-    .catch(function(){});
+  function renderDiary(updates){
+    if(!diaryList) return;
+    var items = Array.isArray(updates) ? updates.slice(0, 8) : [];
+    diaryList.innerHTML = items.map(function(item){
+      var label = item && item.label ? item.label : 'Team update';
+      var body = item && item.body ? item.body : '';
+      var at = item && item.at ? formatDateTime(item.at) : '';
+      var kind = item && item.kind ? item.kind.replace(/_/g, ' ') : 'team update';
+      return '<li><p class="diary-meta">' + esc(kind) + (at ? ' · ' + esc(at) : '') + '</p><strong>' + esc(label) + '</strong>' +
+        (body ? '<p>' + esc(body) + '</p>' : '') + '</li>';
+    }).join('') || '<li class="diary-empty">Team updates from Birkdale will appear here during the Championship.</li>';
+  }
 
-  /* ---- live score engine: manual override first, ESPN second ---- */
-  var T0 = new Date('2026-07-16T05:30:00+01:00').getTime();
-  var T1 = new Date('2026-07-19T23:59:00+01:00').getTime();
-  function inWindow(){ var n = Date.now(); return n >= T0 && n <= T1; }
-
-  function show(d){
-    if(!strip) return;
-    document.getElementById('lv-score').textContent = d.score || 'E';
-    document.getElementById('lv-pos').textContent = d.pos || '--';
-    document.getElementById('lv-thru').textContent = d.thru || '--';
-    document.getElementById('lv-today').textContent = d.today || '--';
-    var r = document.getElementById('lv-rounds');
-    if(d.rounds && d.rounds.length){
-      var parts = [];
-      for(var i = 0; i < d.rounds.length; i++){ parts.push('R' + (i+1) + ' <b>' + esc(d.rounds[i]) + '</b>'); }
-      r.innerHTML = parts.join(' &middot; ');
-    } else { r.innerHTML = ''; }
-    if(d.leader){
-      r.innerHTML += (r.innerHTML ? ' &middot; ' : '') + 'Leader <b>' + esc(d.leader) + '</b>';
+  function renderWeek(data){
+    if(!data || !data.enabled){ teardownEventExperience(); return; }
+    buildLiveDesk(data);
+    if(!weekList) return;
+    var html = '';
+    for(var i = 0; i < data.days.length; i++){
+      var day = data.days[i];
+      var statusClass = day.status === 'live' ? ' live' : '';
+      var statusText = day.status === 'live' ? 'Live now' : day.status === 'done' ? 'Complete' : 'Ahead';
+      html += '<article class="wk"><div class="wk-when"><span class="wk-date">' + esc(day.label) + '</span><span class="wk-title">' + esc(day.title) + '</span><span class="wk-status' + statusClass + '">' + statusText + '</span></div>' +
+        '<div class="wk-body"><div class="wk-facts"><span>Tee ' + (day.tee ? '<b>' + esc(day.tee) + '</b>' : '<span class="tba">TBA</span>') + '</span>' +
+        '<span>Playing with ' + (Array.isArray(day.partners) && day.partners.length ? '<b>' + esc(day.partners.join(' and ')) + '</b>' : '<span class="tba">draw to come</span>') + '</span>' +
+        (day.score ? '<span class="wk-score"><b>' + esc(day.score) + '</b></span>' : '') + '</div>' +
+        (day.note ? '<p class="wk-note">' + esc(day.note) + '</p>' : '') + '</div></article>';
     }
-    document.getElementById('lv-note').textContent = d.note || '';
-    strip.hidden = false;
-    grid.style.display = 'none';
-    var nu = document.querySelector('.next-up'); if(nu) nu.style.display = 'none';
-    var h = document.querySelector('.clock-head'); if(h) h.style.display = 'none';
+    weekList.innerHTML = html;
+    renderDiary(data.updates);
+    var stamp = document.getElementById('week-updated');
+    if(stamp) stamp.textContent = data.updatedAt ? 'Desk updated ' + formatTime(data.updatedAt) : '';
+    var intro = document.getElementById('live-desk-intro');
+    if(intro && data.intro) intro.textContent = data.intro;
+    var next = document.getElementById('desk-next');
+    var nextDetail = document.getElementById('desk-next-detail');
+    if(next) next.textContent = data.next && data.next.label ? data.next.label : 'Schedule to follow';
+    if(nextDetail) nextDetail.textContent = data.next && data.next.detail ? data.next.detail : '';
+    var context = document.getElementById('desk-context');
+    if(context) context.textContent = data.context || 'Follow every round';
   }
 
-  function fromESPN(d){
-    try{
-      var comps = d.events[0].competitions[0].competitors;
-      for(var i = 0; i < comps.length; i++){
-        var c = comps[i];
-        var name = (c.athlete && (c.athlete.displayName || c.athlete.fullName)) || '';
-        if(/howard/i.test(name) && /david/i.test(name)){
-          var st = c.status || {};
-          var pos = (st.position && (st.position.displayName || st.position.id)) || '';
-          var rounds = [];
-          if(c.linescores){
-            for(var j = 0; j < c.linescores.length; j++){
-              var l = c.linescores[j];
-              rounds.push(l.displayValue || l.value || '');
-            }
-          }
-          var lead = '';
-          try{
-            var c0 = comps[0];
-            lead = (c0.score && c0.score.displayValue) || c0.score || '';
-          }catch(e2){}
-          show({
-            score: (c.score && c.score.displayValue) || c.score || 'E',
-            pos: pos, thru: st.thru || '', today: st.displayValue || '',
-            rounds: rounds, note: '', leader: lead
-          });
-          return true;
-        }
-      }
-    }catch(e){}
-    return false;
+  function teardownEventExperience(){
+    eventEnabled = false;
+    if(liveTimer) { clearTimeout(liveTimer); liveTimer = null; }
+    if(desk) { desk.remove(); desk = null; weekList = null; diaryList = null; }
+    if(strip) { strip.remove(); strip = null; }
+    if(grid) grid.style.display = '';
+    var nextUp = document.querySelector('.next-up'); if(nextUp) nextUp.style.display = '';
+    var clockHead = document.querySelector('.clock-head'); if(clockHead) clockHead.style.display = '';
   }
 
-  function tick(){
-    fetch('/live.json?t=' + Date.now())
-      .then(function(r){ return r.json(); })
-      .then(function(j){
-        if(j && j.active){ show(j); return true; }
-        if(!inWindow()) return false;
-        return fetch('https://site.api.espn.com/apis/site/v2/sports/golf/pga/leaderboard')
-          .then(function(r){ return r.json(); })
-          .then(fromESPN)
-          .catch(function(){ return false; });
-      })
-      .catch(function(){})
-      .then(function(){
-        if(inWindow()){ setTimeout(tick, document.hidden ? 120000 : 60000); }
-      });
+  function refreshWeek(){
+    return fetchJson('/week.json').then(function(data){
+      eventEnabled = Boolean(data && data.enabled);
+      renderWeek(data);
+      if(eventEnabled && !liveTimer) scheduleLiveRefresh();
+    }).catch(function(){});
   }
-  tick();
+
+  function scheduleLiveRefresh(){
+    if(!eventEnabled) return;
+    if(liveTimer) clearTimeout(liveTimer);
+    refreshLive().then(function(){
+      liveTimer = setTimeout(scheduleLiveRefresh, document.hidden ? LIVE_BACKGROUND_POLL_MS : LIVE_VISIBLE_POLL_MS);
+    });
+  }
+
+  refreshWeek();
+  setInterval(refreshWeek, WEEK_POLL_MS);
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden) { refreshWeek(); scheduleLiveRefresh(); }
+  });
 })();

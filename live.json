@@ -1,9 +1,19 @@
 {
+  "schemaVersion": 1,
   "active": false,
+  "state": "upcoming",
+  "round": null,
   "score": "",
-  "pos": "",
+  "position": "",
   "thru": "",
   "today": "",
   "rounds": [],
-  "note": ""
+  "leader": "",
+  "source": "",
+  "sourceUrl": "https://www.theopen.com/leaderboard",
+  "sourceUpdatedAt": "",
+  "checkedAt": "",
+  "publishedAt": "",
+  "note": "",
+  "updates": []
 }
