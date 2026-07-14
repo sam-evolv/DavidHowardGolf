@@ -25,6 +25,22 @@ class LiveDataValidationTests(unittest.TestCase):
         }
         self.assertEqual(validate_live_state(state), [])
 
+    def test_live_insights_must_be_structured_when_present(self):
+        state = {
+            "schemaVersion": 1,
+            "active": True,
+            "state": "on_course",
+            "source": "official-open",
+            "sourceUrl": "https://www.theopen.com/leaderboard",
+            "sourceUpdatedAt": "2026-07-16T12:22:00Z",
+            "checkedAt": "2026-07-16T12:22:18Z",
+            "publishedAt": "2026-07-16T12:22:18Z",
+            "insights": [{"label": "Projected cut", "value": "Inside by three"}],
+        }
+        self.assertEqual(validate_live_state(state), [])
+        state["insights"] = [{"label": "Projected cut"}]
+        self.assertIn("insights[0] must include text label and value", validate_live_state(state))
+
     def test_active_round_rejects_missing_freshness_evidence(self):
         state = {
             "schemaVersion": 1,

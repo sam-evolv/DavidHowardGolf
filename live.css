@@ -22,6 +22,13 @@
 .live-timeline:empty{ display:none; }
 .live-timeline li{ display:grid; grid-template-columns:4.4rem 1fr; gap:0.8rem; font-family:var(--font-mono); font-size:var(--text-small); color:var(--bone-dim); }
 .live-timeline time{ color:var(--violet-hi); font-variant-numeric:tabular-nums; }
+.live-insights:empty{ display:none; }
+.live-insights{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1px; margin-top:1.25rem; border:1px solid var(--line); background:var(--line); }
+.insights-title{ grid-column:1/-1; margin:0; padding:0.7rem 0.9rem; background:var(--ink-2); font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.16em; text-transform:uppercase; color:var(--bone-faint); }
+.live-insights article{ min-height:7.2rem; padding:0.9rem; background:var(--ink-2); }
+.live-insights span{ display:block; margin-bottom:0.4rem; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.12em; text-transform:uppercase; color:var(--bone-faint); }
+.live-insights strong{ display:block; color:var(--bone); font-family:var(--font-display); font-size:clamp(1.2rem,1rem + 1vw,1.55rem); line-height:1.05; }
+.live-insights p{ margin-top:0.45rem; color:var(--bone-dim); font-size:var(--text-small); line-height:1.35; }
 .live-scorecard:empty{ display:none; }
 .live-scorecard{ margin-top:0.5rem; padding-top:1rem; border-top:1px solid var(--line-soft); }
 .scorecard-title{ margin-bottom:0.7rem; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.16em; text-transform:uppercase; color:var(--bone-faint); }

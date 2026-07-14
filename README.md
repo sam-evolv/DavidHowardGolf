@@ -35,7 +35,7 @@ The Championship experience is a data-controlled bolt-on: `live.js` injects it a
 - Use `next`, `context`, `updates` and `days` in `week.json` for schedule, team diary and context. Team diary entries are distinct from official scoring.
 - Set `week.json.enabled` to `false` after the Open. The script removes the Live Desk, score strip and polling, then restores the original evergreen countdown area. No site redesign or code removal is needed.
 
-The live score may also include `whatItMeans` and a verified `scorecard` for fuller round coverage. Never populate either from unverified commentary.
+The live score may also include `whatItMeans`, an optional verified `scorecard`, and up to three structured `insights` (`label`, `value`, optional `detail`) for useful context such as cut-line position or the next decisive stretch. Never populate any of these from unverified commentary.
 
 ### Recommended automation
 

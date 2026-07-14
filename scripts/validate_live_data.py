@@ -39,6 +39,14 @@ def validate_live_state(state: Dict[str, Any]) -> List[str]:
             errors.append(f"{field} must be an ISO-8601 timestamp while active")
     if "updates" in state and not isinstance(state["updates"], list):
         errors.append("updates must be a list when present")
+    insights = state.get("insights")
+    if insights is not None:
+        if not isinstance(insights, list):
+            errors.append("insights must be a list when present")
+        else:
+            for index, insight in enumerate(insights):
+                if not isinstance(insight, dict) or not isinstance(insight.get("label"), str) or not insight["label"].strip() or not isinstance(insight.get("value"), str) or not insight["value"].strip():
+                    errors.append(f"insights[{index}] must include text label and value")
     return errors
 
 

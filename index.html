@@ -198,7 +198,8 @@ a{ color:inherit; }
   color:var(--bone-dim);
 }
 
-h2.display{ font-size:var(--text-h2); max-width:8em; }
+h2.display{ font-size:var(--text-h2); max-width:min(100%, 12ch); min-width:0; text-wrap:balance; overflow-wrap:normal; word-break:normal; }
+.media-head > h2.display, .q-head > h2.display, .bag-head > h2.display{ flex:0 1 min(100%, 12ch); }
 
 p{ max-width:62ch; }
 .lead{ font-size:var(--text-lead); line-height:1.55; }
@@ -1532,25 +1533,29 @@ footer{
    REDUCED MOTION · everything calms down
    ================================================================ */
 
-/* Word-kinetic headline reveals */
-.wk .w{
+/* Component-scoped section-headline reveal. Generic `.w`/`.wi` selectors
+   were collision-prone with browser extensions and clipped glyphs at some widths. */
+.headline-reveal .headline-word{
   display:inline-block;
-  overflow:hidden;
+  overflow:visible;
   vertical-align:top;
-  padding-bottom:0.09em;
-  margin-bottom:-0.09em;
+  white-space:nowrap;
+  padding-block:0.08em 0.14em;
+  margin-block:-0.08em -0.14em;
 }
-.wk .wi{
+.headline-reveal .headline-word-inner{
   display:inline-block;
-  transform:translateY(108%);
-  transition:transform 850ms var(--ease);
+  opacity:0;
+  transform:translateY(0.42em);
+  transition:opacity 280ms var(--ease), transform 760ms var(--ease);
+  will-change:transform,opacity;
 }
-.wk.on .wi{ transform:none; }
-.wk .w:nth-child(2) .wi{ transition-delay:70ms; }
-.wk .w:nth-child(3) .wi{ transition-delay:140ms; }
-.wk .w:nth-child(4) .wi{ transition-delay:210ms; }
-.wk .w:nth-child(5) .wi{ transition-delay:280ms; }
-.wk .w:nth-child(6) .wi{ transition-delay:350ms; }
+.headline-reveal.on .headline-word-inner{ opacity:1; transform:none; }
+.headline-reveal .headline-word:nth-of-type(2) .headline-word-inner{ transition-delay:70ms; }
+.headline-reveal .headline-word:nth-of-type(3) .headline-word-inner{ transition-delay:140ms; }
+.headline-reveal .headline-word:nth-of-type(4) .headline-word-inner{ transition-delay:210ms; }
+.headline-reveal .headline-word:nth-of-type(5) .headline-word-inner{ transition-delay:280ms; }
+.headline-reveal .headline-word:nth-of-type(6) .headline-word-inner{ transition-delay:350ms; }
 
 /* Countdown digit roll: the departures board */
 @keyframes roll{
@@ -1580,7 +1585,7 @@ footer{
   }
   .reveal{ opacity:1; transform:none; }
   .kinetic .ch{ transform:none; }
-  .wk .wi{ transform:none; }
+  .headline-reveal .headline-word-inner{ opacity:1; transform:none; }
   .marquee-track{ animation:none; transform:none; }
   .foot-mark{ animation:none; transform:translateY(0.14em); }
   .stamp{ transform:rotate(-2deg) scale(1); opacity:1; filter:none; }
@@ -2300,19 +2305,19 @@ function startHero(){
   });
 }
 
-/* ---------------- Word-kinetic section headlines ---------------- */
+/* ---------------- Stable, component-scoped section headline reveals ---------------- */
 document.querySelectorAll('h2.display').forEach(function(h){
   var words = h.textContent.trim().split(/\s+/);
   h.textContent = '';
-  h.classList.add('wk');
-  words.forEach(function(w, i){
-    var wrap = document.createElement('span');
-    wrap.className = 'w';
+  h.classList.add('headline-reveal');
+  words.forEach(function(wordText, i){
+    var word = document.createElement('span');
+    word.className = 'headline-word';
     var inner = document.createElement('span');
-    inner.className = 'wi';
-    inner.textContent = w;
-    wrap.appendChild(inner);
-    h.appendChild(wrap);
+    inner.className = 'headline-word-inner';
+    inner.textContent = wordText;
+    word.appendChild(inner);
+    h.appendChild(word);
     if(i < words.length - 1) h.appendChild(document.createTextNode(' '));
   });
 });
@@ -2321,10 +2326,10 @@ if('IntersectionObserver' in window && !reduced){
     entries.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('on'); hio.unobserve(e.target); }
     });
-  }, { threshold: 0.4 });
-  document.querySelectorAll('h2.wk').forEach(function(h){ hio.observe(h); });
+  }, { threshold: 0.15, rootMargin:'0px 0px -8% 0px' });
+  document.querySelectorAll('h2.headline-reveal').forEach(function(h){ hio.observe(h); });
 }else{
-  document.querySelectorAll('h2.wk').forEach(function(h){ h.classList.add('on'); });
+  document.querySelectorAll('h2.headline-reveal').forEach(function(h){ h.classList.add('on'); });
 }
 
 /* ---------------- Wind field canvas ---------------- */

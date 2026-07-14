@@ -67,7 +67,7 @@
       '<div class="lv-cell"><span class="lv-k">Today</span><span class="lv-v" id="lv-today">--</span></div>' +
       '</div></div><p class="live-rounds" id="lv-rounds"></p><p class="live-note" id="lv-note"></p>' +
       '<p class="live-meaning" id="lv-meaning"></p><p class="live-verified" id="lv-verified"></p>' +
-      '<ol class="live-timeline" id="lv-timeline"></ol><div class="live-scorecard" id="lv-scorecard"></div>';
+      '<ol class="live-timeline" id="lv-timeline"></ol><div class="live-insights" id="live-insights"></div><div class="live-scorecard" id="lv-scorecard"></div>';
     grid.parentNode.insertBefore(strip, grid);
   }
 
@@ -79,6 +79,19 @@
       var label = update && update.label ? update.label : '';
       var at = update && update.at ? formatTime(update.at).replace(' Irish time', '') : '';
       return '<li><time>' + esc(at) + '</time><span>' + esc(label) + '</span></li>';
+    }).join('');
+  }
+
+  function renderInsights(insights){
+    var panel = document.getElementById('live-insights');
+    if(!panel) return;
+    var items = Array.isArray(insights) ? insights.filter(function(item){
+      return item && item.label && item.value;
+    }).slice(0, 3) : [];
+    if(!items.length){ panel.innerHTML = ''; return; }
+    panel.innerHTML = '<p class="insights-title">Round at a glance</p>' + items.map(function(item){
+      return '<article><span>' + esc(item.label) + '</span><strong>' + esc(item.value) + '</strong>' +
+        (item.detail ? '<p>' + esc(item.detail) + '</p>' : '') + '</article>';
     }).join('');
   }
 
@@ -126,6 +139,7 @@
     verified.innerHTML = (stale ? 'Last verified ' : 'Verified ') + esc(formatTime(data.sourceUpdatedAt || data.checkedAt)) +
       (sourceLink ? ' · ' + sourceLink : '');
     renderTimeline(data.updates);
+    renderInsights(data.insights);
     renderScorecard(data.scorecard);
 
     strip.hidden = false;
