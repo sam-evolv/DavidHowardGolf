@@ -13,6 +13,7 @@
   var diaryList = null;
   var eventEnabled = false;
   var liveTimer = null;
+  var followScheduleKey = null;
 
   function esc(value){
     return String(value == null ? '' : value)
@@ -36,6 +37,31 @@
     return date.toLocaleString('en-IE', {
       weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Dublin'
     }) + ' Irish time';
+  }
+
+  function formatScheduleTime(value, timeZone, locale, hour12){
+    if(!value) return '';
+    var date = new Date(value);
+    if(isNaN(date.getTime())) return '';
+    return date.toLocaleTimeString(locale || 'en-IE', {
+      hour: 'numeric', minute: '2-digit', timeZone: timeZone, hour12: hour12
+    });
+  }
+
+  function formatIcsTime(value){
+    var date = new Date(value);
+    if(isNaN(date.getTime())) return '';
+    function two(number){ return number < 10 ? '0' + number : String(number); }
+    return date.getUTCFullYear() + two(date.getUTCMonth() + 1) + two(date.getUTCDate()) + 'T' +
+      two(date.getUTCHours()) + two(date.getUTCMinutes()) + two(date.getUTCSeconds()) + 'Z';
+  }
+
+  function findRound(data, id){
+    if(!data || !Array.isArray(data.days)) return null;
+    for(var i = 0; i < data.days.length; i++){
+      if(data.days[i] && data.days[i].id === id) return data.days[i];
+    }
+    return null;
   }
 
   function isStale(data){
@@ -209,16 +235,29 @@
     media.parentNode.insertBefore(desk, media);
     weekList = document.getElementById('week-list');
     diaryList = document.getElementById('road-diary');
+  }
+
+  function renderFollow(data){
+    var follow = document.getElementById('follow');
+    var day = findRound(data, 'r1');
+    if(!follow || !day || !day.teeTime) return;
+    if(followScheduleKey === day.teeTime && follow.innerHTML) return;
+    followScheduleKey = day.teeTime;
+
+    var start = new Date(day.teeTime);
+    var end = new Date(start.getTime() + (5 * 60 * 60 * 1000));
+    var localTime = formatScheduleTime(day.teeTime, 'Europe/Dublin', 'en-IE', false);
+    var easternTime = formatScheduleTime(day.teeTime, 'America/New_York', 'en-US', true);
     var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//davidhowardgolf//EN\r\nBEGIN:VEVENT\r\n'
       + 'UID:dhg-r1@davidhowardgolf.ie\r\nDTSTAMP:20260713T200000Z\r\n'
-      + 'DTSTART:20260716T094200Z\r\nDTEND:20260716T150000Z\r\n'
+      + 'DTSTART:' + formatIcsTime(start) + '\r\nDTEND:' + formatIcsTime(end) + '\r\n'
       + 'SUMMARY:David Howard tees off - The 154th Open\r\n'
       + 'LOCATION:Royal Birkdale\\, Southport\r\n'
       + 'DESCRIPTION:Round 1 with Kazuma Kobori and Tom Sloman. Follow live at davidhowardgolf.ie\r\n'
       + 'URL:https://www.davidhowardgolf.ie\r\nEND:VEVENT\r\nEND:VCALENDAR';
-    document.getElementById('follow').innerHTML =
+    follow.innerHTML =
       '<p class="fw-title">How to follow</p><div class="fw-grid">' +
-      '<span class="fw-item"><b>His group</b>10:42 Irish and UK time · 5:42am US Eastern</span>' +
+      '<span class="fw-item"><b>His group</b>' + esc(localTime) + ' Irish and UK time · ' + esc(easternTime) + ' US Eastern</span>' +
       '<span class="fw-item"><b>TV · Ireland and UK</b>Sky Sports Golf from 6:30am</span>' +
       '<span class="fw-item"><b>TV · US</b>Peacock from 1:30am ET, then USA Network</span>' +
       '<span class="fw-item"><b>Every shot</b><a href="https://www.theopen.com/leaderboard" target="_blank" rel="noopener">Official Open leaderboard</a></span>' +
@@ -244,13 +283,16 @@
     if(!data || !data.enabled){ teardownEventExperience(); return; }
     buildLiveDesk(data);
     if(!weekList) return;
+    renderFollow(data);
     var html = '';
     for(var i = 0; i < data.days.length; i++){
       var day = data.days[i];
       var statusClass = day.status === 'live' ? ' live' : '';
       var statusText = day.status === 'live' ? 'Live now' : day.status === 'done' ? 'Complete' : 'Ahead';
+      var teeTime = day.teeTime ? formatScheduleTime(day.teeTime, 'Europe/Dublin', 'en-IE', false) : '';
+      var teeDisplay = teeTime ? teeTime + (day.tee ? ' · ' + day.tee : '') : '';
       html += '<article class="wk"><div class="wk-when"><span class="wk-date">' + esc(day.label) + '</span><span class="wk-title">' + esc(day.title) + '</span><span class="wk-status' + statusClass + '">' + statusText + '</span></div>' +
-        '<div class="wk-body"><div class="wk-facts"><span>Tee ' + (day.tee ? '<b>' + esc(day.tee) + '</b>' : '<span class="tba">TBA</span>') + '</span>' +
+        '<div class="wk-body"><div class="wk-facts"><span>Tee ' + (teeDisplay ? '<b>' + esc(teeDisplay) + '</b>' : '<span class="tba">TBA</span>') + '</span>' +
         '<span>Playing with ' + (Array.isArray(day.partners) && day.partners.length ? '<b>' + esc(day.partners.join(' and ')) + '</b>' : '<span class="tba">draw to come</span>') + '</span>' +
         (day.score ? '<span class="wk-score"><b>' + esc(day.score) + '</b></span>' : '') + '</div>' +
         (day.note ? '<p class="wk-note">' + esc(day.note) + '</p>' : '') + '</div></article>';
@@ -263,7 +305,13 @@
     if(intro && data.intro) intro.textContent = data.intro;
     var next = document.getElementById('desk-next');
     var nextDetail = document.getElementById('desk-next-detail');
-    if(next) next.textContent = data.next && data.next.label ? data.next.label : 'Schedule to follow';
+    var nextDay = null;
+    for(var j = 0; j < data.days.length; j++){
+      if(data.days[j] && data.days[j].teeTime && data.days[j].status !== 'done'){ nextDay = data.days[j]; break; }
+    }
+    if(next) next.textContent = nextDay
+      ? nextDay.title + ' · ' + nextDay.label + ', ' + formatScheduleTime(nextDay.teeTime, 'Europe/Dublin', 'en-IE', false)
+      : 'Schedule to follow';
     if(nextDetail) nextDetail.textContent = data.next && data.next.detail ? data.next.detail : '';
     var context = document.getElementById('desk-context');
     if(context) context.textContent = data.context || 'Follow every round';
@@ -272,7 +320,7 @@
   function teardownEventExperience(){
     eventEnabled = false;
     if(liveTimer) { clearTimeout(liveTimer); liveTimer = null; }
-    if(desk) { desk.remove(); desk = null; weekList = null; diaryList = null; }
+    if(desk) { desk.remove(); desk = null; weekList = null; diaryList = null; followScheduleKey = null; }
     if(strip) { strip.remove(); strip = null; }
     if(grid) grid.style.display = '';
     var nextUp = document.querySelector('.next-up'); if(nextUp) nextUp.style.display = '';
