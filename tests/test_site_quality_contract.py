@@ -68,6 +68,15 @@ class SiteQualityContractTests(unittest.TestCase):
         )
         self.assertIn(".scorecard{ overflow-x:visible; }", self.source)
 
+    def test_removed_sponsor_logos_are_not_published(self):
+        for sponsor, asset in (
+            ("Calderwood", "calderwood.jpg"),
+            ("Masterlink", "masterlink-full.jpg"),
+        ):
+            self.assertNotIn(sponsor, self.source)
+            self.assertNotIn(asset, self.source)
+            self.assertFalse((ROOT / "assets" / "sponsors" / asset).exists())
+
 
 if __name__ == "__main__":
     unittest.main()
