@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>David Howard Golf | The 154th Open, Royal Birkdale</title>
-<meta name="description" content="David Howard is a Cork amateur golfer and Cystic Fibrosis Ireland ambassador who qualified for the 154th Open Championship at Royal Birkdale.">
+<meta name="description" content="David Howard is a Cork amateur golfer and Cystic Fibrosis Ireland ambassador who played the 154th Open Championship at Royal Birkdale.">
 <meta property="og:title" content="David Howard Golf">
 <meta property="og:description" content="Cork amateur. CF Ireland ambassador. Qualifier for the 154th Open at Royal Birkdale.">
 <meta property="og:type" content="website">
@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="https://www.davidhowardgolf.ie/og.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Person","@id":"https://www.davidhowardgolf.ie/#david","name":"David Howard","description":"Irish amateur golfer and Cystic Fibrosis Ireland ambassador, qualifier for the 154th Open Championship at Royal Birkdale.","homeLocation":{"@type":"Place","name":"Currabinny, County Cork, Ireland"},"nationality":"Irish","sameAs":["https://www.instagram.com/davidhowardgolf"],"memberOf":{"@type":"SportsOrganization","name":"Fota Island Golf Club"}},
+{"@type":"Person","@id":"https://www.davidhowardgolf.ie/#david","name":"David Howard","description":"Irish amateur golfer and Cystic Fibrosis Ireland ambassador, played the 154th Open Championship at Royal Birkdale.","homeLocation":{"@type":"Place","name":"Currabinny, County Cork, Ireland"},"nationality":"Irish","sameAs":["https://www.instagram.com/davidhowardgolf"],"memberOf":{"@type":"SportsOrganization","name":"Fota Island Golf Club"}},
 {"@type":"SportsEvent","name":"The 154th Open Championship","startDate":"2026-07-16","endDate":"2026-07-19","location":{"@type":"Place","name":"Royal Birkdale Golf Club","address":"Southport, England"},"competitor":{"@id":"https://www.davidhowardgolf.ie/#david"}}
 ]}
 </script>
@@ -59,6 +59,18 @@
   font-weight:700;
   font-display:swap;
 }
+/* The 154th Open · recap chapter */
+.open-recap{ display:grid; gap:clamp(2rem,5vw,4rem); align-items:center; }
+@media (min-width:940px){ .open-recap{ grid-template-columns: 5fr 7fr; } }
+.or-photo img{ width:100%; border-radius:18px; border:1px solid var(--line); display:block; }
+.or-body{ display:flex; flex-direction:column; gap:1.4rem; min-width:0; }
+.or-eyebrow{ display:flex; align-items:center; gap:0.7rem; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.2em; text-transform:uppercase; color:var(--bone-dim); }
+.or-lead{ color:var(--bone-dim); max-width:56ch; }
+.or-facts{ display:flex; flex-wrap:wrap; gap:1rem 2.5rem; }
+.or-facts span{ display:flex; flex-direction:column; gap:0.35rem; border-left:1px solid var(--line); padding-left:1.1rem; }
+.or-facts b{ font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.18em; text-transform:uppercase; color:var(--bone-faint); font-weight:500; }
+.or-facts span{ font-family:var(--font-mono); font-size:var(--text-small); letter-spacing:0.06em; text-transform:uppercase; color:var(--bone); }
+
 /* Shield display type from extension-injected multicolumn styles */
 html body h1, html body h2, html body h3, html body .display{
   column-count: 1 !important;
@@ -1596,8 +1608,6 @@ footer{
   .loader{ display:none; }
 }
 </style>
-<!-- LIVE MODULE · remove this line and live.js after The Open -->
-<link rel="stylesheet" href="/live.css">
 </head>
 
 <body class="locked">
@@ -1647,7 +1657,7 @@ footer{
       <span class="row ghost" data-kinetic>Golf</span>
     </h1>
     <div class="hero-foot">
-      <p class="hero-sub reveal hero-seq">Cork amateur. Cystic Fibrosis Ireland ambassador. <strong>Qualifier for the 154th Open Championship.</strong></p>
+      <p class="hero-sub reveal hero-seq">Cork amateur. Cystic Fibrosis Ireland ambassador. <strong>He played the 154th Open Championship.</strong></p>
       <div class="hero-ctas reveal hero-seq">
         <a class="btn btn-primary magnetic" href="#story"><span>The story</span></a>
         <a class="btn magnetic" href="mailto:sam@davidhowardgolf.ie"><span>Partner enquiries</span></a>
@@ -1677,15 +1687,20 @@ footer{
 <!-- ==================== COUNTDOWN ==================== -->
 <section class="clock" aria-label="Countdown to the first tee at Royal Birkdale">
   <div class="container">
-    <p class="clock-head mono reveal"><span class="dot" aria-hidden="true"></span><span id="clock-label">David tees off &middot; Thursday 10:42</span></p>
-    <div class="clock-grid reveal" role="timer" aria-live="off">
-      <div class="clock-cell"><div class="clock-num" id="cd-d">--</div><div class="clock-word">Days</div></div>
-      <div class="clock-cell"><div class="clock-num" id="cd-h">--</div><div class="clock-word">Hours</div></div>
-      <div class="clock-cell"><div class="clock-num" id="cd-m">--</div><div class="clock-word">Minutes</div></div>
-      <div class="clock-cell"><div class="clock-num" id="cd-s">--</div><div class="clock-word">Seconds</div></div>
+    <div class="open-recap">
+      <div class="or-photo reveal"><img src="/assets/photos/david-howard-open-big-screen.jpg" alt="David Howard on the big screen at the 154th Open, Royal Birkdale" loading="lazy" decoding="async"></div>
+      <div class="or-body">
+        <p class="or-eyebrow reveal"><span class="dot" aria-hidden="true"></span>The 154th Open &middot; Royal Birkdale &middot; July 2026</p>
+        <h2 class="display reveal">His name on the board</h2>
+        <p class="or-lead reveal">Major championship debut at 27. Two rounds of the oldest championship in golf alongside Kazuma Kobori and Tom Sloman, his father John on the bag in the yellow bib, his face on The Open's own screens. The cut was missed by the narrowest of margins. The point was made for good.</p>
+        <div class="or-facts reveal">
+          <span><b>Debut</b>The 154th Open</span>
+          <span><b>On the bag</b>John Howard</span>
+          <span><b>The group</b>Kobori and Sloman</span>
+        </div>
+      </div>
     </div>
-    <p class="next-up mono reveal">The road there<span class="sep">&#9679;</span><b>Interprovincials</b> with Munster<span class="sep">&#9679;</span><b>Barton Shield</b> with Fota Island<span class="sep">&#9679;</span><b>The 154th Open</b> 16 to 19 July</p>
-  </div>
+    </div>
 </section>
 
 <!-- ==================== QUALIFYING CARD ==================== -->
@@ -1922,7 +1937,7 @@ footer{
   <div class="container">
     <div class="gallery-head reveal">
       <h2 class="display" id="gallery-title">From the road</h2>
-      <p>Frames from the amateur circuit.</p>
+      <p>Frames from the amateur circuit, and from Birkdale.</p>
     </div>
     <div class="film reveal">
       <figure class="photo-frame">
@@ -1939,6 +1954,14 @@ footer{
       </figure>
       <figure class="photo-frame">
         <div class="ph"><img src="/assets/photos/david-howard-tournament-putt.jpg" alt="Lining up a putt in tournament play with the gallery watching" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>Inside the ropes</span></figcaption>
+      </figure>
+      <figure class="photo-frame">
+        <div class="ph"><img src="/assets/photos/david-howard-birkdale-round-one.jpg" alt="David Howard putting in front of the grandstands at the 154th Open" loading="lazy" decoding="async"></div>
+        <figcaption class="photo-cap"><span>Inside the ropes</span></figcaption>
+      </figure>
+      <figure class="photo-frame">
+        <div class="ph"><img src="/assets/photos/john-howard-open-caddie-bib.jpg" alt="John Howard holding the Open caddie bib at Royal Birkdale" loading="lazy" decoding="async"></div>
         <figcaption class="photo-cap"><span>Inside the ropes</span></figcaption>
       </figure>
       <figure class="photo-frame">
@@ -2560,12 +2583,6 @@ window.addEventListener('scroll', function(){
 onScroll();
 
 /* ---------------- The sky knows the hour ---------------- */
-(function(){
-  var h = new Date().getHours();
-  var sky = (h >= 22 || h < 5) ? 'night' : (h < 8) ? 'dawn' : (h >= 19) ? 'dusk' : 'day';
-  document.body.setAttribute('data-sky', sky);
-})();
-
 /* ---------------- Countdown: first tee, 16 July 2026, 06:35 BST ---------------- */
 var target = new Date('2026-07-16T10:42:00+01:00').getTime();
 var dEl = document.getElementById('cd-d'), hEl = document.getElementById('cd-h'),
@@ -2674,7 +2691,5 @@ if(window.matchMedia('(pointer:fine)').matches && !reduced){
 }
 })();
 </script>
-<!-- LIVE MODULE · remove this line, live.js, live.css, live.json, week.json after The Open -->
-<script src="/live.js" defer></script>
 </body>
 </html>
