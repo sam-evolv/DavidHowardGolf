@@ -35,6 +35,16 @@ class SiteQualityContractTests(unittest.TestCase):
         self.assertTrue((photos / "david-howard-hero.jpg").is_file())
         self.assertGreater((photos / "david-howard-hero.jpg").stat().st_size, 10_000)
 
+    def test_then_and_now_uses_the_correct_photographs_without_lazy_loading(self):
+        self.assertIn(
+            'src="/assets/photos/david-howard-practice-range.jpg" alt="David Howard lifting a trophy among the dunes" loading="eager"',
+            self.source,
+        )
+        self.assertIn(
+            'src="/assets/photos/david-howard-reading-putt.jpg" alt="A young David Howard at a prizegiving" loading="eager"',
+            self.source,
+        )
+
     def test_press_biographies_match_their_published_word_counts(self):
         for size in (50, 100, 300):
             match = re.search(
