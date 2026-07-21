@@ -62,6 +62,7 @@
 /* The 154th Open · recap chapter */
 .open-recap{ display:grid; gap:clamp(2rem,5vw,4rem); align-items:center; }
 @media (min-width:940px){ .open-recap{ grid-template-columns: 5fr 7fr; } }
+.or-photo{ display:flex; flex-direction:column; gap:1rem; }
 .or-photo img{ width:100%; border-radius:18px; border:1px solid var(--line); display:block; }
 .or-body{ display:flex; flex-direction:column; gap:1.4rem; min-width:0; }
 .or-eyebrow{ display:flex; align-items:center; gap:0.7rem; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.2em; text-transform:uppercase; color:var(--bone-dim); }
@@ -1614,11 +1615,11 @@ footer{
 <a class="skip-link" href="#main">Skip to content</a>
 
 
-<!-- Preloader: counting to the 154th -->
+<!-- Preloader: climbing to 1,456, the ranking that played The Open -->
 <div class="loader" id="loader" aria-hidden="true">
   <img class="loader-mark" src="/assets/logo.png" alt="" width="144" height="84">
-  <div class="loader-num mono"><span id="loader-count">001</span><em>.</em></div>
-  <p class="loader-cap">The 154th Open &middot; Dundonald to Birkdale</p>
+  <div class="loader-num mono"><span id="loader-count">0001</span><em>.</em></div>
+  <p class="loader-cap">World No. 1,456 &middot; Open Championship player</p>
 </div>
 
 <div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
@@ -1688,7 +1689,10 @@ footer{
 <section class="clock" aria-label="The 154th Open at Royal Birkdale">
   <div class="container">
     <div class="open-recap">
-      <div class="or-photo reveal"><img src="/assets/photos/david-howard-open-big-screen.jpg" alt="David Howard on the big screen at the 154th Open, Royal Birkdale" loading="lazy" decoding="async"></div>
+      <div class="or-photo reveal">
+        <img src="/assets/photos/david-howard-open-big-screen.jpg" alt="David Howard on the big screen at the 154th Open, Royal Birkdale" loading="lazy" decoding="async">
+        <img src="/assets/photos/david-howard-birkdale-round-one.jpg" alt="David Howard putting in front of the grandstands during round one at Royal Birkdale" loading="lazy" decoding="async">
+      </div>
       <div class="or-body">
         <p class="or-eyebrow reveal"><span class="dot" aria-hidden="true"></span>The 154th Open &middot; Royal Birkdale &middot; July 2026</p>
         <h2 class="display reveal">His name on the board</h2>
@@ -1796,7 +1800,7 @@ footer{
         </span>
       </a>
       <a class="media-card" href="https://irishgolfer.ie/latest-golf-news/2026/07/17/howard-hungry-for-more-major-experiences-after-silver-medal-near-miss/" target="_blank" rel="noopener">
-        <span class="m-ph"><img src="/assets/photos/david-howard-birkdale-round-one.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span class="m-ph"><img src="/assets/press/irishgolfer.jpg" alt="" loading="lazy" decoding="async"></span>
         <span class="m-body">
           <span class="m-top"><span class="m-pub">Irish Golfer</span><span class="m-type">Feature</span></span>
           <span class="m-headline">Hungry for more majors after Silver Medal near miss</span>
@@ -1812,7 +1816,7 @@ footer{
         </span>
       </a>
       <a class="media-card" href="https://www.youtube.com/watch?v=7boqrykykIU" target="_blank" rel="noopener">
-        <span class="m-ph"><img src="/assets/press/reuters.jpg" alt="" loading="lazy" decoding="async"><span class="m-play" aria-hidden="true">&#9654;</span></span>
+        <span class="m-ph"><img src="/assets/photos/david-howard-open-pin-flag.jpg" alt="" loading="lazy" decoding="async"><span class="m-play" aria-hidden="true">&#9654;</span></span>
         <span class="m-body">
           <span class="m-top"><span class="m-pub">The R&amp;A</span><span class="m-type">Video</span></span>
           <span class="m-headline">Final Qualifying, live from Dundonald Links</span>
@@ -1974,10 +1978,6 @@ footer{
         <figcaption class="photo-cap"><span>Inside the ropes</span></figcaption>
       </figure>
       <figure class="photo-frame">
-        <div class="ph"><img src="/assets/photos/david-howard-birkdale-round-one.jpg" alt="David Howard putting in front of the grandstands at the 154th Open" loading="lazy" decoding="async"></div>
-        <figcaption class="photo-cap"><span>Friday&rsquo;s 69</span><span>Royal Birkdale</span></figcaption>
-      </figure>
-      <figure class="photo-frame">
         <div class="ph"><img src="/assets/photos/john-howard-open-caddie-bib.jpg" alt="John Howard holding the Open caddie bib at Royal Birkdale" loading="lazy" decoding="async"></div>
         <figcaption class="photo-cap"><span>The bib</span><span>John&rsquo;s week too</span></figcaption>
       </figure>
@@ -2107,12 +2107,7 @@ footer{
       <li class="milestone now reveal">
         <p class="when mono">22 to 26 July 2026</p>
         <h3>The South of Ireland, Lahinch</h3>
-        <p>Straight back inside the ropes at the oldest championship in Irish amateur golf, the 124th South, played on the very links that hosts September&rsquo;s Walker Cup.</p>
-      </li>
-      <li class="milestone reveal">
-        <p class="when mono">September 2026</p>
-        <h3>The Walker Cup at Lahinch</h3>
-        <p>A home Walker Cup, and an Irish place in his sights. This summer is the audition.</p>
+        <p>Straight back inside the ropes at the oldest championship in Irish amateur golf, the 124th South of Ireland at Lahinch.</p>
       </li>
     </ol>
   </div>
@@ -2267,7 +2262,7 @@ footer{
         <div class="bio-body">
           <p id="bio-300">David Howard went undiagnosed for seven years of his life, until his mother Eithna's persistence produced the answer: cystic fibrosis. Childhood in Currabinny, County Cork became hospital stays, missed school and a routine of around thirty tablets a day. At twelve he googled the condition and read a life expectancy of mid-twenties. He is twenty-seven now, and about to play in the oldest championship in golf.
 
-Golf began as pitch and putt with his father John and his brothers, Jack, a PGA professional. In 2019 he beat his dad in the final of the Muskerry Junior Scratch Cup. For five years he worked as a mechanic at Audi Cork, playing championships around the day job in 2023 before going full time in 2024. Three years ago his handicap was not low enough for the Munster Strokeplay field. In June 2025 he won the East of Ireland Championship at Baltray and earned his first Irish call up, and in 2026 was named to Golf Ireland’s high performance panel, with a Walker Cup place at Lahinch now in his sights.
+Golf began as pitch and putt with his father John and his brothers, Jack, a PGA professional. In 2019 he beat his dad in the final of the Muskerry Junior Scratch Cup. For five years he worked as a mechanic at Audi Cork, playing championships around the day job in 2023 before going full time in 2024. Three years ago his handicap was not low enough for the Munster Strokeplay field. In June 2025 he won the East of Ireland Championship at Baltray and earned his first Irish call up, and in 2026 was named to Golf Ireland’s high performance panel.
 
 He reached Final Qualifying for The Open as first reserve after a playoff at The Island, travelling to Scotland by ferry with John, who caddies, in the camper van they call the Wanderly Wagon. At Dundonald Links on 30 June 2026 he shot rounds of 69 and 71 to finish four under and tied second, qualifying for the 154th Open with two shots to spare. At Royal Birkdale he opened with 74 and came back with a Friday 69, four birdies against the field, and stood in the 18th fairway needing an eagle to make the cut and win the Silver Medal as leading amateur. He finished two short, with the fourth-longest drive of the championship, 385 yards, and the sixth-best par-four scoring in the field.
 
@@ -2328,8 +2323,8 @@ if(reduced || seen){
   (function step(now){
     var p = Math.min((now - t0) / DUR, 1);
     var eased = 1 - Math.pow(1 - p, 3);
-    var v = Math.round(1 + eased * 153);
-    cEl.textContent = ('00' + v).slice(-3);
+    var v = Math.round(1 + eased * 1455);
+    cEl.textContent = ('000' + v).slice(-4);
     if(p < 1){ requestAnimationFrame(step); }
     else{ setTimeout(unlock, 220); }
   })(t0);
