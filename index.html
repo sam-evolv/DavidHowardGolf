@@ -2584,35 +2584,11 @@ onScroll();
 
 /* ---------------- The sky knows the hour ---------------- */
 /* ---------------- Countdown: first tee, 16 July 2026, 06:35 BST ---------------- */
-var target = new Date('2026-07-16T10:42:00+01:00').getTime();
-var dEl = document.getElementById('cd-d'), hEl = document.getElementById('cd-h'),
-    mEl = document.getElementById('cd-m'), sEl = document.getElementById('cd-s');
-function pad(n){ return n < 10 ? '0' + n : '' + n; }
-function setUnit(el, val){
-  if(el.textContent !== val){
-    el.textContent = val;
-    if(!reduced){
-      el.classList.remove('roll');
-      void el.offsetWidth;
-      el.classList.add('roll');
-    }
-  }
-}
-function tickClock(){
-  var diff = target - Date.now();
-  if(diff <= 0){
-    setUnit(dEl,'00'); setUnit(hEl,'00'); setUnit(mEl,'00'); setUnit(sEl,'00');
-    document.getElementById('clock-label').textContent = 'Championship week';
-    clearInterval(clockT);
-    return;
-  }
-  setUnit(dEl, pad(Math.floor(diff / 86400000)));
-  setUnit(hEl, pad(Math.floor(diff % 86400000 / 3600000)));
-  setUnit(mEl, pad(Math.floor(diff % 3600000 / 60000)));
-  setUnit(sEl, pad(Math.floor(diff % 60000 / 1000)));
-}
-tickClock();
-var clockT = setInterval(tickClock, 1000);
+(function(){
+  var h = new Date().getHours();
+  var sky = (h >= 22 || h < 5) ? 'night' : (h < 8) ? 'dawn' : (h >= 19) ? 'dusk' : 'day';
+  document.body.setAttribute('data-sky', sky);
+})();
 
 /* ---------------- Press kit: one-tap copy ---------------- */
 function copyText(txt, el, label){
