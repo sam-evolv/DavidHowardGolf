@@ -108,6 +108,19 @@
 .film-link{ font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.16em; text-transform:uppercase; color:var(--violet-hi); border-bottom:1px solid transparent; transition:border-color 240ms var(--ease); }
 .film-link:hover{ border-color:var(--violet-hi); }
 
+/* Playing now: the live band */
+.now-band{ background:var(--ink); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding-block:clamp(1.5rem, 3vw, 2.4rem); }
+.nb-inner{ display:flex; flex-wrap:wrap; align-items:center; gap:1rem clamp(1.5rem, 4vw, 3rem); }
+.nb-live{ display:flex; align-items:center; gap:0.7rem; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.24em; text-transform:uppercase; color:var(--violet-hi); flex:none; }
+.nb-live .dot{ width:8px; height:8px; border-radius:50%; background:var(--violet); flex:none; animation:pulse 2.4s ease-in-out infinite; }
+.nb-what{ display:flex; flex-direction:column; gap:0.25rem; min-width:0; }
+.nb-what b{ font-family:var(--font-display); font-weight:600; text-transform:uppercase; font-size:var(--text-h3); letter-spacing:-0.01em; line-height:1.05; }
+.nb-what span{ font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.16em; text-transform:uppercase; color:var(--bone-faint); }
+.nb-stats{ display:flex; flex-wrap:wrap; gap:0.75rem 2rem; margin-left:auto; }
+.nb-stats span{ display:flex; flex-direction:column; gap:0.3rem; border-left:1px solid var(--line); padding-left:1rem; font-family:var(--font-mono); font-size:var(--text-small); letter-spacing:0.06em; text-transform:uppercase; color:var(--bone); }
+.nb-stats b{ font-family:var(--font-mono); font-size:var(--text-micro); font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--bone-faint); }
+@media (max-width:720px){ .nb-stats{ margin-left:0; width:100%; } }
+
 /* Shield display type from extension-injected multicolumn styles */
 html body h1, html body h2, html body h3, html body .display{
   column-count: 1 !important;
@@ -1721,6 +1734,22 @@ footer{
   </div>
 </div>
 
+<!-- ==================== PLAYING NOW ==================== -->
+<section class="now-band" aria-label="Currently playing">
+  <div class="container nb-inner">
+    <p class="nb-live"><span class="dot" aria-hidden="true"></span>Playing now</p>
+    <div class="nb-what">
+      <b>The 124th South of Ireland</b>
+      <span>Lahinch &middot; 22 to 26 July 2026</span>
+    </div>
+    <div class="nb-stats">
+      <span><b>Qualifying</b>68 &middot; 73</span>
+      <span><b>Through to</b>The matchplay 64</span>
+      <span><b>Runs to</b>Sunday&rsquo;s final</span>
+    </div>
+  </div>
+</section>
+
 <!-- ==================== COUNTDOWN ==================== -->
 <section class="clock" aria-label="The 154th Open at Royal Birkdale">
   <div class="container">
@@ -2173,7 +2202,7 @@ footer{
       <li class="milestone now reveal">
         <p class="when mono">22 to 26 July 2026</p>
         <h3>The South of Ireland, Lahinch</h3>
-        <p>Straight back inside the ropes at the oldest championship in Irish amateur golf, the 124th South of Ireland at Lahinch.</p>
+        <p>Straight back inside the ropes at the oldest championship in Irish amateur golf. Rounds of 68 and 73 at three under to reach the matchplay 64, with the knockout stages running to Sunday&rsquo;s final.</p>
       </li>
     </ol>
   </div>
@@ -2304,7 +2333,7 @@ footer{
       <div class="fact"><dt>2025</dt><dd>East of Ireland champion, Irish cap</dd></div>
       <div class="fact"><dt>Qualified</dt><dd>Dundonald Links, 30 June 2026, T2 at &minus;4</dd></div>
       <div class="fact"><dt>The 154th Open</dt><dd>Rounds of 74 and 69, missed the cut by two</dd></div>
-      <div class="fact"><dt>Next</dt><dd>The South of Ireland, Lahinch, 22 to 26 July</dd></div>
+      <div class="fact"><dt>Playing now</dt><dd>The 124th South of Ireland, Lahinch &mdash; 68 and 73 to reach the matchplay 64</dd></div>
       <div class="fact"><dt>Instagram</dt><dd>@davidhowardgolf</dd></div>
     </dl>
 
