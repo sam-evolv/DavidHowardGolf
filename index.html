@@ -108,11 +108,11 @@
 .film-link{ font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.16em; text-transform:uppercase; color:var(--violet-hi); border-bottom:1px solid transparent; transition:border-color 240ms var(--ease); }
 .film-link:hover{ border-color:var(--violet-hi); }
 
-/* Playing now: the live band */
+/* Latest result: the completed-event band */
 .now-band{ background:var(--ink); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding-block:clamp(1.5rem, 3vw, 2.4rem); }
 .nb-inner{ display:flex; flex-wrap:wrap; align-items:center; gap:1rem clamp(1.5rem, 4vw, 3rem); }
 .nb-live{ display:flex; align-items:center; gap:0.7rem; font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.24em; text-transform:uppercase; color:var(--violet-hi); flex:none; }
-.nb-live .dot{ width:8px; height:8px; border-radius:50%; background:var(--violet); flex:none; animation:pulse 2.4s ease-in-out infinite; }
+.nb-live .dot{ width:8px; height:8px; border-radius:50%; background:var(--violet); flex:none; }
 .nb-what{ display:flex; flex-direction:column; gap:0.25rem; min-width:0; }
 .nb-what b{ font-family:var(--font-display); font-weight:600; text-transform:uppercase; font-size:var(--text-h3); letter-spacing:-0.01em; line-height:1.05; }
 .nb-what span{ font-family:var(--font-mono); font-size:var(--text-micro); letter-spacing:0.16em; text-transform:uppercase; color:var(--bone-faint); }
@@ -1734,19 +1734,20 @@ footer{
   </div>
 </div>
 
-<!-- ==================== PLAYING NOW ==================== -->
-<section class="now-band" aria-label="Currently playing">
+<!-- ==================== LATEST RESULT ==================== -->
+<section class="now-band" id="latest-result" aria-label="Latest result">
   <div class="container nb-inner">
-    <p class="nb-live"><span class="dot" aria-hidden="true"></span>Playing now</p>
+    <p class="nb-live"><span class="dot" aria-hidden="true"></span>Latest result</p>
     <div class="nb-what">
       <b>The 124th South of Ireland</b>
       <span>Lahinch &middot; 22 to 26 July 2026</span>
     </div>
     <div class="nb-stats">
       <span><b>Qualifying</b>68 &middot; 73</span>
-      <span><b>Through to</b>The matchplay 64</span>
-      <span><b>Runs to</b>Sunday&rsquo;s final</span>
+      <span><b>Finish</b>South of Ireland semi-finalist</span>
+      <span><b>Semi-final</b>Lost 2&amp;1 to Tomi Bowen</span>
     </div>
+    <a class="film-link" href="https://www.irishexaminer.com/sport/golf/arid-41886286.html" target="_blank" rel="noopener">Result report &rarr;</a>
   </div>
 </section>
 
@@ -2199,10 +2200,10 @@ footer{
         <h3>The 154th Open Championship</h3>
         <p>Royal Birkdale. Rounds of 74 and 69 in his major debut, standing over an eagle chance at the 36th hole for the cut and the Silver Medal. Missed by two.</p>
       </li>
-      <li class="milestone now reveal">
+      <li class="milestone reveal">
         <p class="when mono">22 to 26 July 2026</p>
         <h3>The South of Ireland, Lahinch</h3>
-        <p>Straight back inside the ropes at the oldest championship in Irish amateur golf. Rounds of 68 and 73 at three under to reach the matchplay 64, with the knockout stages running to Sunday&rsquo;s final.</p>
+        <p>Straight back inside the ropes at the oldest championship in Irish amateur golf. Rounds of 68 and 73 at three under reached the matchplay 64, followed by a run to the semi-finals before a 2&amp;1 defeat to Tomi Bowen.</p>
       </li>
     </ol>
   </div>
@@ -2333,29 +2334,29 @@ footer{
       <div class="fact"><dt>2025</dt><dd>East of Ireland champion, Irish cap</dd></div>
       <div class="fact"><dt>Qualified</dt><dd>Dundonald Links, 30 June 2026, T2 at &minus;4</dd></div>
       <div class="fact"><dt>The 154th Open</dt><dd>Rounds of 74 and 69, missed the cut by two</dd></div>
-      <div class="fact"><dt>Playing now</dt><dd>The 124th South of Ireland, Lahinch &middot; 68 and 73 to reach the matchplay 64</dd></div>
+      <div class="fact"><dt>Latest result</dt><dd>South of Ireland semi-finalist &middot; lost 2&amp;1 to Tomi Bowen at Lahinch</dd></div>
       <div class="fact"><dt>Instagram</dt><dd>@davidhowardgolf</dd></div>
     </dl>
 
     <div class="bios reveal">
       <details>
-        <summary>Bio &middot; 50 words</summary>
+        <summary>Bio &middot; Short</summary>
         <div class="bio-body">
           <p id="bio-50">David Howard is a 27 year old amateur golfer from Currabinny, County Cork, and a Cystic Fibrosis Ireland ambassador. The 2025 East of Ireland champion qualified for and played the 154th Open at Royal Birkdale, closing his major debut with a second-round 69 to miss the cut by two, his father John caddying throughout.</p>
           <button class="copy-bio" data-copy="bio-50">Copy</button>
         </div>
       </details>
       <details>
-        <summary>Bio &middot; 100 words</summary>
+        <summary>Bio &middot; Standard</summary>
         <div class="bio-body">
           <p id="bio-100">David Howard is a 27-year-old amateur golfer from Currabinny, County Cork, playing out of Fota Island Golf Club. Diagnosed with cystic fibrosis at seven, he worked for five years as a mechanic at Audi Cork before going full-time in 2024. He won the 2025 East of Ireland Championship at Baltray and earned his first Irish cap. As first reserve at Final Qualifying, Howard shot 69 and 71 at Dundonald Links to reach the 154th Open at Royal Birkdale, where he opened with 74 and closed with a second-round 69, missing the cut by two after needing an eagle at the last for the Silver Medal. His father, John, caddies for him, and he has represented Cystic Fibrosis Ireland as an ambassador since 2024.</p>
           <button class="copy-bio" data-copy="bio-100">Copy</button>
         </div>
       </details>
       <details>
-        <summary>Bio &middot; 300 words</summary>
+        <summary>Bio &middot; Long</summary>
         <div class="bio-body">
-          <p id="bio-300">David Howard went undiagnosed for seven years of his life, until his mother Eithna's persistence produced the answer: cystic fibrosis. Childhood in Currabinny, County Cork became hospital stays, missed school and a routine of around thirty tablets a day. At twelve he googled the condition and read a life expectancy of mid-twenties. He is twenty-seven now, and about to play in the oldest championship in golf.
+          <p id="bio-300">David Howard went undiagnosed for seven years of his life, until his mother Eithna's persistence produced the answer: cystic fibrosis. Childhood in Currabinny, County Cork became hospital stays, missed school and a routine of around thirty tablets a day. At twelve he googled the condition and read a life expectancy of mid-twenties. He is twenty-seven now, an Open Championship competitor and South of Ireland semi-finalist.
 
 Golf began as pitch and putt with his father John and his brothers, Jack, a PGA professional. In 2019 he beat his dad in the final of the Muskerry Junior Scratch Cup. For five years he worked as a mechanic at Audi Cork, playing championships around the day job in 2023 before going full time in 2024. Three years ago his handicap was not low enough for the Munster Strokeplay field. In June 2025 he won the East of Ireland Championship at Baltray and earned his first Irish call up, and in 2026 was named to Golf Ireland’s high performance panel.
 
