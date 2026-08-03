@@ -5,8 +5,9 @@ ambassador, and qualifier for the 154th Open Championship at Royal Birkdale.
 
 - `index.html` is the complete production site, self-contained, zero build step.
 - `og.png` is the social share card.
-- `port/` holds the Next.js migration kit: HANDOFF.md, the lean source with
-  external image paths, and the production-named image set.
+- `port/` is an archived pre-Open migration snapshot retained for design reference.
+  It is not a maintained or deployable copy source; begin any future migration from
+  the authoritative production `index.html`.
 
 Deploy: import this repo in Vercel, framework Other, no build command,
 output directory `./`.

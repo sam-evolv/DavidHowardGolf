@@ -52,6 +52,11 @@ class SiteQualityContractTests(unittest.TestCase):
             self.assertGreaterEqual(len(words), minimum, f"bio-{size} is too short")
             self.assertLessEqual(len(words), maximum, f"bio-{size} is too long")
 
+    def test_archived_migration_snapshot_is_not_deployed(self):
+        ignored = (ROOT / ".vercelignore").read_text(encoding="utf-8").splitlines()
+        self.assertIn("port/", ignored)
+        self.assertIn("ARCHIVED PRE-OPEN MIGRATION SNAPSHOT", self.migration_source)
+
     def test_section_headings_are_readable_without_animation_javascript(self):
         base_rule = re.search(
             r"\.headline-reveal \.headline-word-inner\s*\{([^}]*)\}",
