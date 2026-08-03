@@ -52,6 +52,25 @@ class SiteQualityContractTests(unittest.TestCase):
             self.assertGreaterEqual(len(words), minimum, f"bio-{size} is too short")
             self.assertLessEqual(len(words), maximum, f"bio-{size} is too long")
 
+    def test_mobile_nav_paints_a_solid_scrim_behind_safari_chrome(self):
+        self.assertIn("@media (max-width:840px){", self.source)
+        self.assertIn(".nav::before{", self.source)
+        self.assertIn("height:calc(180px + env(safe-area-inset-top));", self.source)
+        self.assertIn("background:var(--ink);", self.source)
+        self.assertIn("backdrop-filter:none;", self.source)
+
+    def test_rte_radio_one_interview_is_in_the_media_rail(self):
+        self.assertIn(
+            'href="https://www.rte.ie/radio/radio1/clips/22634323/"',
+            self.source,
+        )
+        self.assertIn("Cork golfer David Howard and his inspirational CF story", self.source)
+        self.assertIn("RT&Eacute; Radio 1", self.source)
+        self.assertIn("Oliver Callan &middot; 31 July 2026 &middot; 18 min", self.source)
+        image = ROOT / "assets" / "press" / "rte-radio-oliver-callan.jpg"
+        self.assertTrue(image.is_file())
+        self.assertGreater(image.stat().st_size, 10_000)
+
     def test_then_and_now_uses_childhood_before_reading_the_line(self):
         self.assertIn(
             '<div class="c-now"><img src="/assets/photos/david-howard-childhood-prizegiving.jpg" alt="David Howard crouched on the green reading a putt"',

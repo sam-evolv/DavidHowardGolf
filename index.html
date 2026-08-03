@@ -442,7 +442,24 @@ p{ max-width:62ch; }
 .nav-links a:not(.btn):hover{ color:var(--bone); letter-spacing:0.22em; }
 .nav .btn{ min-height:42px; padding:0.55rem 1.3rem; }
 
-@media (max-width:840px){ .nav-links li.nav-hide{ display:none; } }
+@media (max-width:840px){
+  .nav{
+    background:var(--ink);
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+  /* Mobile Safari floats translucent browser chrome above the visual viewport.
+     Extend the nav's solid backdrop upward so scrolling copy cannot show through. */
+  .nav::before{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:100%;
+    height:calc(180px + env(safe-area-inset-top));
+    background:var(--ink);
+    pointer-events:none;
+  }
+  .nav-links li.nav-hide{ display:none; }
+}
 
 /* ================================================================
    HERO · the wind field
@@ -1861,6 +1878,14 @@ footer{
           <span class="m-top"><span class="m-pub">Golf Channel</span><span class="m-type">Television</span></span>
           <span class="m-headline">Live From The Open: David Howard on qualifying, CF and 25 tablets a day</span>
           <span class="m-foot"><span>NBC Sports &middot; July 2026</span><span class="m-arrow">&#8599;</span></span>
+        </span>
+      </a>
+      <a class="media-card pod" href="https://www.rte.ie/radio/radio1/clips/22634323/" target="_blank" rel="noopener">
+        <span class="m-ph"><img src="/assets/press/rte-radio-oliver-callan.jpg" alt="" loading="lazy" decoding="async"><span class="m-play" aria-hidden="true">&#9654;</span></span>
+        <span class="m-body">
+          <span class="m-top"><span class="m-pub">RT&Eacute; Radio 1</span><span class="m-type">Radio interview</span></span>
+          <span class="m-headline">Cork golfer David Howard and his inspirational CF story</span>
+          <span class="m-foot"><span>Oliver Callan &middot; 31 July 2026 &middot; 18 min</span><span class="m-arrow">&#9654;</span></span>
         </span>
       </a>
       <a class="media-card" href="https://www.nytimes.com/athletic/7418947/2026/07/04/the-open-david-howard-qualifier/?unlocked_article_code=1.vFA.vnjM.Of7tJld7l2Rx" target="_blank" rel="noopener">
