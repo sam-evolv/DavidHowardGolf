@@ -67,6 +67,7 @@ class SiteQualityContractTests(unittest.TestCase):
         self.assertNotIn("Playing now", self.source)
         self.assertNotIn('aria-label="Currently playing"', self.source)
         self.assertNotIn("about to play in the oldest championship", self.source)
+        self.assertNotIn("Bios at 50, 100 and 300 words", self.source)
         self.assertIn("South of Ireland semi-finalist", self.source)
         self.assertIn("Tomi Bowen", self.source)
         self.assertIn("2&amp;1", self.source)
