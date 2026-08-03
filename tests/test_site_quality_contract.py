@@ -5,12 +5,14 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 HTML_PATH = ROOT / "index.html"
+MIGRATION_HTML_PATH = ROOT / "port" / "davidhowardgolf-v15-lean.html"
 
 
 class SiteQualityContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.source = HTML_PATH.read_text(encoding="utf-8")
+        cls.migration_source = MIGRATION_HTML_PATH.read_text(encoding="utf-8")
 
     def test_structured_data_is_valid_schema_org_json(self):
         match = re.search(
@@ -64,11 +66,13 @@ class SiteQualityContractTests(unittest.TestCase):
         self.assertNotIn("will-change", declarations)
 
     def test_completed_south_of_ireland_result_replaces_live_language(self):
-        self.assertNotIn("Playing now", self.source)
-        self.assertNotIn('aria-label="Currently playing"', self.source)
-        self.assertNotIn("about to play in the oldest championship", self.source)
-        self.assertNotIn("Bios at 50, 100 and 300 words", self.source)
+        maintained_copy = self.source + self.migration_source
+        self.assertNotIn("Playing now", maintained_copy)
+        self.assertNotIn('aria-label="Currently playing"', maintained_copy)
+        self.assertNotIn("about to play in the oldest championship", maintained_copy)
+        self.assertNotIn("Bios at 50, 100 and 300 words", maintained_copy)
         self.assertIn("South of Ireland semi-finalist", self.source)
+        self.assertIn("South of Ireland semi-finalist", self.migration_source)
         self.assertIn("Tomi Bowen", self.source)
         self.assertIn("2&amp;1", self.source)
         self.assertIn(
