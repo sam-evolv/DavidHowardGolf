@@ -52,6 +52,20 @@ class SiteQualityContractTests(unittest.TestCase):
             self.assertGreaterEqual(len(words), minimum, f"bio-{size} is too short")
             self.assertLessEqual(len(words), maximum, f"bio-{size} is too long")
 
+    def test_then_and_now_uses_childhood_before_reading_the_line(self):
+        self.assertIn(
+            '<div class="c-now"><img src="/assets/photos/david-howard-childhood-prizegiving.jpg" alt="David Howard crouched on the green reading a putt"',
+            self.source,
+        )
+        self.assertIn(
+            '<div class="c-then"><img src="/assets/photos/david-howard-reading-putt.jpg" alt="A young David Howard at a pitch and putt prizegiving"',
+            self.source,
+        )
+        self.assertNotIn(
+            '<div class="film reveal">\n      <figure class="photo-frame">\n        <div class="ph"><img src="/assets/photos/david-howard-reading-putt.jpg"',
+            self.source,
+        )
+
     def test_archived_migration_snapshot_is_not_deployed(self):
         ignored = (ROOT / ".vercelignore").read_text(encoding="utf-8").splitlines()
         self.assertIn("port/", ignored)
