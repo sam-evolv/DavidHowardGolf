@@ -1,5 +1,7 @@
 # DAVID HOWARD GOLF | Production Handoff for Claude Code
 
+> **Archived pre-Open snapshot.** This handoff and its lean HTML are retained for design history only. They contain event-era interface assumptions and must not be deployed or used as current copy. Start any future migration from the repository-root `index.html`.
+
 Mission: port `davidhowardgolf-v15.html` to a Next.js site on Vercel at `davidhowardgolf.com`, pixel-faithful or better, live before Wednesday 9 July 2026. The 154th Open starts 16 July. Press traffic is already flowing.
 
 ## 0. Ground rules (put these in CLAUDE.md at repo root)

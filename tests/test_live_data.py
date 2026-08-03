@@ -7,6 +7,12 @@ from scripts.validate_live_data import validate_live_state, validate_week_state
 
 
 class LiveDataValidationTests(unittest.TestCase):
+    def test_event_module_artifacts_are_all_present_or_all_absent(self):
+        root = Path(__file__).resolve().parents[1]
+        artifact_names = {"live.js", "live.json", "week.json"}
+        present = {name for name in artifact_names if (root / name).is_file()}
+        self.assertIn(present, (set(), artifact_names))
+
     def test_active_round_requires_verifiable_source_and_timestamps(self):
         state = {
             "schemaVersion": 1,
@@ -84,6 +90,8 @@ class LiveDataValidationTests(unittest.TestCase):
 
     def test_repository_live_files_pass_the_deployment_gate(self):
         root = Path(__file__).resolve().parents[1]
+        if not (root / "live.json").is_file():
+            self.skipTest("The reversible Open-week module is not present in this evergreen build")
         live = json.loads((root / "live.json").read_text())
         week = json.loads((root / "week.json").read_text())
         self.assertEqual(validate_live_state(live), [])

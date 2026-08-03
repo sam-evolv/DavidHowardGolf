@@ -1,11 +1,14 @@
 import unittest
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
 
+
+@unittest.skipUnless((ROOT / "live.js").is_file(), "The reversible Open-week module is not present in this evergreen build")
 class LiveModuleContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.source = (Path(__file__).resolve().parents[1] / "live.js").read_text()
+        cls.source = (ROOT / "live.js").read_text()
 
     def test_does_not_treat_generic_espn_as_canonical_score_source(self):
         self.assertNotIn("site.api.espn.com", self.source)

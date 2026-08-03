@@ -5,12 +5,14 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 HTML_PATH = ROOT / "index.html"
+MIGRATION_HTML_PATH = ROOT / "port" / "davidhowardgolf-v15-lean.html"
 
 
 class SiteQualityContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.source = HTML_PATH.read_text(encoding="utf-8")
+        cls.migration_source = MIGRATION_HTML_PATH.read_text(encoding="utf-8")
 
     def test_structured_data_is_valid_schema_org_json(self):
         match = re.search(
@@ -35,18 +37,25 @@ class SiteQualityContractTests(unittest.TestCase):
         self.assertTrue((photos / "david-howard-hero.jpg").is_file())
         self.assertGreater((photos / "david-howard-hero.jpg").stat().st_size, 10_000)
 
-    def test_press_biographies_match_their_published_word_counts(self):
-        for size in (50, 100, 300):
+    def test_press_biographies_are_present_at_useful_lengths(self):
+        ranges = {50: (45, 75), 100: (80, 150), 300: (250, 400)}
+        for size, (minimum, maximum) in ranges.items():
             match = re.search(
                 rf'<p id="bio-{size}">(.*?)</p>',
                 self.source,
                 re.DOTALL,
             )
             if match is None:
-                self.fail(f"Missing {size}-word biography")
+                self.fail(f"Missing bio-{size}")
             plain = re.sub(r"<[^>]+>", "", match.group(1))
             words = re.findall(r"\b[\w’'-]+\b", plain)
-            self.assertEqual(len(words), size, f"bio-{size} has {len(words)} words")
+            self.assertGreaterEqual(len(words), minimum, f"bio-{size} is too short")
+            self.assertLessEqual(len(words), maximum, f"bio-{size} is too long")
+
+    def test_archived_migration_snapshot_is_not_deployed(self):
+        ignored = (ROOT / ".vercelignore").read_text(encoding="utf-8").splitlines()
+        self.assertIn("port/", ignored)
+        self.assertIn("ARCHIVED PRE-OPEN MIGRATION SNAPSHOT", self.migration_source)
 
     def test_section_headings_are_readable_without_animation_javascript(self):
         base_rule = re.search(
@@ -60,6 +69,21 @@ class SiteQualityContractTests(unittest.TestCase):
         self.assertIn("opacity:1", declarations)
         self.assertNotIn("opacity:0", declarations)
         self.assertNotIn("will-change", declarations)
+
+    def test_completed_south_of_ireland_result_replaces_live_language(self):
+        maintained_copy = self.source + self.migration_source
+        self.assertNotIn("Playing now", maintained_copy)
+        self.assertNotIn('aria-label="Currently playing"', maintained_copy)
+        self.assertNotIn("about to play in the oldest championship", maintained_copy)
+        self.assertNotIn("Bios at 50, 100 and 300 words", maintained_copy)
+        self.assertIn("South of Ireland semi-finalist", self.source)
+        self.assertIn("South of Ireland semi-finalist", self.migration_source)
+        self.assertIn("Tomi Bowen", self.source)
+        self.assertIn("2&amp;1", self.source)
+        self.assertIn(
+            "https://www.irishexaminer.com/sport/golf/arid-41886286.html",
+            self.source,
+        )
 
     def test_mobile_scorecard_fits_all_five_columns(self):
         self.assertIn(
