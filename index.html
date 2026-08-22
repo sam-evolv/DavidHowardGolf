@@ -1615,11 +1615,11 @@ footer{
 <a class="skip-link" href="#main">Skip to content</a>
 
 
-<!-- Preloader: climbing to 1,456, the ranking that played The Open -->
+<!-- Preloader: climbing to 792, the world ranking after The Open -->
 <div class="loader" id="loader" aria-hidden="true">
   <img class="loader-mark" src="/assets/logo.png" alt="" width="144" height="84">
   <div class="loader-num mono"><span id="loader-count">0001</span><em>.</em></div>
-  <p class="loader-cap">World No. 1,456 &middot; Open Championship player</p>
+  <p class="loader-cap">World No. 792 &middot; Open Championship player</p>
 </div>
 
 <div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
@@ -2302,7 +2302,7 @@ Away from competition, he has covered 65 kilometres for the 65 Roses challenge, 
 'use strict';
 var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ---------------- Preloader: 001 to 154 ---------------- */
+/* ---------------- Preloader: 0001 to 0792 ---------------- */
 var loader = document.getElementById('loader');
 var seen = false;
 try{ seen = sessionStorage.getItem('dhg-loaded') === '1'; }catch(e){}
@@ -2323,7 +2323,7 @@ if(reduced || seen){
   (function step(now){
     var p = Math.min((now - t0) / DUR, 1);
     var eased = 1 - Math.pow(1 - p, 3);
-    var v = Math.round(1 + eased * 1455);
+    var v = Math.round(1 + eased * 791);
     cEl.textContent = ('000' + v).slice(-4);
     if(p < 1){ requestAnimationFrame(step); }
     else{ setTimeout(unlock, 220); }
