@@ -71,6 +71,14 @@ class SiteQualityContractTests(unittest.TestCase):
         self.assertTrue(image.is_file())
         self.assertGreater(image.stat().st_size, 10_000)
 
+    def test_preloader_uses_current_world_amateur_ranking(self):
+        self.assertIn("Preloader: climbing to 792", self.source)
+        self.assertIn("World No. 792 &middot; Open Championship player", self.source)
+        self.assertIn("Preloader: 0001 to 0792", self.source)
+        self.assertIn("Math.round(1 + eased * 791)", self.source)
+        self.assertNotIn("World No. 1,456", self.source)
+        self.assertNotIn("eased * 1455", self.source)
+
     def test_then_and_now_uses_childhood_before_reading_the_line(self):
         self.assertIn(
             '<div class="c-now"><img src="/assets/photos/david-howard-childhood-prizegiving.jpg" alt="David Howard crouched on the green reading a putt"',
